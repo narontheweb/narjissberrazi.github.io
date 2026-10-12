@@ -1,0 +1,114 @@
+{
+  "name": "Narjiss Berrazi",
+  "title": "AI Transformation Specialist",
+  "descriptor": "Data & AI Consulting | Governance | Change & Adoption",
+  "headline": "Turning AI ambition into governed, adopted and scalable transformation.",
+  "hero": "I’m Narjiss Berrazi, an AI Transformation Specialist with three years of Big Four consulting experience at KPMG. I work across AI strategy, Data & AI governance, transformation, change and adoption — helping organisations turn emerging opportunities into clear decisions, ownership and implementation roadmaps.",
+  "email": "narjiss.berrazi@hotmail.com",
+  "linkedin": "https://www.linkedin.com/in/narjiss-berrazi-332657196/",
+  "cv": "/cv/Narjiss_Berrazi_CV.pdf",
+  "portrait": "/images/narjiss-berrazi-headshot",
+  "proof": [
+    {
+      "value": "3 years",
+      "label": "Big Four consulting at KPMG"
+    },
+    {
+      "value": "AI + Data",
+      "label": "Transformation & governance"
+    },
+    {
+      "value": "Change & adoption",
+      "label": "From roadmap to ways of working"
+    },
+    {
+      "value": "Executive exposure",
+      "label": "Management and C-level stakeholders"
+    }
+  ],
+  "expertise": [
+    {
+      "title": "Shape AI direction",
+      "text": "Turn opportunities into priorities, roadmaps and management decisions."
+    },
+    {
+      "title": "Create governance",
+      "text": "Clarify ownership, decision rights, oversight and operating structures."
+    },
+    {
+      "title": "Drive adoption",
+      "text": "Align stakeholders, shape ways of working and support organisational change."
+    },
+    {
+      "title": "Translate Data & AI",
+      "text": "Connect technical possibilities and constraints with business decisions and implementation."
+    }
+  ],
+  "experienceIntro": "Beyond the featured transformations, my KPMG experience spans data architecture, analytics enablement, business analysis, Data Quality, ESG reporting and data-platform work — providing the technical and delivery foundation behind my current AI transformation focus.",
+  "aboutHeadline": "I work where AI, transformation and people meet.",
+  "about": "I enjoy situations where the answer is not immediately obvious — structuring the problem, bringing stakeholders together, challenging assumptions and translating emerging technology into practical decisions and ways of working.",
+  "technical": "Technically fluent enough to shape requirements, challenge architecture and work effectively with delivery teams — while operating primarily at the transformation, governance and business layer.",
+  "progression": [
+    "Data & analytics",
+    "Governance & business translation",
+    "Change & adoption",
+    "AI transformation"
+  ],
+  "principles": [
+    {
+      "title": "Create clarity",
+      "text": "Structure ambiguous transformation questions and make decisions and priorities explicit."
+    },
+    {
+      "title": "Create governance",
+      "text": "Define ownership, decision rights and practical structures."
+    },
+    {
+      "title": "Build adoption",
+      "text": "Bring stakeholders into the transformation and translate decisions into new ways of working."
+    },
+    {
+      "title": "Connect business and technology",
+      "text": "Translate technical possibilities into business choices, requirements and action."
+    }
+  ],
+  "sectors": [
+    "Corporates",
+    "Public Sector & Government",
+    "Banking & Financial Services",
+    "Financial Market Infrastructure & Payments",
+    "Postal & Logistics",
+    "Higher Education & Research",
+    "Professional Services"
+  ],
+  "cta": "Let’s talk about transformation.",
+  "ctaText": "Connect with me to discuss opportunities across AI transformation, governance and organisational adoption.",
+  "disclaimer": "Selected work has been anonymised and recreated using synthetic data to protect client confidentiality.",
+  "education": [
+    "Master of Science in Business Administration — Data & Information Management · KU Leuven",
+    "Bachelor in Accounting and Finance · Artevelde University of Applied Sciences"
+  ],
+  "certifications": [
+    "Microsoft AB-731 — AI Transformation Leader",
+    "Microsoft AI-900 — Azure AI Fundamentals",
+    "Microsoft DP-203 — Data Engineering on Microsoft Azure",
+    "Microsoft PL-300 — Power BI Data Analyst Associate",
+    "Microsoft DP-900 — Azure Data Fundamentals",
+    "Microsoft PL-100 — Power Platform",
+    "Collibra Data Steward Certification",
+    "PRINCE2"
+  ],
+  "languages": {
+    "fluent": [
+      "Dutch",
+      "English",
+      "French",
+      "Arabic"
+    ],
+    "basic": [
+      "Spanish",
+      "German"
+    ]
+  },
+  "headlineAccent": "governed, adopted"
+}

@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CvLink from '../components/CvLink.astro';
+import profile from '../data/profile.json';
+import { getCollection, render } from 'astro:content';
+const [headlineBefore, headlineAfter] = profile.headline.split(profile.headlineAccent);
+const cases = (await getCollection('cases')).sort((a,b) => a.data.order-b.data.order);
+const featured = cases.filter(c => c.data.tier !== 'leadership');
+const leadership = cases.find(c => c.data.tier === 'leadership')!;
+const experience = await Promise.all((await getCollection('experience')).sort((a,b) => a.data.order-b.data.order).map(async entry => ({ ...entry, rendered: await render(entry) })));
+---
+<BaseLayout>
+  <section class="hero container" id="home" aria-labelledby="hero-heading">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="small-rule" aria-hidden="true"></span>{profile.title}</p>
+      <h1 id="hero-heading">{headlineBefore}<span>{profile.headlineAccent}</span>{headlineAfter}</h1>
+      <p class="hero-description">{profile.hero}</p>
+      <div class="hero-actions"><a class="button button-primary" href="#work">View selected work <span aria-hidden="true">↗</span></a><CvLink class="button button-secondary" /></div>
+      <p class="hero-descriptor">{profile.descriptor}</p>
+    </div>
+    <figure class="portrait">
+      <picture><source srcset={`${profile.portrait}.avif`} type="image/avif" /><source srcset={`${profile.portrait}.webp`} type="image/webp" /><img src={`${profile.portrait}.jpeg`} alt="Narjiss Berrazi wearing a blue top in a professional portrait." width="720" height="900" fetchpriority="high" /></picture>
+      <figcaption><span>{profile.name}</span><span>Strategy. Governance. People.</span></figcaption>
+    </figure>
+  </section>
+  <section class="proof container" aria-label="Professional profile">
+    {profile.proof.map(item => <div><strong>{item.value}</strong><p>{item.label}</p></div>)}
+  </section>
+  <section class="section container expertise" aria-labelledby="expertise-heading">
+    <div class="section-heading"><p class="eyebrow">01 / Core expertise</p><h2 id="expertise-heading">Connecting ambition<br />with organisational action.</h2></div>
+    <div class="expertise-grid">{profile.expertise.map((item,i) => <article><span class="item-number">0{i+1}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
+  </section>
+  <section class="work-section" id="work" aria-labelledby="work-heading">
+    <div class="container section">
+      <div class="section-heading work-heading"><div><p class="eyebrow">02 / Selected work</p><h2 id="work-heading">Transformation,<br />in practice.</h2></div><p class="section-intro">A selection of work connecting strategy, governance and people — with practical decisions at its core.</p></div>
+      <div class="work-list">
+        {featured.map((item,i) => <article class:list={['case-row', { 'independent-case': item.data.tier === 'independent' }]}>
+          <span class="case-number">0{i+1}</span>
+          <div class="case-main"><p class="case-client">{item.data.client}</p><h3>{item.data.title}</h3><p>{item.data.summary}</p><ul class="tags" aria-label="Project expertise">{item.data.tags.map(tag => <li>{tag}</li>)}</ul></div>
+          <aside class="case-evidence" aria-label="Project evidence"><span class="eyebrow">{item.data.tier === 'independent' ? 'Concept direction' : 'Selected evidence'}</span><strong>{item.data.evidence}</strong>{item.data.evidenceNote && <p>{item.data.evidenceNote}</p>}{item.data.tier === 'independent' && <p>Synthetic demonstration. Interactive experience planned for a later phase.</p>}</aside>
+        </article>)}
+      </div>
+      <article class="leadership-case"><div><p class="eyebrow">Further leadership evidence</p><h3>{leadership.data.title}</h3><p class="case-client">{leadership.data.client}</p></div><p>{leadership.data.summary}</p><strong>{leadership.data.evidence}</strong></article>
+      <p class="confidentiality-note">{profile.disclaimer}</p>
+    </div>
+  </section>
+  <section class="section container breadth" aria-labelledby="breadth-heading">
+    <div class="section-heading"><p class="eyebrow">03 / Broader experience</p><h2 id="breadth-heading">Depth in transformation.<br />Breadth in delivery.</h2><p class="section-intro">{profile.experienceIntro}</p></div>
+    <div class="experience-list">{experience.map(entry => <details><summary><span>{entry.data.title}<small>{entry.data.client}</small></span><span class="details-icon" aria-hidden="true">+</span></summary><div class="experience-detail"><entry.rendered.Content /><p class="experience-tags">{entry.data.tags.join(' / ')}</p></div></details>)}</div>
+  </section>
+  <section class="about-section" id="about" aria-labelledby="about-heading"><div class="container section">
+    <div class="about-grid"><div><p class="eyebrow">04 / How I work</p><h2 id="about-heading">{profile.aboutHeadline}</h2><p class="about-intro">{profile.about}</p><p class="technical-note">{profile.technical}</p></div><div class="principles">{profile.principles.map((item,i) => <article><span class="item-number">0{i+1}</span><div><h3>{item.title}</h3><p>{item.text}</p></div></article>)}</div></div>
+    <div class="progression"><p class="eyebrow">From data foundations to AI transformation</p><ol>{profile.progression.map((step,i) => <li><span class="item-number">0{i+1}</span><strong>{step}</strong>{i<3 && <span class="progression-arrow" aria-hidden="true">→</span>}</li>)}</ol><p class="progression-note">A progression in capability and scope.</p></div>
+  </div></section>
+  <section class="section container sectors" aria-labelledby="sector-heading"><p class="eyebrow">Cross-sector perspective</p><h2 id="sector-heading">Different environments.<br />A consistent transformation lens.</h2><ul>{profile.sectors.map(sector => <li>{sector}</li>)}</ul></section>
+  <section class="contact-section" aria-labelledby="contact-heading"><div class="container contact-inner"><div><p class="eyebrow">Continue the conversation</p><h2 id="contact-heading">{profile.cta}</h2><p>{profile.ctaText}</p></div><div class="contact-actions"><a class="button button-light" href={profile.linkedin} target="_blank" rel="noopener noreferrer">Connect on LinkedIn <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a><a class="email-link" href={`mailto:${profile.email}`}>{profile.email} ↗</a></div></div></section>
+</BaseLayout>

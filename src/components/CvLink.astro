@@ -1,0 +1,8 @@
+---
+import { existsSync } from 'node:fs';
+import profile from '../data/profile.json';
+interface Props { class?: string; }
+const { class: className = '' } = Astro.props;
+const hasCv = existsSync(`public${profile.cv}`);
+---
+{hasCv ? <a class={className} href={profile.cv} download>Download CV <span aria-hidden="true">↓</span></a> : <span class:list={[className, 'cv-pending']} title="The approved CV PDF has not yet been supplied.">CV forthcoming <span aria-hidden="true">↓</span></span>}
