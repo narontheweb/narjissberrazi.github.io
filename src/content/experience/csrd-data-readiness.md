@@ -1,6 +1,7 @@
 ---
 title: CSRD Data Readiness Tool
 client: Consulting Solution
+sector: Professional Services
 order: 5
 tags: ["Data Quality", "Modelling", "Analytics"]
 ---

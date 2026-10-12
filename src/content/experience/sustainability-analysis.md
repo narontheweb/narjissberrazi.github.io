@@ -1,6 +1,7 @@
 ---
 title: Sustainability & Risk Analysis
 client: Global Industrial Group
+sector: Corporates
 order: 6
 tags: ["Risk", "Reporting", "Stakeholders"]
 ---

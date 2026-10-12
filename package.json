@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview --host 0.0.0.0",
     "check": "astro check",
-    "assets": "node scripts/prepare-assets.mjs"
+    "assets": "node scripts/prepare-assets.mjs",
+    "test": "node --experimental-strip-types --test tests/studio.test.ts"
   },
   "dependencies": {
     "astro": "^5.0.0"

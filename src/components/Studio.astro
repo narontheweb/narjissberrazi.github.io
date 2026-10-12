@@ -1,0 +1,59 @@
+---
+import studio from '../data/studio.json';
+import { governancePath, recommendation, opportunityScore, scoreLabels, validateInitiatives, type Initiative, type Scores } from '../lib/studio';
+const initiatives: Initiative[] = studio.initiatives;
+validateInitiatives(initiatives);
+const selected = initiatives.find(i => i.id === 2)!;
+const recommended = ['PROCEED','EXPLORE','DEFER'] as const;
+const governance = ['STANDARD','ENHANCED','HIGH OVERSIGHT'] as const;
+const functions = [...new Set(initiatives.map(i => i.function))];
+const ranked = [...initiatives].sort((a,b) => opportunityScore(b.scores) - opportunityScore(a.scores) || a.id-b.id);
+---
+<section class="studio-section" id="studio" aria-labelledby="studio-heading" hidden>
+  <div class="container section">
+    <div class="studio-header"><div><p class="eyebrow">Independent work / Synthetic demonstration</p><h2 id="studio-heading" tabindex="-1">AI Transformation<br />Decision Studio</h2><p class="studio-honesty">{studio.honesty}</p></div><button class="text-control" id="studio-close" type="button">Close studio <span aria-hidden="true">×</span></button></div>
+    <div class="studio-context"><h3>{studio.organisation}</h3><p>{studio.context}</p></div>
+    <div class="studio-overview" aria-label="Full synthetic portfolio overview"><div><strong>{initiatives.length}</strong><span>opportunities</span></div>{recommended.map(r => <div><strong>{initiatives.filter(i => recommendation(i)===r).length}</strong><span>{r.toLowerCase()}</span></div>)}<p>Governance distribution: {governance.map(g => `${initiatives.filter(i => governancePath(i)===g).length} ${g.toLowerCase()}`).join(' · ')}</p></div>
+    <form class="studio-filters" aria-label="Filter synthetic initiatives" onsubmit="return false">
+      <label>Function<select id="studio-function"><option value="all">All functions</option>{functions.map(f => <option value={f}>{f}</option>)}</select></label>
+      <label>Governance path<select id="studio-governance"><option value="all">All governance paths</option>{governance.map(g => <option value={g}>{g}</option>)}</select></label>
+      <label>Recommendation<select id="studio-recommendation"><option value="all">All recommendations</option>{recommended.map(r => <option value={r}>{r}</option>)}</select></label>
+      <button class="text-control" type="button" id="studio-reset">Reset filters</button>
+    </form>
+    <p id="studio-result-count" class="filter-count" role="status" aria-live="polite">Showing all 8 opportunities.</p>
+    <div class="studio-grid">
+      <div class="studio-portfolio"><div class="matrix-block"><h3>Value × Feasibility</h3><p class="matrix-description">Select a numbered opportunity. Points sharing coordinates are slightly separated; the list below shows their exact scores.</p>
+        <div class="matrix-axes"><span class="matrix-y">Business value →</span><div class="matrix"><div class="matrix-ticks-x" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div><div class="matrix-ticks-y" aria-hidden="true"><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span></div>
+        {initiatives.map(i => {
+          const group = initiatives.filter(j=>j.scores.feasibility===i.scores.feasibility && j.scores.value===i.scores.value);
+          const offset = group.findIndex(j=>j.id===i.id) - (group.length-1)/2;
+          const x = 8+(i.scores.feasibility-1)*21;
+          const y = 92-(i.scores.value-1)*21;
+          return <button class="matrix-point" type="button" data-initiative={i.id} aria-pressed={i.id===selected.id ? 'true' : 'false'} aria-controls="initiative-detail" aria-label={`${i.title}. Value ${i.scores.value}, feasibility ${i.scores.feasibility}. ${recommendation(i)}.`} style={`left:calc(${x}% + ${offset*27}px);top:calc(${y}% + ${offset*18}px)`}><span>{i.id}</span><span class="point-tooltip" role="tooltip">{i.title}<br />Value {i.scores.value} · Feasibility {i.scores.feasibility}<br />{recommendation(i)}</span></button>;
+        })}</div><span class="matrix-x">Feasibility →</span></div></div>
+        <h3 class="initiative-list-heading">Initiatives <small>Ranked by decision-support score</small></h3>
+        <ol class="initiative-list">{ranked.map(i => <li data-studio-item={i.id}><button type="button" class="initiative-select" data-initiative={i.id} aria-pressed={i.id===selected.id ? 'true' : 'false'} aria-controls="initiative-detail"><span class="initiative-number">{i.id.toString().padStart(2,'0')}</span><span class="initiative-list-copy"><strong>{i.title}</strong><span>{i.function} · Value {i.scores.value} / Feasibility {i.scores.feasibility}</span><span>{recommendation(i)} · {governancePath(i)}</span></span><span class="initiative-score">{opportunityScore(i.scores).toFixed(1)}<small>/ 5</small></span></button></li>)}</ol>
+        <p id="studio-empty" class="empty-state" hidden>No opportunities match these filters. Reset filters to see the full portfolio.</p>
+      </div>
+      <section id="initiative-detail" class="initiative-detail" aria-labelledby="initiative-title">
+        <p class="eyebrow" data-detail="function">{selected.function}</p><h3 id="initiative-title" tabindex="-1" data-detail="title">{selected.title}</h3>
+        <div class="detail-block"><h4>Business problem</h4><p data-detail="problem">{selected.problem}</p></div>
+        <dl class="score-list">{Object.entries(scoreLabels).map(([key,label]) => <div><dt>{label}<small>{['risk','adoptionComplexity'].includes(key) ? 'Higher = more challenging' : 'Higher = better'}</small></dt><dd><span data-score={key}>{selected.scores[key as keyof Scores]}</span> / 5</dd></div>)}</dl>
+        <div class="decision-score"><span>Decision-support score <button type="button" class="score-help" aria-expanded="false" aria-controls="score-explanation" aria-label="Explain decision-support score">?</button></span><strong><span data-detail="score">{opportunityScore(selected.scores).toFixed(1)}</span> / 5</strong></div><p id="score-explanation" class="score-explanation" hidden>A transparent synthetic weighting used to compare opportunities consistently. It supports management judgement; it does not replace it.</p>
+        <div class="decision-path"><div><h4>Governance path</h4><strong data-detail="governance">{governancePath(selected)}</strong></div><div><h4>Recommendation</h4><strong data-detail="recommendation">{recommendation(selected)}</strong></div></div>
+        <div class="detail-block"><h4>Why</h4><p data-detail="rationale">{selected.rationale}</p></div><div class="detail-block"><h4>Main risks</h4><p data-detail="risks">{selected.risks}</p></div><div class="detail-block"><h4>Next management decision</h4><p data-detail="nextDecision">{selected.nextDecision}</p></div><div class="action-block"><h4>90-day action</h4><p data-detail="action">{selected.action}</p></div>
+        <p class="sr-only" id="studio-selection-status" role="status" aria-live="polite"></p>
+      </section>
+    </div>
+    <details class="studio-methodology"><summary>Methodology & scoring transparency <span aria-hidden="true">+</span></summary><div>
+      <p>Scores use a 1–5 scale. Value, feasibility, data readiness and strategic alignment are positive dimensions. Higher risk and adoption complexity mean more challenging conditions; their readiness values are calculated as 6 minus the constraint score.</p>
+      <p><strong>Decision-support weighting:</strong> 30% value + 20% feasibility + 15% data readiness + 15% strategic alignment + 10% risk readiness + 10% adoption readiness. Scores are rounded to one decimal for display; decisions use the unrounded score. This is a synthetic comparison method, not a scientifically precise prediction.</p>
+      <h4>Governance comes before ranking</h4><ul><li><strong>STANDARD:</strong> risk ≤ 2, adoption complexity ≤ 3, no sensitive-data or material decision-impact trigger.</li><li><strong>ENHANCED:</strong> risk 3, adoption complexity ≥ 4, or sensitive internal/customer data.</li><li><strong>HIGH OVERSIGHT:</strong> risk ≥ 4 or material employment, eligibility, legal, regulated-outcome or safety-critical decision impact. This takes precedence over the other paths.</li></ul>
+      <h4>Recommendations and explicit scenario exceptions</h4><ul><li><strong>PROCEED:</strong> score ≥ 3.8, data readiness ≥ 3, feasibility ≥ 4 and risk ≤ 3, with no unresolved validation requirement.</li><li><strong>EXPLORE:</strong> score ≥ 3.0 with implementation questions or high oversight. Predictive maintenance remains Explore despite its 3.8 score because sensor readiness and planning adoption still require validation.</li><li><strong>DEFER:</strong> score below 3.0, unresolved material decision-impact risk, or high oversight combined with data readiness ≤ 2. Recruitment screening is deferred because employment decision risks remain unresolved.</li><li><strong>Controlled-pilot exception:</strong> a score ≥ 3.7 with feasibility ≥ 4, data readiness ≥ 4 and risk ≤ 3 can Proceed when a controlled-pilot scenario is explicitly flagged. The customer-service assistant uses this exception, with an internal agent pilot and coaching; it does not authorise a customer-facing rollout.</li></ul>
+      <p>Recommendations are deterministic and pre-written for these fictional scenarios. There is no live AI model, API call or client data. Governance, validation and management judgement can override the ranking.</p>
+    </div></details>
+  </div>
+</section>
+<script>
+  import '../scripts/studio';
+</script>

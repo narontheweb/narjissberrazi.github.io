@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CvLink from '../components/CvLink.astro';
+import CaseExpansion from '../components/CaseExpansion.astro';
+import Studio from '../components/Studio.astro';
 import profile from '../data/profile.json';
 import { getCollection, render } from 'astro:content';
 const [headlineBefore, headlineAfter] = profile.headline.split(profile.headlineAccent);
@@ -32,26 +34,31 @@ const experience = await Promise.all((await getCollection('experience')).sort((a
   </section>
   <section class="work-section" id="work" aria-labelledby="work-heading">
     <div class="container section">
-      <div class="section-heading work-heading"><div><p class="eyebrow">02 / Selected work</p><h2 id="work-heading">Transformation,<br />in practice.</h2></div><p class="section-intro">A selection of work connecting strategy, governance and people — with practical decisions at its core.</p></div>
+      <div class="section-heading work-heading"><div><p class="eyebrow">02 / Selected work</p><h2 id="work-heading" tabindex="-1">Transformation,<br />in practice.</h2></div><p class="section-intro">A selection of work connecting strategy, governance and people — with practical decisions at its core.</p></div>
+      <div id="sector-filter-context" class="sector-filter-context"><p id="sector-status" role="status" aria-live="polite">Showing experience: All sectors</p><button id="sector-clear" type="button" class="text-control" hidden>Show all sectors <span aria-hidden="true">×</span></button></div>
       <div class="work-list">
-        {featured.map((item,i) => <article class:list={['case-row', { 'independent-case': item.data.tier === 'independent' }]}>
+        {featured.map((item,i) => <article data-experience-sector={item.data.sector} class:list={['case-row', { 'independent-case': item.data.tier === 'independent' }]}>
           <span class="case-number">0{i+1}</span>
-          <div class="case-main"><p class="case-client">{item.data.client}</p><h3>{item.data.title}</h3><p>{item.data.summary}</p><ul class="tags" aria-label="Project expertise">{item.data.tags.map(tag => <li>{tag}</li>)}</ul></div>
-          <aside class="case-evidence" aria-label="Project evidence"><span class="eyebrow">{item.data.tier === 'independent' ? 'Concept direction' : 'Selected evidence'}</span><strong>{item.data.evidence}</strong>{item.data.evidenceNote && <p>{item.data.evidenceNote}</p>}{item.data.tier === 'independent' && <p>Synthetic demonstration. Interactive experience planned for a later phase.</p>}</aside>
+          <div class="case-main"><p class="case-client">{item.data.client}</p><p class="sector-tag">{item.data.sector}{item.data.tier === 'independent' ? ' · Synthetic' : ''}</p><h3>{item.data.title}</h3><p>{item.data.summary}</p><ul class="tags" aria-label="Project expertise">{item.data.tags.map(tag => <li>{tag}</li>)}</ul></div>
+          <aside class="case-evidence" aria-label="Project evidence"><span class="eyebrow">{item.data.tier === 'independent' ? 'Synthetic portfolio' : 'Selected evidence'}</span><strong>{item.data.evidence}</strong>{item.data.evidenceNote && <p>{item.data.evidenceNote}</p>}</aside>
+          {item.data.tier === 'independent' ? <div class="case-action"><button id="studio-open" class="text-control" type="button" aria-expanded="false" aria-controls="studio">Open studio <span aria-hidden="true">→</span></button></div> : <CaseExpansion entry={item} />}
         </article>)}
       </div>
-      <article class="leadership-case"><div><p class="eyebrow">Further leadership evidence</p><h3>{leadership.data.title}</h3><p class="case-client">{leadership.data.client}</p></div><p>{leadership.data.summary}</p><strong>{leadership.data.evidence}</strong></article>
+      <article class="leadership-case" data-experience-sector={leadership.data.sector}><div><p class="eyebrow">Further leadership evidence</p><h3>{leadership.data.title}</h3><p class="case-client">{leadership.data.client}</p><p class="sector-tag">{leadership.data.sector}</p></div><p>{leadership.data.summary}</p><strong>{leadership.data.evidence}</strong><CaseExpansion entry={leadership} /></article>
       <p class="confidentiality-note">{profile.disclaimer}</p>
     </div>
   </section>
+  <Studio />
   <section class="section container breadth" aria-labelledby="breadth-heading">
     <div class="section-heading"><p class="eyebrow">03 / Broader experience</p><h2 id="breadth-heading">Depth in transformation.<br />Breadth in delivery.</h2><p class="section-intro">{profile.experienceIntro}</p></div>
-    <div class="experience-list">{experience.map(entry => <details><summary><span>{entry.data.title}<small>{entry.data.client}</small></span><span class="details-icon" aria-hidden="true">+</span></summary><div class="experience-detail"><entry.rendered.Content /><p class="experience-tags">{entry.data.tags.join(' / ')}</p></div></details>)}</div>
+    <div class="experience-list">{experience.map(entry => <details data-experience-sector={entry.data.sector}><summary><span>{entry.data.title}<small>{entry.data.client}</small><span class="sector-tag">{entry.data.sector}</span></span><span class="details-icon" aria-hidden="true">+</span></summary><div class="experience-detail"><entry.rendered.Content /><p class="experience-tags">{entry.data.tags.join(' / ')}</p></div></details>)}</div>
   </section>
   <section class="about-section" id="about" aria-labelledby="about-heading"><div class="container section">
-    <div class="about-grid"><div><p class="eyebrow">04 / How I work</p><h2 id="about-heading">{profile.aboutHeadline}</h2><p class="about-intro">{profile.about}</p><p class="technical-note">{profile.technical}</p></div><div class="principles">{profile.principles.map((item,i) => <article><span class="item-number">0{i+1}</span><div><h3>{item.title}</h3><p>{item.text}</p></div></article>)}</div></div>
-    <div class="progression"><p class="eyebrow">From data foundations to AI transformation</p><ol>{profile.progression.map((step,i) => <li><span class="item-number">0{i+1}</span><strong>{step}</strong>{i<3 && <span class="progression-arrow" aria-hidden="true">→</span>}</li>)}</ol><p class="progression-note">A progression in capability and scope.</p></div>
+    <div class="about-grid"><div><p class="eyebrow">04 / About</p><h2 id="about-heading">{profile.aboutHeadline}</h2><p class="about-intro">{profile.about}</p><p class="about-intro about-continuation">{profile.aboutContinuation}</p></div><aside class="current-focus" id="current-focus" tabindex="-1" data-experience-sector={profile.currentFocus.sector}><p class="eyebrow">Current focus</p><h3>{profile.currentFocus.title}</h3><p>{profile.currentFocus.text}</p><p class="sector-tag">{profile.currentFocus.sector}</p></aside></div>
   </div></section>
-  <section class="section container sectors" aria-labelledby="sector-heading"><p class="eyebrow">Cross-sector perspective</p><h2 id="sector-heading">Different environments.<br />A consistent transformation lens.</h2><ul>{profile.sectors.map(sector => <li>{sector}</li>)}</ul></section>
+  <section class="section container sectors" aria-labelledby="sector-heading"><p class="eyebrow">Cross-sector perspective</p><h2 id="sector-heading">Different environments.<br />A consistent transformation lens.</h2><div class="sector-controls" role="group" aria-label="Explore work by sector"><button type="button" data-sector-filter="all" aria-pressed="true">All sectors</button>{profile.sectors.map(sector => <button type="button" data-sector-filter={sector} aria-pressed="false">{sector}</button>)}</div></section>
+  <section class="credentials container section" aria-labelledby="credentials-heading"><div class="section-heading"><p class="eyebrow">05 / Credentials</p><h2 id="credentials-heading">A foundation for transformation.</h2></div><div class="credentials-grid"><div><h3>Education</h3>{profile.education.map(education => { const [degree,institution] = education.split(' · '); return <div class="education-entry"><strong>{degree}</strong><p>{institution}</p></div>; })}<h3 class="languages-heading">Languages</h3><p class="language-copy">{profile.languages.fluent.join(', ')} — Fluent</p><p class="language-copy">{profile.languages.basic.join(' & ')} — Basic understanding</p></div><div><h3>Certifications</h3><ul class="certification-list">{profile.certifications.map(certification => <li>{certification}</li>)}</ul></div></div></section>
   <section class="contact-section" aria-labelledby="contact-heading"><div class="container contact-inner"><div><p class="eyebrow">Continue the conversation</p><h2 id="contact-heading">{profile.cta}</h2><p>{profile.ctaText}</p></div><div class="contact-actions"><a class="button button-light" href={profile.linkedin} target="_blank" rel="noopener noreferrer">Connect on LinkedIn <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a><a class="email-link" href={`mailto:${profile.email}`}>{profile.email} ↗</a></div></div></section>
 </BaseLayout>
+
+<script>import '../scripts/portfolio';</script>

@@ -1,0 +1,9 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+interface Props { entry: CollectionEntry<'cases'>; }
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const panelId = `case-${entry.id}`;
+---
+<button class="text-control case-toggle" type="button" aria-expanded="false" aria-controls={panelId}><span data-toggle-label>View case</span><span aria-hidden="true"> →</span><span class="sr-only">: {entry.data.title}</span></button>
+<div id={panelId} class="case-panel" hidden><div class="case-narrative"><Content /></div></div>

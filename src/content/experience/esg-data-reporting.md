@@ -1,6 +1,7 @@
 ---
 title: ESG Data & Reporting Transformation
 client: Global Industrial Company
+sector: Corporates
 order: 4
 tags: ["Data Quality", "Reporting", "Data Architecture", "ESG"]
 ---

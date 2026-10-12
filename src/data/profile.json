@@ -48,30 +48,6 @@
   "aboutHeadline": "I work where AI, transformation and people meet.",
   "about": "I enjoy situations where the answer is not immediately obvious — structuring the problem, bringing stakeholders together, challenging assumptions and translating emerging technology into practical decisions and ways of working.",
   "technical": "Technically fluent enough to shape requirements, challenge architecture and work effectively with delivery teams — while operating primarily at the transformation, governance and business layer.",
-  "progression": [
-    "Data & analytics",
-    "Governance & business translation",
-    "Change & adoption",
-    "AI transformation"
-  ],
-  "principles": [
-    {
-      "title": "Create clarity",
-      "text": "Structure ambiguous transformation questions and make decisions and priorities explicit."
-    },
-    {
-      "title": "Create governance",
-      "text": "Define ownership, decision rights and practical structures."
-    },
-    {
-      "title": "Build adoption",
-      "text": "Bring stakeholders into the transformation and translate decisions into new ways of working."
-    },
-    {
-      "title": "Connect business and technology",
-      "text": "Translate technical possibilities into business choices, requirements and action."
-    }
-  ],
   "sectors": [
     "Corporates",
     "Public Sector & Government",
@@ -96,7 +72,8 @@
     "Microsoft DP-900 — Azure Data Fundamentals",
     "Microsoft PL-100 — Power Platform",
     "Collibra Data Steward Certification",
-    "PRINCE2"
+    "PRINCE2 Foundation",
+    "PRINCE2 Practitioner"
   ],
   "languages": {
     "fluent": [
@@ -110,5 +87,11 @@
       "German"
     ]
   },
-  "headlineAccent": "governed, adopted"
+  "headlineAccent": "governed, adopted",
+  "aboutContinuation": "My experience has progressed from data, analytics and modelling toward broader ownership across governance, transformation, change and AI adoption. That foundation allows me to work confidently with delivery teams while keeping my focus on business decisions and organisational readiness.",
+  "currentFocus": {
+    "title": "AI transformation in European financial-market infrastructure",
+    "text": "Currently contributing to AI transformation within a European Financial Market Infrastructure environment, with increasing responsibility for AI workstream leadership.",
+    "sector": "Financial Market Infrastructure & Payments"
+  }
 }

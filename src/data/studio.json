@@ -1,0 +1,191 @@
+{
+  "organisation": "Northstar Industrial Group",
+  "context": "A synthetic international industrial-services company operating across European markets. Leadership needs a consistent way to prioritise AI ideas across field operations, shared services, customer service and corporate functions.",
+  "honesty": "Fictional organisation, opportunities and scores created to demonstrate a transparent AI transformation decision approach. No client data is used.",
+  "initiatives": [
+    {
+      "id": 1,
+      "title": "Automated Document Classification",
+      "function": "Operations",
+      "problem": "High volumes of incoming documents are manually classified and routed.",
+      "scores": {
+        "value": 4,
+        "feasibility": 5,
+        "dataReadiness": 5,
+        "risk": 2,
+        "adoptionComplexity": 2,
+        "strategicAlignment": 4
+      },
+      "sensitiveData": false,
+      "highImpactDecision": false,
+      "unresolvedHighImpactRisk": false,
+      "validationRequired": false,
+      "controlledPilot": false,
+      "rationale": "Mature technology, strong data readiness and limited decision impact make this a practical early implementation.",
+      "risks": "classification errors; poor exception handling.",
+      "nextDecision": "Approve a controlled pilot and define human exception thresholds.\n\n90-day action:\nRun a pilot on one document family, measure accuracy and routing-time reduction, then define scale criteria.",
+      "action": "Run a pilot on one document family, measure accuracy and routing-time reduction, then define scale criteria."
+    },
+    {
+      "id": 2,
+      "title": "Employee Knowledge Assistant",
+      "function": "Corporate Services",
+      "problem": "Employees spend significant time searching across policies, procedures and internal knowledge.",
+      "scores": {
+        "value": 4,
+        "feasibility": 5,
+        "dataReadiness": 4,
+        "risk": 3,
+        "adoptionComplexity": 3,
+        "strategicAlignment": 4
+      },
+      "sensitiveData": true,
+      "highImpactDecision": false,
+      "unresolvedHighImpactRisk": false,
+      "validationRequired": false,
+      "controlledPilot": false,
+      "rationale": "High feasibility and visible productivity value, with manageable risks if source grounding and access controls are designed properly.",
+      "risks": "hallucination; outdated content; access leakage.",
+      "nextDecision": "Agree trusted knowledge sources and access-control boundaries.\n\n90-day action:\nLaunch a limited internal pilot with a curated knowledge base and explicit answer citations.",
+      "action": "Launch a limited internal pilot with a curated knowledge base and explicit answer citations."
+    },
+    {
+      "id": 3,
+      "title": "Invoice Anomaly Detection",
+      "function": "Finance",
+      "problem": "Manual controls do not efficiently identify unusual invoice patterns.",
+      "scores": {
+        "value": 4,
+        "feasibility": 4,
+        "dataReadiness": 4,
+        "risk": 3,
+        "adoptionComplexity": 3,
+        "strategicAlignment": 4
+      },
+      "sensitiveData": true,
+      "highImpactDecision": false,
+      "unresolvedHighImpactRisk": false,
+      "validationRequired": false,
+      "controlledPilot": false,
+      "rationale": "Strong data availability and a clear human-review process make the use case suitable for controlled implementation.",
+      "risks": "false positives; investigator fatigue; data drift.",
+      "nextDecision": "Define anomaly thresholds and ownership of investigation.\n\n90-day action:\nBack-test on historical invoices and establish a human-in-the-loop review workflow.",
+      "action": "Back-test on historical invoices and establish a human-in-the-loop review workflow."
+    },
+    {
+      "id": 4,
+      "title": "Customer Service Knowledge Assistant",
+      "function": "Customer Operations",
+      "problem": "Service teams need faster access to consistent product and process information.",
+      "scores": {
+        "value": 4,
+        "feasibility": 4,
+        "dataReadiness": 4,
+        "risk": 3,
+        "adoptionComplexity": 4,
+        "strategicAlignment": 4
+      },
+      "sensitiveData": true,
+      "highImpactDecision": false,
+      "unresolvedHighImpactRisk": false,
+      "validationRequired": false,
+      "controlledPilot": true,
+      "rationale": "Business value is strong, but adoption and answer quality require careful rollout and coaching.",
+      "risks": "incorrect guidance; inconsistent adoption; reliance on incomplete knowledge.",
+      "nextDecision": "Decide whether the first release is advisor-only or customer-facing.\n\n90-day action:\nPilot internally with service agents, track answer usefulness and escalation rates, and refine content ownership.",
+      "action": "Pilot internally with service agents, track answer usefulness and escalation rates, and refine content ownership."
+    },
+    {
+      "id": 5,
+      "title": "Contract Review Assistant",
+      "function": "Legal / Procurement",
+      "problem": "Teams spend substantial time identifying standard clauses, deviations and review points.",
+      "scores": {
+        "value": 4,
+        "feasibility": 4,
+        "dataReadiness": 4,
+        "risk": 4,
+        "adoptionComplexity": 3,
+        "strategicAlignment": 4
+      },
+      "sensitiveData": true,
+      "highImpactDecision": true,
+      "unresolvedHighImpactRisk": false,
+      "validationRequired": false,
+      "controlledPilot": false,
+      "rationale": "Potential productivity value is significant, but legal reliance and accountability require stronger oversight before operational use.",
+      "risks": "missed clauses; incorrect interpretation; over-reliance.",
+      "nextDecision": "Define which review tasks may be assisted and which remain mandatory human decisions.\n\n90-day action:\nRun a sandbox evaluation on historical contracts with legal reviewers and compare assistant findings to expert review.",
+      "action": "Run a sandbox evaluation on historical contracts with legal reviewers and compare assistant findings to expert review."
+    },
+    {
+      "id": 6,
+      "title": "Sustainability Reporting Assistant",
+      "function": "Sustainability / Finance",
+      "problem": "Reporting teams repeatedly search guidance, consolidate narrative evidence and explain data variances.",
+      "scores": {
+        "value": 4,
+        "feasibility": 4,
+        "dataReadiness": 3,
+        "risk": 3,
+        "adoptionComplexity": 3,
+        "strategicAlignment": 4
+      },
+      "sensitiveData": true,
+      "highImpactDecision": false,
+      "unresolvedHighImpactRisk": false,
+      "validationRequired": true,
+      "controlledPilot": false,
+      "rationale": "The use case has clear productivity potential, but source-data quality and reporting accountability need further validation.",
+      "risks": "unsupported narrative generation; inconsistent source data; auditability.",
+      "nextDecision": "Define which reporting tasks are assistive versus authoritative.\n\n90-day action:\nPrototype evidence retrieval and narrative drafting on one reporting topic with mandatory source linking.",
+      "action": "Prototype evidence retrieval and narrative drafting on one reporting topic with mandatory source linking."
+    },
+    {
+      "id": 7,
+      "title": "Predictive Asset Maintenance",
+      "function": "Operations / Asset Management",
+      "problem": "Maintenance is still partly calendar-based rather than driven by failure probability.",
+      "scores": {
+        "value": 5,
+        "feasibility": 3,
+        "dataReadiness": 3,
+        "risk": 3,
+        "adoptionComplexity": 4,
+        "strategicAlignment": 5
+      },
+      "sensitiveData": false,
+      "highImpactDecision": false,
+      "unresolvedHighImpactRisk": false,
+      "validationRequired": true,
+      "controlledPilot": false,
+      "rationale": "Strategic and operational value is high, but sensor-data readiness and changes to maintenance planning need validation.",
+      "risks": "weak historical failure data; false predictions; frontline trust.",
+      "nextDecision": "Choose one asset class with sufficient data for a proof of value.\n\n90-day action:\nAssess historical maintenance/sensor data, build a baseline model and test how recommendations fit current planning processes.",
+      "action": "Assess historical maintenance/sensor data, build a baseline model and test how recommendations fit current planning processes."
+    },
+    {
+      "id": 8,
+      "title": "AI-Supported Recruitment Screening",
+      "function": "HR",
+      "problem": "High application volumes create screening workload and inconsistent early-stage triage.",
+      "scores": {
+        "value": 3,
+        "feasibility": 4,
+        "dataReadiness": 3,
+        "risk": 5,
+        "adoptionComplexity": 4,
+        "strategicAlignment": 3
+      },
+      "sensitiveData": true,
+      "highImpactDecision": true,
+      "unresolvedHighImpactRisk": true,
+      "validationRequired": false,
+      "controlledPilot": false,
+      "rationale": "Although technically feasible, employment-related decision impact, bias risk and regulatory exposure make this lower priority than safer opportunities.",
+      "risks": "discrimination; explainability; regulatory non-compliance; inappropriate automation of employment decisions.",
+      "nextDecision": "Decide whether any low-risk assistive HR use case could address the underlying workload without automated candidate screening.\n\n90-day action:\nDo not implement screening automation. Reframe toward administrative assistance or candidate-information support and reassess.",
+      "action": "Do not implement screening automation. Reframe toward administrative assistance or candidate-information support and reassess."
+    }
+  ]
+}

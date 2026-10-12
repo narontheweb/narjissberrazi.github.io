@@ -4,5 +4,6 @@ import profile from '../data/profile.json';
 interface Props { class?: string; }
 const { class: className = '' } = Astro.props;
 const hasCv = existsSync(`public${profile.cv}`);
+if (!hasCv && import.meta.env.PROD) throw new Error("The approved CV PDF is required before a production build can be released.");
 ---
-{hasCv ? <a class={className} href={profile.cv} download>Download CV <span aria-hidden="true">↓</span></a> : <span class:list={[className, 'cv-pending']} title="The approved CV PDF has not yet been supplied.">CV forthcoming <span aria-hidden="true">↓</span></span>}
+{hasCv ? <a class={className} href={profile.cv} download>Download CV <span aria-hidden="true">↓</span></a> : <span class:list={[className, 'cv-pending']} title="The approved CV PDF is temporarily unavailable.">CV unavailable <span aria-hidden="true">↓</span></span>}

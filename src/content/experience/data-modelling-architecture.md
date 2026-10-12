@@ -1,6 +1,7 @@
 ---
 title: Data Modelling & Architecture
 client: Flemish Public-Sector Agency
+sector: Public Sector & Government
 order: 1
 tags: ["Data Modelling", "Architecture", "Analytics Enablement"]
 ---

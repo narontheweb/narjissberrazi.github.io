@@ -1,59 +1,59 @@
 # Narjiss Berrazi — portfolio
 
-An editorial, light-mode Astro + TypeScript portfolio focused on AI transformation, governance, and change & adoption. This first phase contains the complete responsive homepage. Work and About in the navigation currently move to homepage sections. Dedicated pages, case studies and interactive synthetic demonstrations belong to later phases.
+A one-page editorial Astro + TypeScript portfolio focused on AI transformation, governance, and change & adoption. V2 retains the established homepage design and adds inline case studies, sector navigation, a synthetic Decision Studio, Current Focus, compact credentials and a real CV download.
 
-## Publish using your browser
+## View or publish with your browser
 
-1. Create a free account at [GitHub](https://github.com), or use your existing account.
-2. Create a repository, for example `narjiss-portfolio`. You can also use the existing repository. A `.github.io` repository name does not require GitHub Pages hosting.
-3. Use **Add file → Upload files** to upload this project's source folders and root configuration files. Keep the folder structure. Include `public`, `src`, `scripts`, `package.json`, `package-lock.json`, `astro.config.mjs`, `tsconfig.json`, `vercel.json`, and the documentation. Do not upload `node_modules`, `dist`, `.astro`, attachments, source CV documents or secret files. The project fits within GitHub's normal browser file limits.
-4. Create a free account at [Vercel](https://vercel.com) and connect GitHub.
-5. Choose **Add New → Project** and import the repository. Select Astro if it is not detected automatically. Use `npm run build` as the build command and `dist` as the output directory. Leave the root directory at the repository root.
-6. Deploy. Vercel assigns an available URL; no specific subdomain is assumed.
-7. For future updates, edit content files on GitHub, commit changes, and Vercel automatically rebuilds. See `CONTENT-GUIDE.md`.
-8. Add a custom domain later in Vercel's project settings if desired.
+The existing repository is `narontheweb/narjissberrazi.github.io`; it is connected to Vercel. The `.github.io` name does not require GitHub Pages hosting.
 
-No paid infrastructure, database, API key, or authentication is required. The homepage is static and uses native expandable rows for the secondary experience summaries.
+1. Sign in at [Vercel](https://vercel.com/dashboard) and open the portfolio project.
+2. Open **Deployments** and select the deployment for the review branch to view V2 before publication. Vercel may require sign-in for preview deployments.
+3. Review the site on phone and desktop, including cases, sector navigation, Studio and CV download.
+4. After approval, merge the review branch into `main`. Vercel automatically builds production from `main`.
+5. Future browser edits on GitHub should use a new branch and preview for substantial changes. Follow `CONTENT-GUIDE.md` for normal text updates.
 
-## Optional local Git workflow
+For a new Vercel project: import the existing GitHub repository, select Astro, leave the root directory unchanged, use `npm run build` and output directory `dist`, then deploy. The free Hobby tier is sufficient. A custom domain can be added later in project settings.
 
-Use Node.js 22.12+ or 24 LTS, and npm. In the project folder:
+The site is static: no paid infrastructure, database, API key, authentication service or live AI model. Vercel manages any preview-access protection separately from the site.
+
+## Optional local development
+
+Use Node.js 22.12+ or 24 LTS and npm. From the repository:
 
 ```sh
 npm ci
 npm run assets
+npm run test
 npm run check
 npm run build
 npm run dev
 ```
 
-`npm run dev` starts the development server on port 4321. `npm run preview` serves the production build. Commit source and assets; leave generated build and dependency directories ignored. Connect that GitHub repository to Vercel as described above.
+`dev` serves on port 4321; `preview` serves the production build. In the Codex cloud environment, set `ASTRO_TELEMETRY_DISABLED=1` before Astro commands and use `npm ci --cache /workspace/.npm` to avoid writing into the restricted home directory. Do not create a worktree unless explicitly requested; the existing cloud checkout is isolated.
 
-## Files
+## Content and code
 
-- `src/data/profile.json`: editable professional copy, contact details, sectors and future About-page supporting content.
-- `src/content/cases/*.md`: featured work summaries and metadata.
-- `src/content/experience/*.md`: additional consulting experience.
-- `src/content.config.ts`: content schema validation.
-- `src/pages/index.astro`: homepage composition.
-- `src/components/`: navigation, footer and CV availability logic.
-- `src/styles/global.css`: responsive design tokens and print styles.
+- `src/data/profile.json`: positioning, About, Current Focus, credentials and contact details.
+- `src/content/cases/*.md`: summaries, sector metadata and inline narrative.
+- `src/content/experience/*.md`: wider consulting experience and sector mapping.
+- `src/data/studio.json`: the eight fictional AI opportunities and scenario flags.
+- `src/lib/studio.ts`: deterministic scores, governance and recommendation rules shared by browser/server.
+- `src/scripts/`: lightweight client-side controls for cases, sectors and Studio.
+- `src/components/Studio.astro`: embedded editorial Studio interface.
+- `tests/studio.test.ts`: scenario outcomes, weighting and governance/readiness boundaries.
+- `public/cv/Narjiss_Berrazi_CV.pdf`: approved one-page public CV.
 - `public/images/`: original portrait and optimised variants.
-- `scripts/prepare-assets.mjs`: image-format conversion and locally hosted Manrope font preparation.
+- `scripts/prepare-assets.mjs`: format conversion and local Manrope preparation.
+- `QA-REPORT.md`: tested capabilities and limits.
 
-## Publication checklist
+## Studio decision logic
 
-- Supply the approved one-page PDF at `public/cv/Narjiss_Berrazi_CV.pdf`. Until then, the site says **CV forthcoming**; it never links to a missing PDF. The PowerPoint source is not a public CV and must not be uploaded.
-- Keep client work anonymised. No source CV, client logos, original dashboards or internal documents should enter the repository.
-- Review the public copy, metric qualifications, desktop/mobile layouts, contact links and portrait.
-- Work and About are homepage anchors in this phase. The Decision Studio is explicitly a concept in development.
+Positive scores and inverted risk/adoption scores use the approved weighting. Governance overrides ranking. Explicit validation requirements keep predictive maintenance and sustainability reporting at Explore. The customer-service assistant has a declared controlled-pilot exception at 3.7; recruitment screening is deferred for unresolved employment decision risks. The methodology is visible inside the Studio. Recommendations are synthetic decision-support examples and do not substitute for management judgement.
 
-## Privacy
+## Privacy and confidentiality
 
-The site uses a `noindex,nofollow,noarchive` meta tag, a disallow-all `robots.txt`, and an `X-Robots-Tag` response header on Vercel. These reduce indexing; the URL is still public and anyone with it can access the site. Do not publish confidential data.
+`noindex,nofollow,noarchive`, disallow-all robots.txt and Vercel's `X-Robots-Tag` reduce search indexing. The URL remains public; these are not access controls. Keep client identities, screenshots, original dashboards and source CV documents outside the repository. KPMG is named only as employer. No advertising trackers, fingerprinting or session replay are installed. Analytics remains optional and is not part of V2.
 
-Analytics is not installed in this foundation phase. Enable Vercel Web Analytics in a later phase if desired; no advertising trackers, session replay or fingerprinting should be added.
+## Accessibility and print
 
-## Design and accessibility
-
-Locally hosted Manrope, a warm neutral background, charcoal text and steel-blue accents. Semantic headings, keyboard focus states, a skip link, native disclosures, reduced-motion support and print styles are included. The image is format-converted without facial retouching; its editorial crop is CSS only. Case-study layouts and standalone About print designs will be validated when those pages exist.
+Semantic headings, native controls, visible keyboard focus, live filter/selection feedback, labelled matrix points and an equivalent initiative list are included. Mobile uses the ranked list instead of the scatterplot. Reduced motion disables animation. Print reveals client case narratives and retains the selected Studio initiative, credentials and CV content when separately printed.
