@@ -3,7 +3,7 @@
   "title": "AI Transformation Specialist",
   "descriptor": "Data & AI Consulting | Governance | Change & Adoption",
   "headline": "Turning AI ambition into governed, adopted and scalable transformation.",
-  "hero": "I’m Narjiss Berrazi, an AI Transformation Specialist with three years of Big Four consulting experience at KPMG. I work across AI strategy, Data & AI governance, transformation, change and adoption — helping organisations turn emerging opportunities into clear decisions, ownership and implementation roadmaps.",
+  "hero": "I’m Narjiss Berrazi, an AI Transformation Specialist with three years of Big Four consulting experience at KPMG. I leverage my foundation in data analysis, reporting and insights to shape and deliver Data & AI transformation — helping organisations assess opportunities, create the right governance and move from roadmap into implementation, communication and adoption.",
   "email": "narjiss.berrazi@hotmail.com",
   "linkedin": "https://www.linkedin.com/in/narjiss-berrazi-332657196/",
   "cv": "/cv/Narjiss_Berrazi_CV.pdf",
@@ -14,12 +14,12 @@
       "label": "Big Four consulting at KPMG"
     },
     {
-      "value": "AI + Data",
-      "label": "Transformation & governance"
+      "value": "Data & AI transformation",
+      "label": "Maturity assessments, governance models & implementation"
     },
     {
-      "value": "Change & adoption",
-      "label": "From roadmap to ways of working"
+      "value": "Change & communication",
+      "label": "Stakeholder alignment, communication & training through adoption"
     },
     {
       "value": "Executive exposure",
@@ -28,26 +28,29 @@
   ],
   "expertise": [
     {
-      "title": "Shape AI direction",
-      "text": "Turn opportunities into priorities, roadmaps and management decisions."
+      "title": "Assess & shape opportunities",
+      "text": "Understand business needs, assess Data & AI maturity and opportunities, and translate them into priorities and roadmaps."
     },
     {
-      "title": "Create governance",
-      "text": "Clarify ownership, decision rights, oversight and operating structures."
+      "title": "Design governance & operating models",
+      "text": "Define ownership, roles, decision rights, councils and practical structures that enable Data & AI at scale."
     },
     {
-      "title": "Drive adoption",
-      "text": "Align stakeholders, shape ways of working and support organisational change."
+      "title": "Drive communication, change & adoption",
+      "text": "Align stakeholders through communication, workshops, training and new ways of working."
     },
     {
-      "title": "Translate Data & AI",
-      "text": "Connect technical possibilities and constraints with business decisions and implementation."
+      "title": "Bridge business & technology",
+      "text": "Translate business priorities into actionable Data & AI initiatives and enable effective collaboration between business and technical teams."
+    },
+    {
+      "title": "Measure impact & continuous improvement",
+      "text": "Track adoption, monitor outcomes and support the ongoing evolution of Data & AI capabilities."
     }
   ],
-  "experienceIntro": "Beyond the featured transformations, my KPMG experience spans data architecture, analytics enablement, business analysis, Data Quality, ESG reporting and data-platform work — providing the technical and delivery foundation behind my current AI transformation focus.",
+  "experienceIntro": "Before moving further into AI and transformation leadership, I built a strong foundation across requirements gathering, data modelling, reporting, analytics and business-facing platform work. That experience helps me translate effectively between business needs and technical delivery today.",
   "aboutHeadline": "I work where AI, transformation and people meet.",
-  "about": "I enjoy situations where the answer is not immediately obvious — structuring the problem, bringing stakeholders together, challenging assumptions and translating emerging technology into practical decisions and ways of working.",
-  "technical": "Technically fluent enough to shape requirements, challenge architecture and work effectively with delivery teams — while operating primarily at the transformation, governance and business layer.",
+  "about": "I started from a strong foundation in data analysis, reporting and insights. That experience taught me how data is actually produced, governed, interpreted and used in organisations. Today, I leverage that foundation to shape Data & AI transformation — bridging business and technology, building governance, driving communication and training, and helping organisations move from assessment into implementation and continuous improvement.",
   "sectors": [
     "Corporates",
     "Public Sector & Government",
@@ -87,11 +90,9 @@
       "German"
     ]
   },
-  "headlineAccent": "governed, adopted",
-  "aboutContinuation": "My experience has progressed from data, analytics and modelling toward broader ownership across governance, transformation, change and AI adoption. That foundation allows me to work confidently with delivery teams while keeping my focus on business decisions and organisational readiness.",
-  "currentFocus": {
-    "title": "AI transformation in European financial-market infrastructure",
-    "text": "Currently contributing to AI transformation within a European Financial Market Infrastructure environment, with increasing responsibility for AI workstream leadership.",
-    "sector": "Financial Market Infrastructure & Payments"
-  }
+  "aboutContinuation": "I tend to become the go-to person when something needs structure — or when it needs to move. I naturally take ownership, bring people together and turn ambiguity into action. I enjoy energising teams, communicating complex topics clearly and making an impact that people remember.",
+  "expertiseHeadline": "What I do across Data & AI transformation",
+  "workHeadline": "Data & AI transformation in practice",
+  "workIntro": "A selection of projects showing how I work across Data & AI, governance, implementation, business analysis, communication, change and adoption.",
+  "experienceHeadline": "Broader data & analytics foundation"
 }

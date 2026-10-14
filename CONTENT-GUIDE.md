@@ -1,75 +1,78 @@
-# Update the portfolio
+# Update the V3 portfolio
 
-On GitHub, open the file, click the pencil, make the edit, then **Commit changes**. Keep quotation marks and commas intact in JSON and the `---` markers in Markdown. Vercel builds each update. Changes on a review branch produce a preview; merge into `main` only after approval to update production.
+On GitHub, open the file, click the pencil, edit and commit to a preview branch. Review the Vercel preview before merging into `main`. Keep JSON punctuation and Markdown `---` markers intact. No UI component edits are needed for ordinary content changes.
 
-## Headline, title and About
+## Headline, positioning and About
 
-Open `src/data/profile.json`:
+Edit `src/data/profile.json`:
 
-- `title`, `descriptor` and `hero`: the approved professional positioning and introduction.
-- `headline`: the main headline; `headlineAccent` must match the exact words to emphasise in blue.
-- `aboutHeadline`, `about` and `aboutContinuation`: the concise About block.
-- `currentFocus`: its heading, paragraph and sector. Keep future work described as current or increasing responsibility, never as a completed achievement. Keep the organisation anonymous.
-- `expertise`: the four core pillars.
-- `proof`: the recruiter proof strip. Use only supported facts.
+- `title`, `descriptor`, `hero` and `headline`: the approved professional positioning. The full headline uses charcoal; there is no partial blue emphasis.
+- `proof`: the four labels and descriptions in the compact proof strip.
+- `expertiseHeadline` and `expertise`: the five numbered areas.
+- `workHeadline` and `workIntro`: Selected Work heading and introduction.
+- `experienceHeadline` and `experienceIntro`: the broader data-and-analytics foundation.
+- `aboutHeadline`, `about`, `aboutContinuation`: the two personal About paragraphs.
+- `email`, `linkedin`: public contact links. Never use internal employer contacts.
 
-## Work and metrics
+## Flagship cases
 
-Edit `src/content/cases/*.md`. Above the second `---`:
+Each file in `src/content/cases/` has structured fields between `---` markers. The interface uses these fields directly; the Markdown body is not displayed.
 
-- `title`, `client`, `summary`: public copy; use anonymised client labels only.
-- `sector`: use one exact label from the sector list in `profile.json`.
-- `evidence` and `evidenceNote`: approved figures and their qualifications.
-- `tags`: capability labels, separate from the sector.
-- `order`: display order; AI governance stays first.
-- `tier`: `primary`, `independent`, or `leadership`. Keep one leadership entry in this layout.
+- `title`, `clientLabel`, `sector`, `summary`: collapsed project content.
+- `order`: 1, 2 or 3. All three cases share the same component and hierarchy.
+- `tags`: capabilities, separate from sector.
+- `context`, `challenge`: expanded paragraphs.
+- `contribution`: the responsibility bullet list.
+- `evidence`: a list of `label` entries, with an optional `note` for a qualification.
+- `deliverables`: a list of actual approved outputs.
+- `visualPlaceholders`: two or three entries with `label` and `description`.
+- `training`: optional entries with `title` and `description`; the AI case uses the four-part programme.
 
-Below the second `---`, edit the narrative that opens inline through **View case**. Use `##` for subheadings, `-` for bullet lists and `1.` etc. for transformation-flow steps. Keep CSRD shorter than the two primary cases. Case headings and buttons are generated automatically.
+Use only approved generic client labels. Never upload source client documents, dashboards, names or screenshots.
 
-Never imply the €11M estimate covers all ~300 Data Quality issues: it applies only to the 40 prioritised issues. Keep “led key parts” of that transformation and keep AI out of the banking case.
+The banking estimate must always remain qualified: its impact note belongs on the same evidence entry as ~€11M and applies only to the 40 prioritised issues. Do not add AI to that project or claim ownership of the entire workstream.
 
-Add a new primary summary by copying an existing file, using a new filename and unique order, and editing the metadata and narrative. The independent tier is reserved for the Studio in this layout.
+The website's CSRD case now uses the approved ~200-page report figure. Keep unapproved older metrics out of the case fields. The supplied CV is intentionally unchanged in V3 and can be synchronised in a later pass.
 
-## Broader experience and sectors
+## Replace future deliverable placeholders
 
-Edit `src/content/experience/*.md`: titles, anonymised labels, sector, capability tags and order above the second `---`; expandable copy below it. Every item needs an explicit sector.
+Upload a recreated, approved, anonymised visual under `public/images/` with a generic filename. On its `visualPlaceholders` entry, add:
 
-Use the exact existing sector names to keep navigation working. Clicking a sector highlights matching work on desktop and hides nonmatching items on phones; All sectors resets it. Financial Market Infrastructure & Payments leads to Current Focus, its relevant experience item.
+```yaml
+image: /images/ai-operating-model.webp
+alt: An anonymised overview of AI governance roles and decision structures
+```
 
-## Studio content
+The shared component automatically shows the image instead of the document-frame placeholder. Change `description` from the future-visual message to an accurate caption. An image requires alt text; the build validates this. Keep two or three entries per case. No fake client screenshots or internal originals.
 
-`src/data/studio.json` contains the fictional organisation and all eight initiatives. Edit:
+## Broader experience
 
-- `title`, `function`, `problem`, `rationale`, `risks`, `nextDecision`, `action`.
-- `scores`: whole numbers from 1 to 5. Higher risk/adoption complexity means more challenging; higher positive scores mean better.
-- `id`: unique numeric identifier. Keep ID 2 for the default Employee Knowledge Assistant.
+Only two entries remain in `src/content/experience/`. Edit `title`, `clientLabel`, `sector`, `description`, `tags` and `order`.
 
-The score, governance path and recommendation are calculated automatically. Do not replace them with a claim of live AI output.
+Keep Data Modelling & Architecture business-facing. Do not imply technical-architect or Databricks-engineer ownership. Analytics enablement should retain data storytelling, KPI interpretation, reporting UX and adoption.
 
-Scenario flags make the decision logic transparent:
+## Upcoming / Current Focus
 
-- `sensitiveData`: internal/customer data requires enhanced governance.
-- `highImpactDecision`: employment, legal or similar material decisions require high oversight.
-- `unresolvedHighImpactRisk`: defers implementation while that risk is unresolved.
-- `validationRequired`: keeps the initiative at Explore until readiness questions are resolved.
-- `controlledPilot`: the specified customer-service exception allows a limited internal pilot at a score of 3.7 if risk/readiness requirements hold.
+Edit `src/content/focus/assignment.md`:
 
-Only change these flags if the scenario narrative and methodology remain consistent. Scoring rules are in `src/lib/studio.ts`; changing the method itself requires a coding change and tests. The eight scenarios and portfolio counts are intentionally defined by the approved MVP specification. Adding further initiatives requires updating the hardcoded eight-opportunity wording and default-selection handling in the Studio component/script, so it is not a routine content edit yet.
+- `status: upcoming` shows **Upcoming focus**.
+- `status: current` automatically shows **Current focus**.
+- `status: hidden` removes the block and its sector-filter match entirely.
 
-## Contact and CV
+When the work starts, change status and update `description` to reflect actual work. The heading, client label, title, sector, description and tags are all content fields. Do not change to current merely to make the page look stronger. Keep commercial values, individual contacts and procurement details out.
 
-Edit `linkedin` and `email` in `src/data/profile.json`. Never use internal employer contacts.
+## Sector filters
 
-The supplied one-page CV is `public/cv/Narjiss_Berrazi_CV.pdf`. Replace that PDF using the exact filename; the navigation, hero and footer all download it. Do not remove it for a release. Do not upload the internal KPMG PowerPoint as a public CV.
+Each case, supporting experience and visible focus entry must use one exact sector from `profile.json`. The schema validates the approved names. The filter sits above work, applies across all those items and preserves keyboard focus without forced scrolling. All resets it. A sector with no current matches shows a clear empty message; do not invent an engagement to fill it.
 
-## Portrait
+## Credentials and CV
 
-Replace `public/images/narjiss-berrazi-headshot.jpeg` with the actual portrait. Run `npm run assets` to regenerate WebP and AVIF and commit all three. For browser-only changes, upload all three formats together, or configure Vercel's build command as `npm run assets && npm run build` to regenerate variants automatically. No retouching or generated portrait replacement.
+Edit `education`, `certifications` and `languages` in `profile.json`. Keep education entries as `degree · institution`, both PRINCE2 credentials, and the fluent/basic language distinction. No academic distinction or unconfirmed certification.
 
-## Credentials
+The one-page PDF remains at `public/cv/Narjiss_Berrazi_CV.pdf`. Navigation, hero and footer use it. Replace only with a later approved PDF using the same filename. V3 does not rewrite the existing CV. Production builds fail if the file is missing.
 
-Edit `education`, `certifications` and `languages` in `profile.json`. Education entries use `degree · institution`. Keep both PRINCE2 Foundation and Practitioner. Languages distinguish fluent from basic understanding. Do not add academic distinction or unconfirmed qualifications.
+## Portrait and validation
 
-## Before releasing
+For a later portrait replacement, update the JPEG and run `npm run assets`, then commit the JPEG, WebP and AVIF together. Do not retouch or generate a replacement face.
 
-Run `npm run test`, `npm run check` and `npm run build`. Check the preview on phone and desktop, open each case, exercise Studio filters and initiative selection, reset sector filters and download the CV. Scan all public source/assets for client identities. Keep the noindex configuration; it reduces indexing but does not make the URL private.
+Run `npm run check` and `npm run build`. Check all three cases, filters including no-result sectors, focus status, credentials and CV downloads on desktop and phone. Confirm there is no horizontal scrolling and that keyboard and reduced-motion settings work. Review a preview before production approval. Keep noindex; it reduces indexing but does not make the URL private.

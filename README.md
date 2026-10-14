@@ -1,59 +1,56 @@
 # Narjiss Berrazi — portfolio
 
-A one-page editorial Astro + TypeScript portfolio focused on AI transformation, governance, and change & adoption. V2 retains the established homepage design and adds inline case studies, sector navigation, a synthetic Decision Studio, Current Focus, compact credentials and a real CV download.
+A one-page editorial Astro + TypeScript portfolio focused on AI transformation, governance, implementation, communication and adoption. V3 presents three equally weighted client cases with concrete responsibilities, evidence, training and deliverables. The synthetic demonstration has been removed. The established portrait, visual tokens and one-page architecture are preserved.
 
-## View or publish with your browser
+## View and publish in your browser
 
-The existing repository is `narontheweb/narjissberrazi.github.io`; it is connected to Vercel. The `.github.io` name does not require GitHub Pages hosting.
+Repository: `narontheweb/narjissberrazi.github.io`, connected to Vercel. The `.github.io` name does not require GitHub Pages hosting.
 
 1. Sign in at [Vercel](https://vercel.com/dashboard) and open the portfolio project.
-2. Open **Deployments** and select the deployment for the review branch to view V2 before publication. Vercel may require sign-in for preview deployments.
-3. Review the site on phone and desktop, including cases, sector navigation, Studio and CV download.
-4. After approval, merge the review branch into `main`. Vercel automatically builds production from `main`.
-5. Future browser edits on GitHub should use a new branch and preview for substantial changes. Follow `CONTENT-GUIDE.md` for normal text updates.
+2. Open **Deployments**, select the `v3-portfolio` review branch and click **Visit**. Copy the website address ending in `.vercel.app` to share the preview; the Vercel dashboard address is not the website preview.
+3. Review on phone and desktop, including cases, evidence, document-frame placeholders, sector controls, Upcoming Focus and CV downloads. Preview protection may require Vercel sign-in.
+4. After owner approval, merge the review branch into `main`. Vercel automatically builds production from `main`.
+5. Use a new branch and preview for later substantial edits. Normal content updates are explained in `CONTENT-GUIDE.md`.
 
-For a new Vercel project: import the existing GitHub repository, select Astro, leave the root directory unchanged, use `npm run build` and output directory `dist`, then deploy. The free Hobby tier is sufficient. A custom domain can be added later in project settings.
-
-The site is static: no paid infrastructure, database, API key, authentication service or live AI model. Vercel manages any preview-access protection separately from the site.
+For a new Vercel project, import the existing repository, select Astro, leave the root directory unchanged, use `npm run build` and output directory `dist`. No API key, backend, database, login service or paid infrastructure is needed. A custom domain can be added later in Vercel settings.
 
 ## Optional local development
 
-Use Node.js 22.12+ or 24 LTS and npm. From the repository:
+Use Node.js 22.12+ or 24 LTS and npm. From this repository:
 
 ```sh
 npm ci
 npm run assets
-npm run test
 npm run check
 npm run build
 npm run dev
 ```
 
-`dev` serves on port 4321; `preview` serves the production build. In the Codex cloud environment, set `ASTRO_TELEMETRY_DISABLED=1` before Astro commands and use `npm ci --cache /workspace/.npm` to avoid writing into the restricted home directory. Do not create a worktree unless explicitly requested; the existing cloud checkout is isolated.
+Development serves on port 4321; `npm run preview` serves the static build. In the Codex cloud environment, set `ASTRO_TELEMETRY_DISABLED=1` before Astro commands and use `npm ci --cache /workspace/.npm` to avoid restricted home-directory writes. Use the existing isolated checkout; do not create a worktree unless requested.
 
-## Content and code
+## Structure
 
-- `src/data/profile.json`: positioning, About, Current Focus, credentials and contact details.
-- `src/content/cases/*.md`: summaries, sector metadata and inline narrative.
-- `src/content/experience/*.md`: wider consulting experience and sector mapping.
-- `src/data/studio.json`: the eight fictional AI opportunities and scenario flags.
-- `src/lib/studio.ts`: deterministic scores, governance and recommendation rules shared by browser/server.
-- `src/scripts/`: lightweight client-side controls for cases, sectors and Studio.
-- `src/components/Studio.astro`: embedded editorial Studio interface.
-- `tests/studio.test.ts`: scenario outcomes, weighting and governance/readiness boundaries.
-- `public/cv/Narjiss_Berrazi_CV.pdf`: approved one-page public CV.
+- `src/data/profile.json`: positioning, proof, five expertise areas, About, credentials and contact details.
+- `src/content/cases/*.md`: structured summaries, context, challenge, contribution, evidence, deliverables and future visual slots.
+- `src/content/experience/*.md`: two business-facing data/analytics engagements.
+- `src/content/focus/assignment.md`: upcoming/current/hidden status and editable focus content.
+- `src/content.config.ts`: schema validation, including sector names and image alt text.
+- `src/components/CaseExpansion.astro`: the common inline case structure.
+- `src/components/EvidenceList.astro`: metrics with directly linked qualifications.
+- `src/components/Focus.astro`: status-driven focus display.
+- `src/scripts/portfolio.ts`: lightweight case and sector controls.
+- `public/cv/Narjiss_Berrazi_CV.pdf`: the approved one-page CV, unchanged in V3.
 - `public/images/`: original portrait and optimised variants.
-- `scripts/prepare-assets.mjs`: format conversion and local Manrope preparation.
-- `QA-REPORT.md`: tested capabilities and limits.
+- `QA-REPORT.md`: tested capabilities and limitations.
 
-## Studio decision logic
+## Content and interaction
 
-Positive scores and inverted risk/adoption scores use the approved weighting. Governance overrides ranking. Explicit validation requirements keep predictive maintenance and sustainability reporting at Explore. The customer-service assistant has a declared controlled-pilot exception at 3.7; recruitment screening is deferred for unresolved employment decision risks. The methodology is visible inside the Studio. Recommendations are synthetic decision-support examples and do not substitute for management judgement.
+There are three flagship cases and two broader-experience entries. Filters sit directly above work, show matching cases/experience/visible focus entries and preserve keyboard focus without forced scrolling. Sectors with no entries show an honest empty state. Each flagship has two or three labelled future visual slots; optional image/alt fields allow later anonymised visuals without changing components. No client screenshots are fabricated.
 
-## Privacy and confidentiality
+Case buttons retain `aria-expanded`, focus and reduced-motion behavior. Phone layouts stack the five expertise areas and expanded narratives. Print reveals the three case narratives and retains education, languages, credentials and visible focus.
 
-`noindex,nofollow,noarchive`, disallow-all robots.txt and Vercel's `X-Robots-Tag` reduce search indexing. The URL remains public; these are not access controls. Keep client identities, screenshots, original dashboards and source CV documents outside the repository. KPMG is named only as employer. No advertising trackers, fingerprinting or session replay are installed. Analytics remains optional and is not part of V2.
+## Confidentiality and privacy
 
-## Accessibility and print
+Only approved generic organisation labels are public; KPMG is named as employer, and the approved external-auditor reference remains in the CSRD contribution. Never put original client documents, real names, dashboards, individual stakeholders or procurement details in this repository.
 
-Semantic headings, native controls, visible keyboard focus, live filter/selection feedback, labelled matrix points and an equivalent initiative list are included. Mobile uses the ranked list instead of the scatterplot. Reduced motion disables animation. Print reveals client case narratives and retains the selected Studio initiative, credentials and CV content when separately printed.
+Noindex meta, disallow-all robots.txt and Vercel X-Robots-Tag reduce indexing; the URL remains public. No advertising trackers, fingerprinting, session replay or analytics are installed. The supplied CV is deliberately not synchronised to the newer V3 project copy until a later approved CV revision.

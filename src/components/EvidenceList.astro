@@ -1,0 +1,5 @@
+---
+interface Props { evidence: { label: string; note?: string }[]; }
+const { evidence } = Astro.props;
+---
+<ul class="evidence-list">{evidence.map(item => <li><strong>{item.label}</strong>{item.note && <p class="evidence-note">{item.note}</p>}</li>)}</ul>

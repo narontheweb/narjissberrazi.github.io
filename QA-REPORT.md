@@ -1,28 +1,29 @@
-# V2 validation
+# V3 validation
 
-Validated on 12 October 2026 against the static production build using Chromium. V2 keeps one generated homepage, the existing hero, portrait, expertise and visual tokens.
+Validated on 14 October 2026 against the static production build with Chromium. The portfolio remains one page, with the established portrait, colours, typography and credentials.
 
 ## Passed
 
-- Astro + TypeScript: 15 checked files, zero errors/warnings/hints.
-- Production build: one static page. Client interactions use approximately 10.4 kB JavaScript before compression (3.5 kB gzip), with no API or backend.
-- Seven deterministic model tests: all eight approved recommendations/paths, weighting, high-impact and data-readiness overrides, controlled-pilot exception, low feasibility and invalid data handling.
-- Browser checks at 320, 375, 430, 768, 1024, 1440 and 1920px: no horizontal document overflow, missing assets or client exceptions.
-- Three client cases expand inline. Keyboard Enter opens a case without losing button focus. Small screens keep one case open; desktop supports multiple.
-- Studio default: Employee Knowledge Assistant. All eight selections update the decision and 90-day action. Desktop matrix and mobile ranked-list fallback tested.
-- Function/governance/recommendation filters, combined empty-result state and reset tested. Counts remain labelled as the full portfolio.
-- Sector mappings: Corporates 3; Public Sector 2; Banking 1; Financial Market Infrastructure 1; Postal & Logistics 1; Higher Education 1; Professional Services 2. Desktop de-emphasis, phone hiding and reset work. Financial Market Infrastructure leads to its Current Focus item.
-- Open/close Studio focus behavior and case/sector reset tested. Reduced motion computes `scroll-behavior: auto`.
-- Automated axe WCAG 2 A/AA and WCAG 2.1 A/AA: no violations with cases, Studio, score explanation and methodology open at desktop and phone widths. Automated results are not a complete accessibility certification.
-- Approved CV: one A4 page; navigation, hero and footer each point to the PDF. HTTP 200, PDF Content-Type and file signature verified. A production build fails if the required asset is missing.
-- Print: A4 PDF generated with case narratives, supporting experience, Current Focus, credentials and selected Studio initiative.
-- Public source/configuration, filenames, comments, generated HTML/JavaScript and PDF content/metadata audited for known client identities and internal contact details.
-- Search privacy: robots meta, disallow-all robots.txt and Vercel X-Robots-Tag configuration retained. Noindex reduces indexing and does not make a URL private.
+- Astro + TypeScript: 13 files checked, zero errors, warnings or hints.
+- Static production build: one page generated.
+- Responsive widths: 320, 375, 430, 768, 1024, 1440 and 1920px, with no horizontal document overflow, missing images, browser exceptions or HTTP asset errors.
+- Hero headline: one charcoal text colour, with no selective blue span. Approved hero copy, four proof points and five expertise areas present; the five areas stack in one column on phones.
+- Exactly three equally structured flagship cases and two supporting experience entries. No synthetic project/component/data/logic, generic process ribbons, Takeaway blocks or standalone sector section remain.
+- Three cases expand inline; keyboard Enter preserves button focus and aria-expanded state. Phones keep one case open; desktop can open all three. Each contains Context, Challenge, Contribution, Evidence, Deliverables and three labelled future visuals.
+- Four-part mandatory AI training programme is present as its own deliverable section.
+- Sector controls are beside the work. All seven named sectors tested, including no-match sectors. Public Sector matches three items (case, supporting experience and Upcoming Focus); Banking, Postal & Logistics and Higher Education match one each. Other sectors currently have no entries and show an empty message. Controls preserve focus and measured scroll position. Reset restores all experience and returns keyboard focus to All.
+- Upcoming/current/hidden status variants tested on the development server. Status changes automatically change the heading; hidden removes the block and filter participation. The source was restored to upcoming after testing.
+- Automated axe WCAG 2 A/AA and WCAG 2.1 A/AA: no violations at 1440px and 375px in both unfiltered and Public Sector-filtered views. Automated checks are not a complete accessibility certification.
+- Reduced-motion mode uses automatic rather than smooth scrolling and skips expansion animation.
+- CV: byte-for-byte identical to the approved V2 PDF. Navigation, hero and footer point to the same asset; HTTP 200, PDF Content-Type and file signature checked. The file remains one A4 page.
+- Print PDF generated; regulatory context, training, banking qualification, ~200-page CSRD evidence, readiness application, Upcoming Focus and credentials retained.
+- Confidentiality audit across source, generated output, filenames, assets and PDF content/metadata: no known client names or internal contact details. The auditor reference is explicitly approved content.
+- Noindex meta, robots.txt and Vercel response-header configuration retained.
 
-## Decision interpretation
+## Deliberate limits
 
-The specified scenarios use explicit readiness/impact flags in addition to numerical thresholds. Predictive maintenance stays Explore despite its score until readiness/adoption questions are resolved. Customer service uses a transparent controlled internal-pilot exception at 3.7. Recruitment screening is deferred for unresolved employment decision risks. These are fictional decision-support scenarios, not live AI outputs.
+The nine document-frame visuals are labelled placeholders for a later approved content iteration, not fabricated client screenshots. Optional image/alt fields allow later replacement without editing the interface. Sectors without current entries remain available and show no results rather than invented work.
 
-## Release scope and limits
+The CV was intentionally not rewritten or synchronised with V3 project copy. A later approved CV revision can do that. V3 has not been Lighthouse-benchmarked; earlier scores must not be claimed as V3 measurements.
 
-V2 is prepared on a separate review branch. Production `main` must remain unchanged until the owner approves the preview. Analytics remains uninstalled. No site redesign, client identities, separate routes, live model or external service were added. V2 performance has not been Lighthouse-benchmarked; V1 scores must not be presented as V2 measurements. Deployment and preview reachability must be confirmed separately from the local build.
+V3 is prepared on review branch `v3-portfolio`. Production remains unchanged until owner approval. Branch push, Vercel deployment success and external preview reachability are separate checks; blocked deployment metadata access must not be presented as a successful remote verification.

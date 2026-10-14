@@ -7,6 +7,7 @@ function toggleCase(button: HTMLButtonElement, open: boolean, animate = true) {
   button.setAttribute('aria-expanded',String(open));
   const label = button.querySelector<HTMLElement>('[data-toggle-label]')!;
   label.textContent = open ? 'Close case' : 'View case';
+  button.querySelector<HTMLElement>('[data-toggle-icon]')!.textContent = open ? ' ↑' : ' ↓';
   if (!animate || reducedMotion()) { panel.hidden = !open; return; }
   panel.hidden = false;
   const height = panel.scrollHeight;
@@ -28,47 +29,28 @@ const filterStatus = document.querySelector<HTMLElement>('#sector-status')!;
 const reset = document.querySelector<HTMLButtonElement>('#sector-clear')!;
 let activeSector = 'all';
 function applySector(sector: string, shouldNavigate: boolean) {
+  const wasResetFocused = document.activeElement === reset;
   activeSector = sector;
   const matching = items.filter(item=>sector==='all' || item.dataset.experienceSector===sector);
   items.forEach(item=>{
     const match = sector==='all' || item.dataset.experienceSector===sector;
     item.classList.toggle('sector-match',sector!=='all'&&match);
-    item.classList.toggle('sector-muted',!match);
-    item.classList.toggle('sector-mobile-hidden',!match);
+    item.classList.toggle('sector-filtered-out',!match);
     if (!match) {
       item.querySelectorAll<HTMLButtonElement>('.case-toggle').forEach(button=>toggleCase(button,false,false));
     }
   });
   sectorButtons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.sectorFilter===sector)));
-  filterStatus.textContent = sector==='all' ? 'Showing experience: All sectors' : `Showing experience: ${sector} · ${matching.length} ${matching.length===1 ? 'item' : 'items'}`;
+  filterStatus.textContent = sector==='all' ? 'Showing: All' : `Showing: ${sector} · ${matching.length} ${matching.length===1 ? 'item' : 'items'}`;
   reset.hidden = sector==='all';
   document.querySelector<HTMLElement>('#sector-filter-context')!.classList.toggle('filter-active',sector!=='all');
-  // Focus the contextual control first, then scroll exactly once. This avoids a focused
-  // filter button being left below the viewport after navigation.
-  if (shouldNavigate) {
-    const target = sector==='Financial Market Infrastructure & Payments' ? document.querySelector<HTMLElement>('#current-focus')! : document.querySelector<HTMLElement>('#work-heading')!;
-    const focusTarget = sector==='Financial Market Infrastructure & Payments' ? target : (sector==='all' ? target : reset);
-    focusTarget.focus({preventScroll:true});
-    const scrollTarget = sector==='Financial Market Infrastructure & Payments' ? target : document.querySelector<HTMLElement>('#work')!;
-    scrollTarget.scrollIntoView({block:'start',behavior:reducedMotion() ? 'instant' : 'smooth'});
+  document.querySelector<HTMLElement>('#sector-empty')!.hidden = sector==='all' || matching.length>0;
+  // Filters now live beside the experience they control. Keep focus on the selected
+  // button, and avoid scrolling the page as results update.
+  if (shouldNavigate && sector==='all' && wasResetFocused) {
+    sectorButtons.find(button=>button.dataset.sectorFilter==='all')!.focus({preventScroll:true});
   }
 }
 sectorButtons.forEach(button=>button.addEventListener('click',()=>applySector(button.dataset.sectorFilter!,true)));
 reset.addEventListener('click',()=>applySector('all',true));
 matchMedia('(max-width:700px)').addEventListener('change',()=>applySector(activeSector,false));
-
-const studio = document.querySelector<HTMLElement>('#studio')!;
-const studioOpen = document.querySelector<HTMLButtonElement>('#studio-open')!;
-const studioClose = document.querySelector<HTMLButtonElement>('#studio-close')!;
-studioOpen.addEventListener('click',()=>{
-  studio.hidden=false;
-  studioOpen.setAttribute('aria-expanded','true');
-  document.querySelector<HTMLElement>('#studio-heading')!.focus({preventScroll:true});
-  studio.scrollIntoView({block:'start',behavior:reducedMotion() ? 'instant' : 'smooth'});
-});
-studioClose.addEventListener('click',()=>{
-  studio.hidden=true;
-  studioOpen.setAttribute('aria-expanded','false');
-  studioOpen.focus({preventScroll:true});
-  studioOpen.scrollIntoView({block:'center',behavior:reducedMotion() ? 'instant' : 'smooth'});
-});
