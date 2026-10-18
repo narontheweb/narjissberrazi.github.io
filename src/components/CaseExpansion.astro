@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import EvidenceList from './EvidenceList.astro';
 interface Props { entry: CollectionEntry<'cases'>; }
 const { entry } = Astro.props;
 const data = entry.data;
@@ -10,7 +9,6 @@ const panelId = `case-${entry.id}`;
 <div id={panelId} class="case-panel" hidden><div class="case-narrative">
   <div class="case-context-grid"><section><h4>Context</h4><p>{data.context}</p></section><section><h4>Challenge</h4><p>{data.challenge}</p></section></div>
   <section class="contribution-block"><h4>My contribution</h4><ul>{data.contribution.map(item => <li>{item}</li>)}</ul></section>
-  {data.training && <section class="training-block"><h4>Mandatory AI training programme</h4><ol class="training-list">{data.training.map((item,i) => <li><span class="item-number">0{i+1}</span><div><h5>{item.title}</h5><p>{item.description}</p></div></li>)}</ol></section>}
-  <div class="case-output-grid"><section><h4>Evidence</h4><EvidenceList evidence={data.evidence} /></section><section><h4>Deliverables</h4><ul class="deliverables-list">{data.deliverables.map(item => <li>{item}</li>)}</ul></section></div>
+  <section class="deliverables-block"><h4>Deliverables</h4><ul class="deliverables-list">{data.deliverables.map(item => <li><span>{item.title}</span>{item.items && <ul class="deliverable-topics">{item.items.map(topic=><li>{topic}</li>)}</ul>}</li>)}</ul></section>
   <section class="visual-deliverables"><h4>Deliverable miniatures</h4><div class="visual-grid">{data.visualPlaceholders.map(item => <figure class="deliverable-placeholder"><div class="miniature-frame">{item.image ? <img class="deliverable-miniature" src={item.image} alt={item.alt} width="320" height="200" loading="lazy" /> : <div class="document-frame" aria-hidden="true"><span></span><span></span><span></span><span></span></div>}</div><figcaption><strong>{item.label}</strong><p>{item.description}</p></figcaption></figure>)}</div></section>
 </div></div>

@@ -9,6 +9,7 @@ import { getCollection } from 'astro:content';
 const cases = (await getCollection('cases')).sort((a,b) => a.data.order-b.data.order);
 const experience = (await getCollection('experience')).sort((a,b) => a.data.order-b.data.order);
 const focus = (await getCollection('focus')).filter(entry=>entry.data.status!=='hidden');
+const sectors = [...new Set([...cases, ...experience, ...focus].map(entry=>entry.data.sector).filter((sector): sector is string=>!!sector))];
 ---
 <BaseLayout>
   <section class="hero container" id="home" aria-labelledby="hero-heading">
@@ -21,7 +22,7 @@ const focus = (await getCollection('focus')).filter(entry=>entry.data.status!=='
     </div>
     <figure class="portrait">
       <picture><source srcset={`${profile.portrait}.avif`} type="image/avif" /><source srcset={`${profile.portrait}.webp`} type="image/webp" /><img src={`${profile.portrait}.jpeg`} alt="Narjiss Berrazi wearing a blue top in a professional portrait." width="720" height="900" fetchpriority="high" /></picture>
-      <figcaption><span>{profile.name}</span><span>Strategy. Governance. People.</span></figcaption>
+      <figcaption><span>{profile.name}</span></figcaption>
     </figure>
   </section>
   <section class="proof container" aria-label="Professional profile">
@@ -34,7 +35,7 @@ const focus = (await getCollection('focus')).filter(entry=>entry.data.status!=='
   <section class="work-section" id="work" aria-labelledby="work-heading">
     <div class="container section">
       <div class="section-heading work-heading"><div><p class="eyebrow">02 / Selected work</p><h2 id="work-heading" tabindex="-1">{profile.workHeadline}</h2></div><p class="section-intro">{profile.workIntro}</p></div>
-      <div class="experience-sector-filters"><p class="eyebrow">Explore experience by sector</p><div class="sector-controls" role="group" aria-label="Filter experience by sector"><button type="button" data-sector-filter="all" aria-pressed="true">All</button>{profile.sectors.map(sector => <button type="button" data-sector-filter={sector} aria-pressed="false">{sector}</button>)}</div></div>
+      <div class="experience-sector-filters"><p class="eyebrow">Filter projects by sector</p><div class="sector-controls" role="group" aria-label="Filter experience by sector"><button type="button" data-sector-filter="all" aria-pressed="true">All</button>{sectors.map(sector => <button type="button" data-sector-filter={sector} aria-pressed="false">{sector}</button>)}</div></div>
       <div id="sector-filter-context" class="sector-filter-context"><p id="sector-status" role="status" aria-live="polite">Showing: All</p><button id="sector-clear" type="button" class="text-control" hidden>Show all <span aria-hidden="true">×</span></button></div>
       <div class="work-list">
         {cases.map((item,i) => <article data-experience-sector={item.data.sector} class="case-row">
@@ -50,7 +51,7 @@ const focus = (await getCollection('focus')).filter(entry=>entry.data.status!=='
   </section>
   <section class="section container breadth" id="broader-experience" aria-labelledby="breadth-heading">
     <div class="section-heading"><p class="eyebrow">03 / Broader experience</p><h2 id="breadth-heading">{profile.experienceHeadline}</h2><p class="section-intro">{profile.experienceIntro}</p></div>
-    <div class="experience-list">{experience.map(entry => <details data-experience-sector={entry.data.sector}><summary><span>{entry.data.title}<small>{entry.data.clientLabel}</small><span class="sector-tag">{entry.data.sector}</span></span><span class="details-icon" aria-hidden="true">+</span></summary><div class="experience-detail"><p>{entry.data.description}</p><p class="experience-tags">{entry.data.tags.join(' / ')}</p></div></details>)}</div>
+    <div class="experience-list">{experience.map(entry => <details data-experience-sector={entry.data.sector ?? ''} class:list={{'secondary-experience':entry.data.secondary}}><summary><span>{entry.data.title}<small>{entry.data.clientLabel}</small>{entry.data.sector && <span class="sector-tag">{entry.data.sector}</span>}</span><span class="details-icon" aria-hidden="true">+</span></summary><div class="experience-detail"><p>{entry.data.description}</p><p class="experience-tags">{entry.data.tags.join(' / ')}</p></div></details>)}</div>
   </section>
   <section class="about-section" id="about" aria-labelledby="about-heading"><div class="container section">
     <div class="about-grid"><div><p class="eyebrow">04 / About</p><h2 id="about-heading">{profile.aboutHeadline}</h2><p class="about-intro">{profile.about}</p><p class="about-intro about-continuation">{profile.aboutContinuation}</p></div>{focus.map(entry=><Focus entry={entry} />)}</div>

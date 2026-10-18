@@ -1,9 +1,9 @@
 {
   "name": "Narjiss Berrazi",
-  "title": "AI Transformation Specialist",
-  "descriptor": "Data & AI Consulting | Governance | Change & Adoption",
+  "title": "Data & AI Transformation Specialist",
+  "descriptor": "Data & AI Strategy | Governance | Change & Adoption",
   "headline": "Turning AI ambition into governed, adopted and scalable transformation.",
-  "hero": "I’m Narjiss Berrazi, an AI Transformation Specialist with three years of Big Four consulting experience at KPMG. I leverage my foundation in data analysis, reporting and insights to shape and deliver Data & AI transformation — helping organisations assess opportunities, create the right governance and move from roadmap into implementation, communication and adoption.",
+  "hero": "I’m Narjiss Berrazi, a Data & AI Transformation Specialist with three years of Big Four consulting experience at KPMG. I leverage my foundation in data analysis, reporting and insights to shape and deliver Data & AI transformation — helping organisations assess opportunities, design the right operating model and governance, and move from roadmap into implementation, communication and adoption.",
   "email": "narjiss.berrazi@hotmail.com",
   "linkedin": "https://www.linkedin.com/in/narjiss-berrazi-332657196/",
   "cv": "/cv/Narjiss_Berrazi_CV.pdf",
@@ -15,7 +15,7 @@
     },
     {
       "value": "Data & AI transformation",
-      "label": "Maturity assessments, governance models & implementation"
+      "label": "Maturity assessments, Target Operating Model design & implementation"
     },
     {
       "value": "Change & communication",
@@ -48,20 +48,11 @@
       "text": "Track adoption, monitor outcomes and support the ongoing evolution of Data & AI capabilities."
     }
   ],
-  "experienceIntro": "Before moving further into AI and transformation leadership, I built a strong foundation across requirements gathering, data modelling, reporting, analytics and business-facing platform work. That experience helps me translate effectively between business needs and technical delivery today.",
-  "aboutHeadline": "I work where AI, transformation and people meet.",
+  "experienceIntro": "My transformation work is grounded in hands-on experience across data modelling, reporting, analytics, SQL-based data work and user enablement — giving me the practical foundation to bridge business needs and technical delivery.",
+  "aboutHeadline": "I work where Data, AI, transformation and people meet.",
   "about": "I started from a strong foundation in data analysis, reporting and insights. That experience taught me how data is actually produced, governed, interpreted and used in organisations. Today, I leverage that foundation to shape Data & AI transformation — bridging business and technology, building governance, driving communication and training, and helping organisations move from assessment into implementation and continuous improvement.",
-  "sectors": [
-    "Corporates",
-    "Public Sector & Government",
-    "Banking & Financial Services",
-    "Financial Market Infrastructure & Payments",
-    "Postal & Logistics",
-    "Higher Education & Research",
-    "Professional Services"
-  ],
   "cta": "Let’s talk about transformation.",
-  "ctaText": "Connect with me to discuss opportunities across AI transformation, governance and organisational adoption.",
+  "ctaText": "Connect with me to discuss opportunities across Data & AI transformation, governance and organisational adoption.",
   "disclaimer": "Selected work has been anonymised and recreated using synthetic data to protect client confidentiality.",
   "education": [
     "Master of Science in Business Administration — Data & Information Management · KU Leuven",
@@ -94,5 +85,6 @@
   "expertiseHeadline": "What I do across Data & AI transformation",
   "workHeadline": "Data & AI transformation in practice",
   "workIntro": "A selection of projects showing how I work across Data & AI, governance, implementation, business analysis, communication, change and adoption.",
-  "experienceHeadline": "Broader data & analytics foundation"
+  "experienceHeadline": "Broader data & analytics foundation",
+  "description": "Data & AI strategy, transformation, Target Operating Model design, governance and change & adoption. Explore Narjiss Berrazi’s consulting experience at KPMG."
 }

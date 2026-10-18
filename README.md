@@ -1,22 +1,22 @@
-# Narjiss Berrazi — portfolio
+# Narjiss Berrazi — Data & AI transformation portfolio
 
-A one-page editorial Astro + TypeScript portfolio focused on AI transformation, governance, implementation, communication and adoption. V3 presents three equally weighted client cases with concrete responsibilities, evidence, training and deliverables. The synthetic demonstration has been removed. The established portrait, visual tokens and one-page architecture are preserved.
+A one-page Astro + TypeScript editorial portfolio for a Data & AI Transformation Specialist. V4 connects hands-on data/analytics foundations with strategy, Target Operating Model design, governance, implementation, communication and adoption. It retains the established portrait, light visual identity, five expertise areas, three deep flagship cases, credentials and CV integration.
 
-## View and publish in your browser
+## Browser review and publication
 
 Repository: `narontheweb/narjissberrazi.github.io`, connected to Vercel. The `.github.io` name does not require GitHub Pages hosting.
 
 1. Sign in at [Vercel](https://vercel.com/dashboard) and open the portfolio project.
-2. Open **Deployments**, select the `v3-portfolio` review branch and click **Visit**. Copy the website address ending in `.vercel.app` to share the preview; the Vercel dashboard address is not the website preview.
-3. Review on phone and desktop, including cases, evidence, document-frame placeholders, sector controls, Upcoming Focus and CV downloads. Preview protection may require Vercel sign-in.
-4. After owner approval, merge the review branch into `main`. Vercel automatically builds production from `main`.
-5. Use a new branch and preview for later substantial edits. Normal content updates are explained in `CONTENT-GUIDE.md`.
+2. Open **Deployments**, select `v4-portfolio` and click **Visit**. The shareable website URL ends in `.vercel.app`; the Vercel dashboard URL is not the website preview.
+3. Review the preview on phone and desktop. Check the new positioning, inline case panels, evidence once, training under Deliverables, automatic sector filters, all three broader entries, Upcoming Focus and CV downloads. Vercel may require sign-in for preview access.
+4. Merge into `main` only after owner review and approval. Vercel builds production from `main` automatically.
+5. For future substantial edits, use a new branch/preview. See `CONTENT-GUIDE.md` for routine updates.
 
-For a new Vercel project, import the existing repository, select Astro, leave the root directory unchanged, use `npm run build` and output directory `dist`. No API key, backend, database, login service or paid infrastructure is needed. A custom domain can be added later in Vercel settings.
+A new Vercel project uses Astro, repository root, build command `npm run build` and output `dist`. No API key, backend, database, login service or paid infrastructure is required. Add a custom domain later in Vercel settings if desired.
 
 ## Optional local development
 
-Use Node.js 22.12+ or 24 LTS and npm. From this repository:
+Use Node.js 22.12+ or 24 LTS and npm:
 
 ```sh
 npm ci
@@ -26,31 +26,30 @@ npm run build
 npm run dev
 ```
 
-Development serves on port 4321; `npm run preview` serves the static build. In the Codex cloud environment, set `ASTRO_TELEMETRY_DISABLED=1` before Astro commands and use `npm ci --cache /workspace/.npm` to avoid restricted home-directory writes. Use the existing isolated checkout; do not create a worktree unless requested.
+Development serves on port 4321; `npm run preview` serves the production build. In Codex cloud, set `ASTRO_TELEMETRY_DISABLED=1` before Astro commands and use `npm ci --cache /workspace/.npm` to avoid restricted home-directory writes. Use the existing isolated checkout; do not create a worktree unless requested.
 
-## Structure
+## Content architecture
 
-- `src/data/profile.json`: positioning, proof, five expertise areas, About, credentials and contact details.
-- `src/content/cases/*.md`: structured summaries, context, challenge, contribution, evidence, deliverables and future visual slots.
-- `src/content/experience/*.md`: two business-facing data/analytics engagements.
+- `src/data/profile.json`: primary title/descriptor, hero, proof, five expertise areas, About, credentials and contacts.
+- `src/content/cases/*.md`: three equally structured flagship cases. Evidence is rendered once in the header; expansion contains Context, Challenge, Contribution, Deliverables and future miniature slots.
+- `src/content/experience/*.md`: three broader entries. Sector is optional for genuinely unclassified cross-sector experience; the earlier consulting entry has no assigned sector.
 - `src/content/focus/assignment.md`: upcoming/current/hidden status and editable focus content.
-- `src/content.config.ts`: schema validation, including sector names and image alt text.
-- `src/components/CaseExpansion.astro`: the common inline case structure.
-- `src/components/EvidenceList.astro`: metrics with directly linked qualifications.
-- `src/components/Focus.astro`: status-driven focus display.
-- `src/scripts/portfolio.ts`: lightweight case and sector controls.
-- `public/cv/Narjiss_Berrazi_CV.pdf`: the approved one-page CV, unchanged in V3.
+- `src/content.config.ts`: field validation, optional nested deliverable topics and miniature-image alt-text requirements.
+- `src/components/CaseExpansion.astro`, `EvidenceList.astro`, `Focus.astro`: shared presentation.
+- `src/pages/index.astro`: one-page composition and sector filters derived from displayed content.
+- `src/scripts/portfolio.ts`: lightweight case toggles and filtering.
+- `public/cv/Narjiss_Berrazi_CV.pdf`: unchanged approved one-page PDF.
 - `public/images/`: original portrait and optimised variants.
-- `QA-REPORT.md`: tested capabilities and limitations.
+- `QA-REPORT.md`: current verification and deployment limits.
 
-## Content and interaction
+## Filtering and interaction
 
-There are three flagship cases and two broader-experience entries. Filters sit directly above work, show matching cases/experience/visible focus entries and preserve keyboard focus without forced scrolling. Sectors with no entries show an honest empty state. Each flagship has two or three labelled future visual slots; optional image/alt fields allow later anonymised visuals without changing components. No client screenshots are fabricated.
+Only populated sectors are shown. The current filters are All, Public Sector, Banking & Financial Services, Postal & Logistics, and Higher Education & Research. Adding a displayed project/focus item with a new sector automatically adds its filter. Hidden focus entries do not create filters. Unclassified earlier consulting appears under All, without a false sector tag.
 
-Case buttons retain `aria-expanded`, focus and reduced-motion behavior. Phone layouts stack the five expertise areas and expanded narratives. Print reveals the three case narratives and retains education, languages, credentials and visible focus.
+Keyboard focus and scroll position are preserved when filtering. Native case buttons expose aria-expanded; phone layouts keep one case open at a time. Reduced motion skips animation. Print reveals case narratives while keeping evidence in one location. Intentional deliverable placeholders remain for a later approved visual-content iteration.
 
-## Confidentiality and privacy
+## Privacy and confidentiality
 
-Only approved generic organisation labels are public; KPMG is named as employer, and the approved external-auditor reference remains in the CSRD contribution. Never put original client documents, real names, dashboards, individual stakeholders or procurement details in this repository.
+Publish only approved generic organisation labels. KPMG is the employer; the approved external-auditor reference remains in the CSRD contribution. No original client documents, confidential names, individual stakeholders or procurement details belong in the repository.
 
-Noindex meta, disallow-all robots.txt and Vercel X-Robots-Tag reduce indexing; the URL remains public. No advertising trackers, fingerprinting, session replay or analytics are installed. The supplied CV is deliberately not synchronised to the newer V3 project copy until a later approved CV revision.
+Noindex meta, disallow-all robots.txt and Vercel X-Robots-Tag reduce indexing without making the URL private. No analytics, advertising trackers, fingerprinting or session replay are installed. The CV has deliberately not been rewritten to match every later website copy revision.
