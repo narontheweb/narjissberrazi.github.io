@@ -8,33 +8,104 @@ function animate(element: HTMLElement, frames: Keyframe[] | PropertyIndexedKeyfr
 }
 
 const caseButtons = [...document.querySelectorAll<HTMLButtonElement>('.case-toggle')];
-const caseAnimations = new WeakMap<HTMLElement, Animation>();
-function toggleCase(button: HTMLButtonElement, open: boolean) {
-  const panel = document.getElementById(button.getAttribute('aria-controls')!)!;
-  const currentHeight = panel.hidden ? 0 : panel.getBoundingClientRect().height;
-  caseAnimations.get(panel)?.cancel();
-  button.setAttribute('aria-expanded', String(open));
-  button.querySelector<HTMLElement>('[data-toggle-label]')!.textContent = open ? 'Close case' : 'View case';
-  button.querySelector<HTMLElement>('[data-toggle-icon]')!.textContent = open ? ' ↑' : ' ↓';
-  if (motionPreference.matches || !panel.animate) {
-    panel.hidden = !open;
-    return;
+const cases = caseButtons.map(button => ({ button, panel: document.getElementById(button.getAttribute('aria-controls')!)! }));
+const caseAnimations = new Map<HTMLElement, Animation>();
+let accordionSequence = 0;
+let cancelPreservation = () => {};
+let settleAccordion: (() => void) | undefined;
+function toggleCase(clicked: HTMLButtonElement) {
+  const shouldOpen = clicked.getAttribute('aria-expanded') !== 'true';
+  let anchorTop = clicked.getBoundingClientRect().top;
+  const states = new Map(cases.map(({ panel }) => [panel, {
+    height: panel.hidden ? 0 : panel.getBoundingClientRect().height,
+    opacity: panel.hidden ? 0 : Number(getComputedStyle(panel).opacity),
+  }]));
+  cancelPreservation();
+  const sequence = ++accordionSequence;
+  document.documentElement.classList.add('accordion-transition');
+  for (const { panel } of cases) {
+    if (!panel.hidden) panel.style.height = `${states.get(panel)!.height}px`;
   }
-  panel.hidden = false;
-  const targetHeight = panel.scrollHeight;
-  const animation = animate(panel, {
-    height: [`${currentHeight}px`, open ? `${targetHeight}px` : '0px'],
-    opacity: open ? [0.35, 1] : [1, 0],
-  }, { duration: 240, easing: 'ease-out' });
-  caseAnimations.set(panel, animation);
-  animation.finished.then(() => {
-    if (!open && button.getAttribute('aria-expanded') === 'false') panel.hidden = true;
-  }).catch(() => {});
+  for (const animation of caseAnimations.values()) animation.cancel();
+  caseAnimations.clear();
+
+  let preserveAnchor = true;
+  let frame = 0;
+  const stopPreserving = () => {
+    // Passive scroll input may already have moved the viewport on the compositor.
+    // Keep that new reading position when settling the remaining layout change.
+    anchorTop = clicked.getBoundingClientRect().top;
+    finish();
+    preserveAnchor = false;
+  };
+  const respectScrollKeys = (event: KeyboardEvent) => {
+    if (['PageUp', 'PageDown', 'Home', 'End', 'ArrowUp', 'ArrowDown'].includes(event.key)) stopPreserving();
+  };
+  // Compensate only for accordion reflow, never for intentional user scrolling.
+  window.addEventListener('wheel', stopPreserving, { passive: true });
+  window.addEventListener('touchmove', stopPreserving, { passive: true });
+  window.addEventListener('keydown', respectScrollKeys);
+  cancelPreservation = () => {
+    cancelAnimationFrame(frame);
+    window.removeEventListener('wheel', stopPreserving);
+    window.removeEventListener('touchmove', stopPreserving);
+    window.removeEventListener('keydown', respectScrollKeys);
+  };
+  const correctViewport = () => {
+    if (!preserveAnchor) return;
+    const offset = clicked.getBoundingClientRect().top - anchorTop;
+    if (Math.abs(offset) > 0.5) window.scrollBy({ top: offset, behavior: 'instant' });
+  };
+  let settled = false;
+  const finish = () => {
+    if (sequence !== accordionSequence || settled) return;
+    settled = true;
+    cancelPreservation();
+    for (const { button, panel } of cases) {
+      panel.hidden = button.getAttribute('aria-expanded') !== 'true';
+      panel.style.removeProperty('height');
+    }
+    for (const animation of caseAnimations.values()) animation.cancel();
+    caseAnimations.clear();
+    correctViewport();
+    document.documentElement.classList.remove('accordion-transition');
+    settleAccordion = undefined;
+  };
+  settleAccordion = finish;
+  for (const { button, panel } of cases) {
+    const open = button === clicked && shouldOpen;
+    const state = states.get(panel)!;
+    button.setAttribute('aria-expanded', String(open));
+    panel.inert = !open;
+    panel.setAttribute('aria-hidden', String(!open));
+    button.querySelector<HTMLElement>('[data-toggle-label]')!.textContent = open ? 'Close case' : 'View case';
+    button.querySelector<HTMLElement>('[data-toggle-icon]')!.textContent = open ? ' ↑' : ' ↓';
+    if (motionPreference.matches || !panel.animate || (!open && state.height === 0)) {
+      panel.hidden = !open;
+      panel.style.removeProperty('height');
+      continue;
+    }
+    panel.hidden = false;
+    panel.style.height = 'auto';
+    const targetHeight = open ? panel.getBoundingClientRect().height : 0;
+    panel.style.height = `${state.height}px`;
+    caseAnimations.set(panel, animate(panel, {
+      height: [`${state.height}px`, `${targetHeight}px`],
+      opacity: [state.opacity, open ? 1 : 0],
+    }, { duration: 240, easing: 'ease-out', fill: 'both' }));
+  }
+  clicked.focus({ preventScroll: true });
+  if (!caseAnimations.size) { finish(); return; }
+  const preserveFrame = () => {
+    if (sequence !== accordionSequence) return;
+    correctViewport();
+    frame = requestAnimationFrame(preserveFrame);
+  };
+  preserveFrame();
+  Promise.allSettled([...caseAnimations.values()].map(animation => animation.finished)).then(finish);
 }
-// Independent panels avoid collapsing content above the reader when another case opens.
-caseButtons.forEach(button => button.addEventListener('click', () => {
-  toggleCase(button, button.getAttribute('aria-expanded') !== 'true');
-}));
+caseButtons.forEach(button => button.addEventListener('click', () => toggleCase(button)));
+window.addEventListener('resize', () => settleAccordion?.());
 
 const revealTargets = [...document.querySelectorAll<HTMLElement>('.section-heading, .case-row, .experience-list details, .credentials')];
 let revealObserver: IntersectionObserver | undefined;

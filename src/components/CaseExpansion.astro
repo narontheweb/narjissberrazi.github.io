@@ -1,14 +1,23 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { existsSync, statSync } from 'node:fs';
+import { resolve, sep } from 'node:path';
 interface Props { entry: CollectionEntry<'cases'>; }
 const { entry } = Astro.props;
 const data = entry.data;
 const panelId = `case-${entry.id}`;
+const controlId = `case-control-${entry.id}`;
+const imageRoot = resolve('public/images');
+const visuals = data.visualPlaceholders.filter(item => {
+  if (!item.image) return false;
+  const file = resolve('public', `.${item.image}`);
+  return file.startsWith(imageRoot + sep) && existsSync(file) && statSync(file).isFile();
+});
 ---
-<button class="text-control case-toggle" type="button" aria-expanded="false" aria-controls={panelId}><span data-toggle-label>View case</span><span data-toggle-icon aria-hidden="true"> ↓</span><span class="sr-only">: {data.title}</span></button>
-<div id={panelId} class="case-panel" hidden><div class="case-narrative">
+<button id={controlId} class="text-control case-toggle" type="button" aria-expanded="false" aria-controls={panelId}><span data-toggle-label>View case</span><span data-toggle-icon aria-hidden="true"> ↓</span><span class="sr-only">: {data.title}</span></button>
+<div id={panelId} class="case-panel" role="region" aria-labelledby={controlId} aria-hidden="true" inert hidden><div class="case-narrative">
   <div class="case-context-grid"><section><h4>Context</h4><p>{data.context}</p></section><section><h4>Challenge</h4><p>{data.challenge}</p></section></div>
-  <section class="contribution-block"><h4>My contribution</h4><ul>{data.contribution.map(item => <li>{item}</li>)}</ul></section>
+  <section class="contribution-block"><h4>My contribution</h4><ul>{data.contribution.map(item => <li><strong>{item.lead}</strong>{item.detail}</li>)}</ul></section>
   <section class="deliverables-block"><h4>Deliverables</h4><ul class="deliverables-list">{data.deliverables.map(item => <li><span>{item.title}</span>{item.items && <ul class="deliverable-topics">{item.items.map(topic=><li>{topic}</li>)}</ul>}</li>)}</ul></section>
-  <section class="visual-deliverables"><h4>Deliverable miniatures</h4><div class="visual-grid">{data.visualPlaceholders.map(item => <figure class="deliverable-placeholder"><div class="miniature-frame">{item.image ? <button class="miniature-trigger" type="button" data-preview-src={item.image} data-preview-alt={item.alt} data-preview-title={item.label} aria-haspopup="dialog" aria-controls="deliverable-preview" aria-label={`Expand ${item.label}`}><img class="deliverable-miniature" src={item.image} alt={item.alt} width="320" height="200" loading="lazy" /></button> : <div class="document-frame" aria-hidden="true"><span></span><span></span><span></span><span></span></div>}</div><figcaption><strong>{item.label}</strong><p>{item.description}</p></figcaption></figure>)}</div></section>
+  {visuals.length > 0 && <section class="visual-deliverables"><h4>Deliverable visuals</h4><div class="visual-grid">{visuals.map(item => <figure class="deliverable-placeholder"><div class="miniature-frame"><button class="miniature-trigger" type="button" data-preview-src={item.image} data-preview-alt={item.alt} data-preview-title={item.label} aria-haspopup="dialog" aria-controls="deliverable-preview" aria-label={`Expand ${item.label}`}><img class="deliverable-miniature" src={item.image} alt={item.alt} width="320" height="200" loading="lazy" /></button></div><figcaption><strong>{item.label}</strong><p>{item.description}</p></figcaption></figure>)}</div></section>}
 </div></div>

@@ -13,19 +13,23 @@ summary: Shaped an organisation-wide AI strategy and Target Operating Model, tra
 context: Generative AI adoption was accelerating across business and IT, creating new opportunities but also fragmented experimentation. Management needed a coherent strategy for scaling AI safely, translating EU AI Act requirements into practical governance, and creating the organisational capabilities required for adoption.
 challenge: The challenge went beyond identifying use cases. The organisation needed to determine which AI tools and agents could be used, under what conditions, how sensitive data should be handled, who owned decisions and escalation, and how experimentation could evolve into governed, organisation-wide adoption.
 contribution:
-- Played a leading role in shaping the AI strategy and Target Operating Model.
-- Translated EU AI Act requirements and broader responsible-AI principles into practical governance.
-- Used regulatory requirements as guidance and checklist criteria when evaluating AI use cases.
-- Helped establish and structure a 12-person cross-functional AI working group with management, business and IT representatives.
-- Defined roles, responsibilities, councils, decision rights and escalation paths.
-- Assessed and prioritised 10 AI use cases across value, feasibility, risk and readiness.
-- Developed a use-case prioritisation matrix and roadmap.
-- Defined governance around AI tools and AI agents, including safe experimentation, privacy-sensitive information, company-sensitive data and technical sandbox principles.
-- Supported the setup of a safe technical sandbox / POC approach for experimentation.
-- Created management decision materials and facilitated workshops.
-- Designed and delivered a mandatory AI training programme.
+- lead: Shaped the organisation-wide AI strategy and Target Operating Model
+  detail: ', translating EU AI Act requirements and responsible-AI principles into practical governance and decision structures.'
+- lead: Established the operating model for AI governance
+  detail: ', defining roles, responsibilities, councils, decision rights and escalation paths across management, business and IT.'
+- lead: Assessed and prioritised 10 AI use cases
+  detail: ' against value, feasibility, risk and readiness, using a structured prioritisation matrix to inform the roadmap.'
+- lead: Defined governance for AI tools and agents
+  detail: ', including conditions for approved use, sensitive-data handling and safe experimentation.'
+- lead: Supported the setup of a safe sandbox / POC approach
+  detail: ', creating a governed path from experimentation toward organisational adoption.'
+- lead: Structured a 12-person cross-functional AI working group
+  detail: ' and developed management decision materials to support alignment and decision-making.'
+- lead: Designed and delivered a four-part mandatory AI learning programme
+  detail: ' covering AI fundamentals, AI fluency, Microsoft Copilot and Copilot Studio.'
 evidence:
 - label: 10 AI use cases assessed & prioritised
+  priority: true
 - label: 12-person cross-functional AI working group
 - label: 4-part mandatory AI learning programme
 deliverables:

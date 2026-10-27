@@ -1,5 +1,5 @@
 ---
-status: upcoming
+status: hidden
 clientLabel: Belgian Federal Finance Administration
 sector: Public Sector
 title: Operationalising a federated data-product model

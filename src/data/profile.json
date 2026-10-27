@@ -28,33 +28,33 @@
   ],
   "expertise": [
     {
-      "title": "Assess & shape opportunities",
-      "text": "Understand business needs, assess Data & AI maturity and opportunities, and translate them into priorities and roadmaps."
+      "title": "Shape strategy & opportunities",
+      "text": "Assess business needs, Data & AI maturity and opportunities, and translate them into clear priorities and roadmaps."
     },
     {
       "title": "Design governance & operating models",
-      "text": "Define ownership, roles, decision rights, councils and practical structures that enable Data & AI at scale."
-    },
-    {
-      "title": "Drive communication, change & adoption",
-      "text": "Align stakeholders through communication, workshops, training and new ways of working."
+      "text": "Define ownership, decision rights, roles, councils and Target Operating Models that enable Data & AI at scale."
     },
     {
       "title": "Bridge business & technology",
-      "text": "Translate business priorities into actionable Data & AI initiatives and enable effective collaboration between business and technical teams."
+      "text": "Translate business priorities into actionable requirements and enable effective collaboration between business and technical teams."
     },
     {
-      "title": "Measure impact & continuous improvement",
-      "text": "Track adoption, monitor outcomes and support the ongoing evolution of Data & AI capabilities."
+      "title": "Drive implementation & delivery",
+      "text": "Turn roadmaps and decisions into structured delivery, coordinating actions, dependencies and stakeholders through implementation."
+    },
+    {
+      "title": "Lead change & adoption",
+      "text": "Build alignment through communication, workshops, training and practical new ways of working."
     },
     {
       "title": "Build AI knowledge & capability",
       "text": "Create reusable guidance, learning, communities and knowledge-sharing structures that help organisations scale AI responsibly."
     }
   ],
-  "experienceIntro": "My transformation work is grounded in hands-on experience across data platforms, data modelling, analytics, reporting and user enablement — giving me the practical understanding to translate business needs into effective technical delivery.",
+  "experienceIntro": "My transformation work is supported by hands-on experience across data platforms, data modelling, analytics, reporting and user enablement — giving me the practical understanding to translate between business needs and technical delivery.",
   "aboutHeadline": "I work where Data, AI, transformation and people meet.",
-  "about": "I tend to become the go-to person when something needs structure — or when it needs to move. I naturally take ownership, bring people together and turn ambiguity into action. I enjoy energising teams, communicating complex topics clearly and making an impact that people remember.",
+  "about": "I bring structure to ambiguous problems, align people around decisions and turn those decisions into action. I naturally take ownership, enjoy bringing teams together and communicate complex topics in a way that makes them easier to act on.",
   "cta": "Let’s talk about Data & AI transformation.",
   "ctaText": "Connect with me to discuss opportunities across Data & AI transformation, governance and organisational adoption.",
   "disclaimer": "Selected work has been anonymised and recreated using synthetic data to protect client confidentiality.",
@@ -87,7 +87,7 @@
   "expertiseHeadline": "What I do across Data & AI transformation",
   "workHeadline": "Data & AI transformation in practice",
   "workIntro": "A selection of projects showing how I work across Data & AI, governance, implementation, business analysis, communication, change and adoption.",
-  "experienceHeadline": "Broader data & analytics foundation",
+  "experienceHeadline": "Broader Data & Analytics Experience",
   "description": "Data & AI strategy, transformation, Target Operating Model design, governance and change & adoption. Explore Narjiss Berrazi’s consulting experience at KPMG.",
   "aboutLabel": "How I work",
   "technicalFluency": [
@@ -112,7 +112,7 @@
       ]
     },
     {
-      "level": "Conceptual / solution-level understanding",
+      "level": "Solution-level understanding",
       "items": [
         "Microsoft Azure",
         "Microsoft Fabric"
