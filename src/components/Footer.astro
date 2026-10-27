@@ -4,7 +4,7 @@ import CvLink from './CvLink.astro';
 ---
 <footer class="site-footer">
   <div class="container">
-    <div class="footer-top"><div><a class="footer-name" href="#home">{profile.name}</a><p>{profile.title}</p></div><div class="footer-links"><a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗<span class="sr-only"> (opens in a new tab)</span></a><a href={`mailto:${profile.email}`}>Email ↗</a><CvLink /></div></div>
+    <div class="footer-top"><div><a class="footer-name" href="#home">{profile.name}</a><p>{profile.title}</p></div><div class="footer-links"><a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <span class="cta-arrow" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a><a href={`mailto:${profile.email}`}>Email <span class="cta-arrow" aria-hidden="true">↗</span></a><CvLink /></div></div>
     <div class="footer-bottom"><p>{profile.disclaimer}</p><span>© {new Date().getUTCFullYear()} {profile.name}</span></div>
   </div>
 </footer>

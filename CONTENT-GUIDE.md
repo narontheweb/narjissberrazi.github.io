@@ -1,92 +1,85 @@
-# Update the V4 portfolio
+# Update the V5 portfolio
 
-On GitHub, open the file, click the pencil, edit and commit to a preview branch. Review the Vercel preview before merging into `main`. Keep JSON punctuation and Markdown `---` markers intact. Normal copy updates do not require UI component edits.
+Edit content through GitHub's pencil button on a preview branch. Review the Vercel preview before merging into `main`. Keep JSON punctuation and Markdown `---` markers intact. Normal content changes do not require editing presentation components.
 
-## Positioning and About
+## Positioning, hero and How I Work
 
-Edit `src/data/profile.json`:
+In `src/data/profile.json`:
 
-- `title`: Data & AI Transformation Specialist, used in the hero, footer, browser title and social title.
-- `descriptor`: Data & AI Strategy | Governance | Change & Adoption.
-- `hero`, `headline`, `description`: introduction, full charcoal headline and search description.
-- `proof`: the four compact labels and descriptions. Keep Target Operating Model design & implementation in the second point.
-- `expertiseHeadline` and `expertise`: the five numbered areas.
-- `workHeadline` / `workIntro`, `experienceHeadline` / `experienceIntro`: work and broader-foundation introductions.
-- `aboutHeadline`, `about`, `aboutContinuation`: the personal About block.
-- `email`, `linkedin`: public contacts only.
+- `title`: Data & AI Transformation Specialist.
+- `descriptor`: the supporting positioning, retained as content data without a loose line in the hero.
+- `headline`: the complete charcoal hero headline, now beginning “Turning Data & AI ambition”.
+- `hero`, `description`, `proof`: introduction, search description and four proof items.
+- `expertiseHeadline`, `expertise`: the six capability areas. Keep organisational AI knowledge/capability distinct from engineering.
+- `experienceHeadline`, `experienceIntro`: the broader platform/modelling/analytics/reporting foundation.
+- `aboutLabel`, `aboutHeadline`, `about`: How I Work and the single personal working-style paragraph. Avoid repeating the hero career introduction.
+- `cta`, `ctaText`, `email`, `linkedin`: the closing invitation and public contacts.
 
-The portrait caption intentionally contains only the name. No tagline is needed.
+The portrait caption and standalone descriptor are intentionally absent. Its image is unchanged; only the desktop display size is smaller.
 
-## Flagship cases
+## Flagship cases and evidence
 
-Edit the fields above the second `---` in `src/content/cases/*.md`:
+The approved V4 case copy remains in `src/content/cases/*.md`:
 
-- `title`, `clientLabel`, `sector`, `summary`, `order`, `tags`: collapsed project content and ordering.
-- `context`, `challenge`, `contribution`: expanded narrative and responsibility list.
-- `evidence`: `label` entries with an optional directly linked `note`. Evidence appears only in the project header and stays visible when expanded; it is not repeated in the panel.
-- `deliverables`: objects with a `title` and optional `items` list for subordinate topics.
-- `visualPlaceholders`: two or three future visual entries, described below.
+- `title`, `clientLabel`, `sector`, `summary`, `order`, `tags`: header and ordering.
+- `context`, `challenge`, `contribution`: expanded narrative.
+- `evidence`: `label` entries and optional directly linked `note`. Evidence appears once, in the header, and remains visible when expanded. Numeric prefixes receive blue emphasis automatically, without changing the wording.
+- `deliverables`: objects with a `title` and optional `items` list for subordinate training topics.
+- `visualPlaceholders`: two or three future visual slots.
 
-For example, the training deliverable is:
+Do not add a duplicate Evidence section or standalone training block. Keep AI use-case work framed as assessment/prioritisation. Treat BCBS 239 / RDARR as supervisory reference points. Keep the banking impact note attached to the ~€11M metric and limited to the 40 prioritised issues.
 
-```yaml
-- title: AI Training Programme
-  items:
-  - AI Fundamentals
-  - AI Fluency
-  - Microsoft Copilot
-  - Copilot Studio
-```
-
-Do not add a second standalone training section or Evidence block. AI use-case responsibility is assessment and prioritisation, not solution implementation. BCBS 239 / RDARR are supervisory reference points, not themselves an EU regulation. Keep the banking impact note attached to the ~€11M metric; it applies only to the 40 prioritised issues.
-
-Use approved generic client labels only. The CSRD client label is Global Postal & Logistics Group. Do not put original client documents, names or screenshots in the repository.
+All three cases open independently, including on phones, so opening another case does not collapse content above the reader. Keep client identities anonymous.
 
 ## Deliverable miniatures
 
-Keep the intentional document-frame placeholders until approved reconstructed visuals are available. To replace one later, upload a generic, anonymised image under `public/images/`, then add to that placeholder:
+V5 retains labelled document placeholders; they are not clickable and do not pretend to be client visuals.
+
+Later, upload an approved, recreated, anonymised visual under `public/images/`, then add:
 
 ```yaml
 image: /images/ai-operating-model.webp
 alt: An anonymised overview of AI governance roles and decision structures
 ```
 
-Update its `description` to a caption. An image requires alt text. Keep two or three entries per case; no fake client screenshots or internal originals.
+Update `description` to an accurate caption. The shared component automatically makes real visuals keyboard/touch-accessible preview buttons. The larger preview closes with Escape, its close control or the backdrop; focus returns to the originating button. Image alt text is required by the schema. Never upload internal originals or fabricate client screenshots.
 
-## Broader experience
+## Broader experience and sector labels
 
-Edit `src/content/experience/*.md`: `title`, `clientLabel`, `description`, `tags`, `order`, and optionally `sector`.
+The three approved entries remain in `src/content/experience/*.md`. Edit title, approved client label, description, tags and order only when changes are confirmed. `sector` remains optional for genuinely cross-sector experience. The earlier consulting entry stays unclassified and visually secondary.
 
-The three entries are Data Modelling & Architecture, Analytics Navigation & User Enablement, and Earlier Data & Analytics Consulting. The first remains business-facing and uses Flemish Social Services Agency. Do not imply technical-architect or Databricks-engineer ownership.
+Sector labels remain on projects and relevant experience/focus entries. There are no sector controls or standalone sector section in V5.
 
-Earlier Data & Analytics Consulting deliberately has no `sector` field because its engagements span sectors without one accurate category. It appears under All and is hidden when a specific sector is selected. Do not add a guessed sector. Its `secondary: true` flag gives it a quieter treatment.
+## Upcoming Focus
 
-## Automatic sector filters
+Edit `src/content/focus/assignment.md`. Status values:
 
-Filters are derived from nonempty sector values on the displayed cases, broader experience and non-hidden focus entries. There is no separate filter list to maintain. New sectors appear on the next build only when a displayed item maps to them; sectors with no items are absent. Labels follow first appearance in the ordered content.
+- `upcoming`: Upcoming focus.
+- `current`: Current focus.
+- `hidden`: no block.
 
-Use consistent exact wording, including Public Sector. Do not use the old Public Sector & Government label. Omit `sector` on a broader entry only when no single accurate category exists; do not use a blank value. Cases and focus require a sector.
+The approved current value remains upcoming. Update both status and description when actual work starts. Keep commercial terms, procurement details and personal contacts out.
 
-All includes unclassified broader experience. Filtering preserves keyboard focus and scroll position; reset returns all entries. Hidden focus entries do not create a filter.
+## Credentials and technical fluency
 
-## Upcoming / Current Focus
+Edit `education`, `certifications`, `languages`, and `technicalFluency` in `profile.json`.
 
-Edit `src/content/focus/assignment.md`:
+Technical fluency is grouped into levels, each with an `items` list. Keep the approved distinctions: proficient SQL/data modelling/Power BI & DAX; working knowledge of R; foundational Python; conceptual/solution-level Azure and Fabric. Do not add ratings, percentages or proficiency meters.
 
-- `status: upcoming` → Upcoming focus.
-- `status: current` → Current focus.
-- `status: hidden` → no block or filter participation.
+The displayed languages are Dutch, English, French and Arabic as fluent, and German with basic understanding. Keep the CV language line consistent when publishing a later approved PDF.
 
-The current status remains upcoming. When actual work starts, update both status and description. The client label, title, sector, description and tags are data fields. Do not publish commercial terms, personal contacts or procurement details.
+## CV and portrait
 
-## Credentials, CV and portrait
+All three CV links use `public/cv/Narjiss_Berrazi_CV.pdf`. V5 makes only the required language-line removal; its other wording, layout and one-page format are unchanged. Production builds fail if the PDF is absent. Replace only with a later approved version using the same filename.
 
-Edit `education`, `certifications` and `languages` in `profile.json`. Keep the existing education, all confirmed certifications including both PRINCE2 credentials, and fluent/basic language distinctions. Do not add academic distinction or unconfirmed qualifications.
+For a later portrait replacement, update the JPEG, run `npm run assets`, and commit JPEG, WebP and AVIF together. Do not retouch or generate a replacement face.
 
-`public/cv/Narjiss_Berrazi_CV.pdf` is unchanged. Navigation, hero and footer use the same one-page file. Replace it only with a later approved PDF. The website copy can be newer than the preserved CV until that revision is approved. Production builds fail if the asset is absent.
+## Motion and navigation
 
-For a later portrait replacement, replace the JPEG, run `npm run assets`, and commit JPEG, WebP and AVIF together. Do not retouch or generate a replacement face.
+The existing Home, Work and About anchors also drive active navigation. Home covers hero/expertise, Work covers projects/broader experience, and About covers How I Work/credentials. Do not rename anchor IDs without updating the script.
 
-## Review and release
+Reveals, project feedback and CTA motion are restrained. Content is never initially hidden just to enable a reveal. Reduced motion skips animation and finishes any active transition. Do not add counters, parallax, typewriters or scroll hijacking.
 
-Run `npm run check` and `npm run build`. Check three cases, evidence once, training nested under Deliverables, dynamic filters, the unclassified earlier-experience entry, focus status and all CV links on desktop and phone. Check keyboard behavior, reduced motion, confidentiality and overflow. Review the preview before approving production. Noindex reduces indexing but does not make the URL private.
+## Before release
+
+Run `npm run check` and `npm run build`. Check desktop/tablet/phone layouts, cases, scrollspy, reduced motion, future-image preview behavior and all CV links. Confirm no horizontal overflow or confidential identities. Review a preview before approving production. Noindex reduces indexing but is not access control.

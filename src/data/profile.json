@@ -2,7 +2,7 @@
   "name": "Narjiss Berrazi",
   "title": "Data & AI Transformation Specialist",
   "descriptor": "Data & AI Strategy | Governance | Change & Adoption",
-  "headline": "Turning AI ambition into governed, adopted and scalable transformation.",
+  "headline": "Turning Data & AI ambition into governed, adopted and scalable transformation.",
   "hero": "I’m Narjiss Berrazi, a Data & AI Transformation Specialist with three years of Big Four consulting experience at KPMG. I leverage my foundation in data analysis, reporting and insights to shape and deliver Data & AI transformation — helping organisations assess opportunities, design the right operating model and governance, and move from roadmap into implementation, communication and adoption.",
   "email": "narjiss.berrazi@hotmail.com",
   "linkedin": "https://www.linkedin.com/in/narjiss-berrazi-332657196/",
@@ -46,12 +46,16 @@
     {
       "title": "Measure impact & continuous improvement",
       "text": "Track adoption, monitor outcomes and support the ongoing evolution of Data & AI capabilities."
+    },
+    {
+      "title": "Build AI knowledge & capability",
+      "text": "Create reusable guidance, learning, communities and knowledge-sharing structures that help organisations scale AI responsibly."
     }
   ],
-  "experienceIntro": "My transformation work is grounded in hands-on experience across data modelling, reporting, analytics, SQL-based data work and user enablement — giving me the practical foundation to bridge business needs and technical delivery.",
+  "experienceIntro": "My transformation work is grounded in hands-on experience across data platforms, data modelling, analytics, reporting and user enablement — giving me the practical understanding to translate business needs into effective technical delivery.",
   "aboutHeadline": "I work where Data, AI, transformation and people meet.",
-  "about": "I started from a strong foundation in data analysis, reporting and insights. That experience taught me how data is actually produced, governed, interpreted and used in organisations. Today, I leverage that foundation to shape Data & AI transformation — bridging business and technology, building governance, driving communication and training, and helping organisations move from assessment into implementation and continuous improvement.",
-  "cta": "Let’s talk about transformation.",
+  "about": "I tend to become the go-to person when something needs structure — or when it needs to move. I naturally take ownership, bring people together and turn ambiguity into action. I enjoy energising teams, communicating complex topics clearly and making an impact that people remember.",
+  "cta": "Let’s talk about Data & AI transformation.",
   "ctaText": "Connect with me to discuss opportunities across Data & AI transformation, governance and organisational adoption.",
   "disclaimer": "Selected work has been anonymised and recreated using synthetic data to protect client confidentiality.",
   "education": [
@@ -77,14 +81,42 @@
       "Arabic"
     ],
     "basic": [
-      "Spanish",
       "German"
     ]
   },
-  "aboutContinuation": "I tend to become the go-to person when something needs structure — or when it needs to move. I naturally take ownership, bring people together and turn ambiguity into action. I enjoy energising teams, communicating complex topics clearly and making an impact that people remember.",
   "expertiseHeadline": "What I do across Data & AI transformation",
   "workHeadline": "Data & AI transformation in practice",
   "workIntro": "A selection of projects showing how I work across Data & AI, governance, implementation, business analysis, communication, change and adoption.",
   "experienceHeadline": "Broader data & analytics foundation",
-  "description": "Data & AI strategy, transformation, Target Operating Model design, governance and change & adoption. Explore Narjiss Berrazi’s consulting experience at KPMG."
+  "description": "Data & AI strategy, transformation, Target Operating Model design, governance and change & adoption. Explore Narjiss Berrazi’s consulting experience at KPMG.",
+  "aboutLabel": "How I work",
+  "technicalFluency": [
+    {
+      "level": "Proficient",
+      "items": [
+        "SQL",
+        "Data modelling",
+        "Power BI & DAX"
+      ]
+    },
+    {
+      "level": "Working knowledge",
+      "items": [
+        "R"
+      ]
+    },
+    {
+      "level": "Foundational",
+      "items": [
+        "Python"
+      ]
+    },
+    {
+      "level": "Conceptual / solution-level understanding",
+      "items": [
+        "Microsoft Azure",
+        "Microsoft Fabric"
+      ]
+    }
+  ]
 }

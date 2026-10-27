@@ -4,4 +4,4 @@ interface Props { entry: CollectionEntry<'focus'>; }
 const { entry } = Astro.props;
 const data = entry.data;
 ---
-{data.status !== 'hidden' && <aside class="focus-block" data-focus-status={data.status} data-experience-sector={data.sector} aria-labelledby={`focus-title-${entry.id}`}><p class="eyebrow">{data.status === 'upcoming' ? 'Upcoming focus' : 'Current focus'}</p><p class="focus-client">{data.clientLabel}</p><h3 id={`focus-title-${entry.id}`}>{data.title}</h3><p>{data.description}</p><p class="sector-tag">{data.sector}</p><ul class="tags" aria-label="Focus expertise">{data.tags.map(tag => <li>{tag}</li>)}</ul></aside>}
+{data.status !== 'hidden' && <aside class="focus-block" data-focus-status={data.status} aria-labelledby={`focus-title-${entry.id}`}><p class="eyebrow">{data.status === 'upcoming' ? 'Upcoming focus' : 'Current focus'}</p><p class="focus-client">{data.clientLabel}</p><h3 id={`focus-title-${entry.id}`}>{data.title}</h3><p>{data.description}</p><p class="sector-tag">{data.sector}</p><ul class="tags" aria-label="Focus expertise">{data.tags.map(tag => <li>{tag}</li>)}</ul></aside>}

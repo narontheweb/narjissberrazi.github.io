@@ -6,8 +6,8 @@ import CvLink from './CvLink.astro';
   <div class="container header-inner">
     <a class="brand" href="#home"><span>{profile.name}</span></a>
     <nav aria-label="Main navigation">
-      <a href="#home" class="nav-home">Home</a><a href="#work">Work</a><a href="#about">About</a><CvLink class="nav-cv" />
+      <a href="#home" class="nav-home" data-section-link="home" aria-current="location">Home</a><a href="#work" data-section-link="work">Work</a><a href="#about" data-section-link="about">About</a><CvLink class="nav-cv" />
     </nav>
-    <a class="header-social" href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+    <a class="header-social" href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <span class="cta-arrow" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
   </div>
 </header>

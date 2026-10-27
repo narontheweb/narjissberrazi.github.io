@@ -2,4 +2,7 @@
 interface Props { evidence: { label: string; note?: string }[]; }
 const { evidence } = Astro.props;
 ---
-<ul class="evidence-list">{evidence.map(item => <li><strong>{item.label}</strong>{item.note && <p class="evidence-note">{item.note}</p>}</li>)}</ul>
+<ul class="evidence-list">{evidence.map(item => {
+  const metric = item.label.match(/^((?:~)?(?:€)?\d[\d.,]*(?:\+|M)?(?:-(?:person|part|page))?)(.*)$/);
+  return <li><strong>{metric ? <><span class="evidence-value">{metric[1]}</span>{metric[2]}</> : item.label}</strong>{item.note && <p class="evidence-note">{item.note}</p>}</li>;
+})}</ul>
