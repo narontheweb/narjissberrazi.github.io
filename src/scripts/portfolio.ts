@@ -78,8 +78,7 @@ function toggleCase(clicked: HTMLButtonElement) {
     button.setAttribute('aria-expanded', String(open));
     panel.inert = !open;
     panel.setAttribute('aria-hidden', String(!open));
-    button.querySelector<HTMLElement>('[data-toggle-label]')!.textContent = open ? 'Close case' : 'View case';
-    button.querySelector<HTMLElement>('[data-toggle-icon]')!.textContent = open ? ' ↑' : ' ↓';
+    button.querySelector<HTMLElement>('[data-toggle-label]')!.textContent = open ? 'Close project' : 'Explore project';
     if (motionPreference.matches || !panel.animate || (!open && state.height === 0)) {
       panel.hidden = !open;
       panel.style.removeProperty('height');

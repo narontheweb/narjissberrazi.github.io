@@ -1,8 +1,8 @@
 ---
-interface Props { evidence: { label: string; note?: string; priority?: boolean }[]; }
-const { evidence } = Astro.props;
+interface Props { evidence: { label: string; note?: string; priority?: boolean }[]; featureIndex?: number; }
+const { evidence, featureIndex } = Astro.props;
 ---
-<ul class="evidence-list">{evidence.map(item => {
-  const metric = item.label.match(/^((?:~)?(?:€)?\d[\d.,]*(?:\+|M)?(?:-(?:person|part|page))?)(.*)$/);
-  return <li class:list={{'evidence-primary':item.priority}}><strong>{metric ? <><span class="evidence-value">{metric[1]}</span>{metric[2]}</> : item.label}</strong>{item.note && <p class="evidence-note">{item.note}</p>}</li>;
+<ul class="evidence-list">{evidence.map((item,index) => {
+  const metric = item.label.match(/^((?:~)?(?:€)?\d[\d.,]*(?:\+|M)?(?:-(?:person|part|page|year))?)(.*)$/);
+  return <li class:list={{'evidence-primary':item.priority,'evidence-feature':index===featureIndex}}><strong>{metric ? <><span class="evidence-value">{metric[1]}</span><span class="evidence-caption">{metric[2]}</span></> : item.label}</strong>{item.note && <p class="evidence-note">{item.note}</p>}</li>;
 })}</ul>

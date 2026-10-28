@@ -1,0 +1,138 @@
+/* V10 prototype. Existing palette and content; scoped to hero, work and expertise. */
+.hero h1{font-size:clamp(42px,4.5vw,64px);line-height:1.08;letter-spacing:-.05em;text-wrap:balance}
+.hero-description{max-width:61ch}
+.hero .portrait picture{border-radius:24px}
+.proof>div{border-left:0}
+
+.work-section{background:var(--paper)}
+.work-list{display:grid;gap:32px}
+.work-heading{margin-bottom:40px}
+.project-card.case-row{display:block;padding:0;margin:0;border:1px solid var(--line);border-radius:28px;background:var(--card-surface);overflow:hidden;transition:border-color 180ms ease-out}
+.project-card.case-row:hover,.project-card.case-row:focus-within{transform:none;box-shadow:none;border-color:var(--blue)}
+.project-card:hover .case-number{transform:none}
+.project-card--international{--card-surface:var(--white);--art-surface:var(--surface)}
+.project-card--priorities{--card-surface:var(--surface);--art-surface:var(--paper)}
+.project-card--roadmap{--card-surface:var(--paper);--art-surface:var(--navy)}
+.project-overview{position:relative;display:grid;grid-template-columns:1.05fr 1fr;grid-template-rows:auto 1fr;min-height:576px;border-radius:inherit}
+.project-heading{grid-column:1;grid-row:1;padding:36px 40px 0}
+.project-description{grid-column:1;grid-row:2;padding:0 40px 116px}
+.project-meta{display:flex;align-items:center;gap:16px}
+.project-meta .case-number{font-size:14px;font-weight:600;padding:0}
+.project-meta .sector-tag{margin:0;letter-spacing:0}
+.project-heading .case-client{margin-top:24px;letter-spacing:0}
+.project-heading h3{font-size:clamp(28px,3vw,38px);line-height:1.14;letter-spacing:-.045em;max-width:19ch;margin:14px 0 20px;text-wrap:balance}
+.project-description>p:not(.focus-areas){font-size:16px;line-height:1.65;max-width:57ch}
+.project-card .project-description>p.focus-areas{margin-top:24px;font-size:13px;max-width:54ch}
+.project-card .project-composition{grid-column:2;grid-row:1/span 2;position:relative;isolation:isolate;min-width:0;border:0;margin:0;padding:36px 36px 116px;background:var(--art-surface);overflow:hidden}
+.project-composition>.eyebrow{position:relative;z-index:1}
+.project-card .project-composition .evidence-list{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 26px;margin-top:24px}
+.project-composition .evidence-list>li{min-width:0;padding:0}
+.project-composition .evidence-list>li:last-child{grid-column:1/-1}
+.project-composition .evidence-list>.evidence-feature{grid-column:1/-1;grid-row:1;padding-bottom:18px}
+.project-composition .evidence-feature strong{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.project-composition .evidence-feature .evidence-value{display:block;font-size:clamp(110px,11vw,156px);font-weight:500;line-height:.9;letter-spacing:-.075em;color:var(--navy)}
+.project-composition .evidence-feature .evidence-caption{font-size:19px;line-height:1.45;font-weight:600;max-width:27ch}
+.project-composition .evidence-note{max-width:32ch}
+.composition-shapes{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.composition-shapes span{position:absolute;display:block}
+.project-card--international .composition-shapes span{width:340px;height:340px;right:-95px;top:8px;border:1px solid var(--line);border-radius:50%}
+.project-card--international .composition-shapes span:nth-child(2){right:-35px;top:68px}
+.project-card--international .composition-shapes span:nth-child(3){right:25px;top:128px}
+.project-card--priorities .composition-shapes span{width:310px;height:310px;right:-145px;top:30px;border:1px solid var(--line);border-radius:28px;transform:rotate(-16deg)}
+.project-card--priorities .composition-shapes span:nth-child(2){right:-85px;top:82px}
+.project-card--priorities .composition-shapes span:nth-child(3){right:-25px;top:134px}
+.project-card--roadmap .composition-shapes span{width:300px;height:300px;right:-140px;top:-110px;border:1px solid var(--blue);border-radius:50%}
+.project-card--roadmap .composition-shapes span:nth-child(2){width:440px;height:440px;right:-210px;top:-180px}
+.project-card--roadmap .composition-shapes span:nth-child(3){width:580px;height:580px;right:-280px;top:-250px}
+.project-card--roadmap .project-composition .eyebrow,.project-card--roadmap .project-composition .evidence-note{color:var(--paper)}
+.project-card--roadmap .project-composition .evidence-list strong,.project-card--roadmap .project-composition .evidence-value{color:var(--white)}
+.project-card--roadmap .project-composition .evidence-feature .evidence-value{font-size:clamp(80px,8.2vw,112px);color:var(--paper);letter-spacing:-.065em}
+.project-trigger.case-toggle{appearance:none;position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;width:100%;height:100%;padding:28px 36px;border:0;border-radius:inherit;background:transparent;color:var(--blue);font:inherit;font-size:14px;font-weight:650;text-align:left;cursor:pointer}
+.project-action{padding-block:18px}
+.project-arrow{display:flex;align-items:center;justify-content:center;flex-shrink:0;width:60px;height:60px;border:1px solid var(--navy);border-radius:50%;background:var(--navy);color:var(--white);transition:background 180ms ease-out,transform 180ms ease-out}
+.project-arrow svg{transition:transform 180ms ease-out}
+.project-card--roadmap .project-arrow{background:var(--paper);border-color:var(--paper);color:var(--navy)}
+.project-trigger:hover .project-arrow{background:var(--blue);border-color:var(--blue);color:var(--white)}
+.project-trigger[aria-expanded="true"] .project-arrow svg{transform:rotate(180deg)}
+.project-trigger:focus-visible{outline:3px solid var(--blue);outline-offset:-6px;box-shadow:inset 0 0 0 3px var(--paper)}
+.project-card .case-narrative{padding:36px 40px 40px;background:var(--white)}
+
+.expertise-section{margin:0;background:var(--paper);border:0}
+.expertise.section{padding-block:56px 72px}
+.expertise .section-heading{max-width:760px;margin-bottom:28px}
+.expertise .section-heading h2{font-size:clamp(28px,3vw,36px);max-width:650px}
+.expertise .section-intro{margin-top:16px}
+.expertise-grid{column-gap:32px;row-gap:24px}
+.expertise-grid .item-number{display:none}
+.expertise-grid article{padding-top:16px}
+.expertise-grid h3{font-size:18px;margin:0 0 12px;line-height:1.4}
+
+@media(max-width:1100px){
+ .project-heading,.project-description{padding-inline:28px}
+ .project-card .project-composition{padding-inline:28px}
+ .project-trigger.case-toggle{padding-inline:28px}
+ .project-composition .evidence-feature .evidence-value{font-size:116px}
+ .project-card--roadmap .project-composition .evidence-feature .evidence-value{font-size:86px}
+}
+@media(max-width:850px){
+ .hero h1{font-size:clamp(38px,6vw,50px)}
+ .project-overview{grid-template-columns:1fr;grid-template-rows:auto auto auto;min-height:0}
+ .project-heading{grid-column:1;grid-row:1;padding:30px 32px 0}
+ .project-description{grid-column:1;grid-row:3;padding:26px 32px 110px}
+ .project-heading h3{max-width:26ch;font-size:32px;margin-bottom:26px}
+ .project-card .project-composition{grid-column:1;grid-row:2;padding:28px 32px}
+ .project-card .project-composition .evidence-list{margin-top:22px;gap:22px 28px}
+ .project-composition .evidence-list>.evidence-feature{padding-bottom:8px}
+ .project-composition .evidence-feature .evidence-value{font-size:120px}
+ .project-card--roadmap .project-composition .evidence-feature .evidence-value{font-size:96px}
+ .project-trigger.case-toggle{padding:24px 28px}
+ .project-action{padding-block:18px}
+ .project-card--roadmap .project-arrow{background:var(--navy);border-color:var(--navy);color:var(--white)}
+ .project-card .case-narrative{padding:28px 32px 32px}
+ .composition-shapes{inset:0 0 auto;height:100%}
+}
+@media(max-width:540px){
+ .hero h1{font-size:clamp(36px,8.4vw,44px)}
+ .hero .portrait picture{border-radius:20px}
+ .work-list{gap:24px}
+ .work-heading{margin-bottom:28px}
+ .project-card.case-row{border-radius:24px}
+ .project-heading{padding:26px 22px 0}
+ .project-description{padding:26px 22px 104px}
+ .project-meta{gap:12px;align-items:baseline}
+ .project-heading .case-client{margin-top:22px}
+ .project-heading h3{font-size:29px;line-height:1.16;margin-block:12px 26px}
+ .project-card .project-composition{padding:26px 22px}
+ .project-card .project-composition .evidence-list{gap:22px 18px}
+ .project-composition .evidence-feature .evidence-value{font-size:108px}
+ .project-composition .evidence-feature .evidence-caption{font-size:18px}
+ .project-card--roadmap .project-composition .evidence-feature .evidence-value{font-size:76px}
+ .project-trigger.case-toggle{padding:22px}
+ .project-arrow{width:54px;height:54px}
+ .project-action{padding-block:15px}
+ .project-card .case-narrative{padding:26px 22px 30px}
+ .project-card--international .composition-shapes span{right:-180px}
+ .project-card--international .composition-shapes span:nth-child(2){right:-120px}
+ .project-card--international .composition-shapes span:nth-child(3){right:-60px}
+ .expertise.section{padding-block:40px 48px}
+ .expertise-grid{gap:20px}
+}
+@media(hover:hover) and (pointer:fine){.project-trigger:hover .project-arrow{transform:translate(2px,2px)}}
+@media(prefers-reduced-motion:reduce){.project-trigger:hover .project-arrow{transform:none}}
+@media print{
+ .hero h1{font-size:28pt}
+ .project-card.case-row{border-radius:0;border:0;overflow:visible;margin-bottom:24px}
+ .project-overview{display:block}
+ .project-heading,.project-description{padding:0}
+ .project-heading h3{font-size:20pt;max-width:none}
+ .project-card .project-composition{background:white!important;padding:20px 0;color:black}
+ .project-card .project-composition .evidence-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ .project-composition .evidence-list>.evidence-feature{grid-row:auto;grid-column:auto;padding:0}
+ .project-composition .evidence-feature strong{display:block}
+ .project-composition .evidence-feature .evidence-value,.project-card--roadmap .project-composition .evidence-feature .evidence-value{display:inline;font-size:10pt!important;letter-spacing:0;color:black!important}
+ .project-composition .evidence-feature .evidence-caption{font-size:10pt}
+ .project-card--roadmap .project-composition .evidence-list strong,.project-card--roadmap .project-composition .eyebrow,.project-card--roadmap .project-composition .evidence-note{color:black}
+ .project-trigger,.composition-shapes{display:none!important}
+ .project-card .case-narrative{padding:20px 0}
+ .expertise.section{padding-block:24px}
+}

@@ -14,7 +14,6 @@ const visuals = data.visualPlaceholders.filter(item => {
   return file.startsWith(imageRoot + sep) && existsSync(file) && statSync(file).isFile();
 });
 ---
-<button id={controlId} class="text-control case-toggle" type="button" aria-expanded="false" aria-controls={panelId}><span data-toggle-label>View case</span><span data-toggle-icon aria-hidden="true"> ↓</span><span class="sr-only">: {data.title}</span></button>
 <div id={panelId} class="case-panel" role="region" aria-labelledby={controlId} aria-hidden="true" inert hidden><div class="case-narrative">
   <div class="case-context-grid"><section><h4>Context</h4><p>{data.context}</p></section><section><h4>Challenge</h4><p>{data.challenge}</p></section></div>
   <section class="contribution-block"><h4>My contribution</h4><ul>{data.contribution.map(item => <li><strong>{item.lead}</strong>{item.detail}</li>)}</ul></section>

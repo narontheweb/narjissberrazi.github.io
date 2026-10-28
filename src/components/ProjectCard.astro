@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import CaseExpansion from './CaseExpansion.astro';
+import EvidenceList from './EvidenceList.astro';
+
+interface Props { entry: CollectionEntry<'cases'>; index: number; }
+const { entry, index } = Astro.props;
+const { data, id } = entry;
+const composition = id === 'csrd-transformation' ? 'international' : id === 'data-quality-governance-adoption' ? 'priorities' : 'roadmap';
+const featureIndex = composition === 'international' ? 1 : composition === 'priorities' ? 0 : 2;
+const controlId = `case-control-${id}`;
+const titleId = `case-title-${id}`;
+const actionId = `case-action-${id}`;
+---
+<article class:list={['case-row', 'project-card', `project-card--${composition}`]}>
+  <div class="project-overview">
+    <div class="case-main project-heading">
+      <div class="project-meta"><span class="case-number">0{index+1}</span><p class="sector-tag">{data.sector}</p></div>
+      <p class="case-client">{data.clientLabel}</p>
+      <h3 id={titleId}>{data.title}</h3>
+    </div>
+    <div class="case-main project-description">
+      <p>{data.summary}</p>
+      <p class="focus-areas"><span>Focus areas — </span>{data.tags.join(' · ')}</p>
+    </div>
+    <aside class="case-evidence project-composition" aria-label={`Selected evidence: ${data.title}`}>
+      <div class="composition-shapes" aria-hidden="true"><span></span><span></span><span></span></div>
+      <span class="eyebrow">Selected evidence</span>
+      <EvidenceList evidence={data.evidence} featureIndex={featureIndex} />
+    </aside>
+    <button id={controlId} class="case-toggle project-trigger" type="button" aria-expanded="false" aria-controls={`case-${id}`} aria-labelledby={`${actionId} ${titleId}`}>
+      <span id={actionId} class="project-action" data-toggle-label>Explore project</span>
+      <span class="project-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" focusable="false"><path d="m6 6 12 12M6 18h12V6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+    </button>
+  </div>
+  <CaseExpansion entry={entry} />
+</article>

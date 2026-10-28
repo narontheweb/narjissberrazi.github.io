@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CvLink from '../components/CvLink.astro';
-import CaseExpansion from '../components/CaseExpansion.astro';
-import EvidenceList from '../components/EvidenceList.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 import VisualPreview from '../components/VisualPreview.astro';
 import profile from '../data/profile.json';
 import { getCollection } from 'astro:content';
+import '../styles/prototype.css';
 const cases = (await getCollection('cases')).sort((a,b) => a.data.order-b.data.order);
 const experience = (await getCollection('experience')).sort((a,b) => a.data.order-b.data.order);
 ---
@@ -24,23 +24,18 @@ const experience = (await getCollection('experience')).sort((a,b) => a.data.orde
   <section class="proof container" aria-label="Areas of expertise">
     {profile.proof.map(item => <div><strong>{item.value}</strong><p>{item.label}</p></div>)}
   </section>
-  <section class="expertise-section" aria-labelledby="expertise-heading"><div class="section container expertise">
-    <div class="section-heading"><p class="eyebrow">01 / Core expertise</p><h2 id="expertise-heading">{profile.expertiseHeadline}</h2><p class="section-intro">{profile.expertiseIntro}</p></div>
-    <div class="expertise-grid">{profile.expertise.map((item,i) => <article><span class="item-number">0{i+1}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
-  </div></section>
   <section class="work-section" id="work" aria-labelledby="work-heading">
     <div class="container section">
-      <div class="section-heading work-heading"><div><p class="eyebrow">02 / Selected work</p><h2 id="work-heading" tabindex="-1">{profile.workHeadline}</h2></div><p class="section-intro">{profile.workIntro}</p></div>
+      <div class="section-heading work-heading"><div><p class="eyebrow">01 / Selected work</p><h2 id="work-heading" tabindex="-1">{profile.workHeadline}</h2></div><p class="section-intro">{profile.workIntro}</p></div>
       <div class="work-list">
-        {cases.map((item,i) => <article class="case-row">
-          <span class="case-number">0{i+1}</span>
-          <div class="case-main"><p class="case-client">{item.data.clientLabel}</p><p class="sector-tag">{item.data.sector}</p><h3>{item.data.title}</h3><p>{item.data.summary}</p><p class="focus-areas"><span>Focus areas — </span>{item.data.tags.join(' · ')}</p></div>
-          <aside class="case-evidence" aria-label="Selected project evidence"><span class="eyebrow">Selected evidence</span><EvidenceList evidence={item.data.evidence} /></aside>
-          <CaseExpansion entry={item} />
-        </article>)}
+        {cases.map((item,i) => <ProjectCard entry={item} index={i} />)}
       </div>
     </div>
   </section>
+  <section class="expertise-section" id="core-expertise" aria-labelledby="expertise-heading"><div class="section container expertise">
+    <div class="section-heading"><p class="eyebrow">02 / Core expertise</p><h2 id="expertise-heading">{profile.expertiseHeadline}</h2><p class="section-intro">{profile.expertiseIntro}</p></div>
+    <div class="expertise-grid">{profile.expertise.map((item,i) => <article><span class="item-number">0{i+1}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
+  </div></section>
   <section class="foundation-section" id="broader-experience" aria-labelledby="breadth-heading"><div class="section container breadth">
     <div class="section-heading"><p class="eyebrow">03 / Broader experience</p><h2 id="breadth-heading">{profile.experienceHeadline}</h2><p class="section-intro">{profile.experienceIntro}</p></div>
     <div class="experience-list">{experience.map(entry => <article class:list={['experience-entry', {'secondary-experience':entry.data.secondary}]}><h3>{entry.data.title}</h3><p class="experience-client">{entry.data.clientLabel}</p>{entry.data.sector && <p class="sector-tag">{entry.data.sector}</p>}<p class="experience-description">{entry.data.description}</p></article>)}</div>

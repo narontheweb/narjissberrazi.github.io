@@ -1,6 +1,6 @@
-# Update the V9 portfolio
+# Update the V10 prototype
 
-Edit on a preview branch and review the Vercel preview before merging into `main`. Keep JSON punctuation and Markdown `---` markers intact. V9 refines the existing V8 source without redesigning it. Its reference to a final Word CV is unresolved: no newer Word source was attached. The supplied final V8 PDF remains unchanged and governs CV-derived facts pending that source check. The earlier V7 Word file predates it.
+Edit on a preview branch and review before merging into `main`. V10 changes presentation and section order on top of V9; all profile, case and supporting-experience data remain unchanged. Keep JSON punctuation and Markdown `---` markers intact. The final supplied V8 PDF remains unchanged; no CV-source issue needs to be resolved to review this design-only prototype.
 
 ## Positioning and section order
 
@@ -19,7 +19,15 @@ In `src/data/profile.json`:
 - `languages`: the unchanged confirmed language boundaries.
 - `cta`, `linkedin`: the dark contact band and its single LinkedIn CTA. `disclaimer` is the factual confidentiality line used only in the bottom footer.
 
-Keep the current portrait size, without a caption. The page order is hero/expertise strip, Core Expertise, flagship work, broader experience, Education, Skills & Credentials, then contact/footer. The six capability titles/descriptions and their existing grid remain unchanged. The retained hidden focus configuration is not imported by the page.
+Keep the current hero content and portrait file, without a caption. V10 improves heading hierarchy and rounds the existing portrait frame without changing the photograph. Page order is hero/four expertise terms, flagship cards, lighter Core Expertise, broader experience, credentials, then contact/footer. All six capability descriptions remain; their presentation is more compact. The retained hidden focus configuration is not imported by the page.
+
+## Prototype presentation
+
+`src/components/ProjectCard.astro` renders each existing case and chooses a composition by stable entry ID. `EvidenceList.astro` receives a `featureIndex` so the typographic focal point uses the existing evidence array rather than new hardcoded project numbers: 31 entities for CSRD, 40 prioritised issues for banking and the 2-year approved roadmap for AI. All four evidence items and their notes appear once per card. The shapes are abstract and encode no additional data.
+
+`src/styles/prototype.css` is scoped to hero, Selected Work and Core Expertise. It uses the original paper, stone, white, blue and navy tokens. Keep body text readable and retain the financial/training/ownership qualifiers. Do not add gradients, badges, stock images or mock client artifacts. Mobile cards stack heading, composition and description.
+
+The whole card overview is a single native button with an accessible project name, aria-expanded and aria-controls. Its circular arrow is part of that button, not a nested control. Expanded content is a sibling below the overview, so interacting with the narrative does not toggle the card. Never wrap the case in an external link or create a new project page.
 
 ## Flagship cases
 
@@ -39,7 +47,7 @@ Preserve a leading space or punctuation on contribution `detail` so sentences jo
 - Banking: 40 of ~300 issues prioritised using 80/20, ~€11M estimated combined annualised impact, simulated from employee time savings and avoided regulatory fines across those 40 issues. Approximately half are resolved. Retain the ECB/NBB, BCBS 239 / RDARR context; team of 7, 8 domains, approximately 8 months ongoing; 90 governance-role users trained; monthly Data Board/Audit Committee KPIs. The estimate is not a claim of realised savings.
 - AI: the entire V8 source file is preserved byte-for-byte in V9, including the collapsed summary and Flemish organisation context. Do not rewrite its introduction. Ten use cases are assessed/prioritised and the learning rollout remains ongoing; preserve existing ownership boundaries.
 
-The flagship cases remain a single-open accordion, collapsed by default. Opening another case preserves the reading position and focus; direct scrolling interrupts the transition. Reduced motion opens/closes immediately.
+The flagship cards retain the single-open accordion, collapsed by default. Opening another card preserves reading position/focus; direct scrolling interrupts the transition. Reduced motion opens/closes immediately. Enter and Space use native button behavior. Card controls live in ProjectCard; CaseExpansion retains the original narrative region and its control ID relationship.
 
 ## Broader experience
 
@@ -71,9 +79,9 @@ Prior immutable Vercel deployments are separate. Review source ambiguities and t
 
 ## Typography, navigation and future images
 
-Preserve V6 sizing: 16px body/project copy and 13px focus/sector metadata. Keep neutral backgrounds, restrained blue accents and the dark navy contact footer.
+Preserve 16px body/project copy and 13px focus/sector metadata. V10 uses a large typographic metric within each approved composition while keeping all original evidence wording. Retain the neutral palette, restrained blue and the existing navy contact footer.
 
-Navigation is Home, Work, Credentials and external LinkedIn, including on phones. Home covers hero/expertise; Work covers flagship/broader experience; Credentials covers the final information section. Anchor IDs and the scrollspy in `src/scripts/portfolio.ts` must agree. Keep short reveals and reduced-motion support.
+Navigation remains Home, Work, Credentials, LinkedIn and Download CV. Home covers the hero/four terms; Work begins at Selected Work and remains active through Core Expertise and broader experience; Credentials covers the final information section. Anchor IDs and scrollspy must agree. Keep short reveals and reduced-motion support.
 
 No project example assets are published. Do not add fictional cases, fabricated screenshots or recreated deliverables. Retained image-preview code and unconfigured future slots are dormant; they do not establish that examples exist. Remove any public claim to the contrary. The sole footer confidentiality line is factual and does not mention examples.
 
@@ -81,4 +89,4 @@ For an approved portrait replacement, replace the JPEG, run `npm run assets`, an
 
 ## Review
 
-Run `npm run check` and `npm run build`. Check desktop/tablet/phone layout, both CV downloads, static broader entries, keyboard/touch flagship accordion, reduced motion and scrollspy. Compare the AI source bytes to V8. Audit obsolete public claims and confidential identities, including PDF text/metadata. Capture real desktop/mobile screenshots under `review/v9/`, outside public build assets, and review the Vercel preview before approving production.
+Run `npm run check` and `npm run build`. Check desktop/tablet/phone card layouts, all click areas, circular arrow, Enter/Space, focus, inline-only expansion, interrupted transitions, reduced motion, scrollspy and both CV downloads. Compare all case/profile source bytes to V9, especially the AI introduction. Audit confidentiality and preservation of qualifications. Capture real review screenshots under `review/v10/`, outside public build assets, before owner approval.

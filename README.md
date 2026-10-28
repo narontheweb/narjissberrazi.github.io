@@ -1,14 +1,14 @@
 # Narjiss Berrazi — Data & AI transformation portfolio
 
-A one-page Astro + TypeScript editorial portfolio for a Data & AI Transformation Specialist. V9 refines the existing V8 source: four expertise terms, concise positioning, navigation/hero CV access, comparable evidence, domain-based skills and a minimal footer. The portrait, body-text scale, six capabilities, three-case order and interaction model are preserved. The AI case source and final V8 PDF are unchanged.
+A one-page Astro + TypeScript portfolio for a Data & AI Transformation Specialist. V10 is a focused design prototype on V9: large rounded project cards with fact-based typographic compositions, circular arrow controls and inline expansion. Selected Work moves directly below the hero/expertise strip; Core Expertise follows in a lighter layout. All approved profile and case data, remaining sections, portrait assets and CV remain unchanged.
 
 ## Browser review and publication
 
 Repository: `narontheweb/narjissberrazi.github.io`, connected to Vercel.
 
 1. Open the portfolio project in [Vercel](https://vercel.com/dashboard).
-2. Select `v9-portfolio` in [Deployments](https://vercel.com/narontheweb/narjissberrazi-github-io/deployments) and click **Visit**. The actual preview website URL ends in `.vercel.app`; the deployment dashboard address is not the website URL. Deployment reachability must be checked in Vercel when cloud network access is blocked.
-3. Review at normal 100% browser zoom on desktop and phone. Check both CV links, quiet expertise strip, CSRD team/scope distinction, short banking evidence, verbatim AI introduction, grouped skills and single LinkedIn contact CTA. [Desktop](review/v9/desktop.png) and [mobile](review/v9/mobile.png) captures show the actual V9 site.
+2. Select `v10-prototype` in [Deployments](https://vercel.com/narontheweb/narjissberrazi-github-io/deployments) and click **Visit**. The actual preview website URL ends in `.vercel.app`; deployment reachability must be checked in Vercel when cloud network access is blocked.
+3. Review the actual prototype captures: [desktop cards](review/v10/desktop-work.png), [mobile card](review/v10/mobile-card.png), [expanded project](review/v10/desktop-expanded.png), [full desktop](review/v10/desktop.png) and [full mobile](review/v10/mobile.png). Click any part of a card, use Enter/Space, and verify inline detail and reduced motion before approval.
 4. Merge into production `main` only after owner review/approval. Vercel automatically builds production from `main`.
 5. Use a new preview branch for substantial later changes. Routine edits are explained in `CONTENT-GUIDE.md`.
 
@@ -30,29 +30,31 @@ Development defaults to port 4321; `npm run preview` serves the static build. Ch
 
 ## Content architecture
 
-- `src/data/profile.json`: V9 hero/expertise strip, unchanged six capabilities, education, four certifications, firm contributions, languages and skills grouped by domain.
-- `src/content/cases/*.md`: CSRD, banking and AI in the approved order, five to six contribution bullets each, comparable evidence, qualifications and compact deliverables. The AI file is byte-identical to V8.
+- `src/data/profile.json`: unchanged V9 hero, four expertise keywords, six capabilities and all credentials/contact data.
+- `src/content/cases/*.md`: all three files are byte-identical to V9, including every introduction, metric, qualification and contribution.
 - `src/content/experience/*.md`: three static supporting engagements with concise descriptions.
 - `src/content/focus/assignment.md`: retained as hidden source data; the page does not import or render a focus section.
-- `src/components/CaseExpansion.astro`: accessible inline region, contribution lead/detail rendering and real-file-only future visuals.
-- `src/components/EvidenceList.astro`: evidence once, numeric emphasis and approved outcome priority.
+- `src/components/ProjectCard.astro`: whole-card native button, circular arrow and distinct international-scope/prioritisation/roadmap compositions, derived from existing evidence.
+- `src/components/CaseExpansion.astro`: the existing accessible inline region and unchanged narratives, now controlled by ProjectCard.
+- `src/components/EvidenceList.astro`: original evidence once per card, with a configurable typographic focal point; no invented values.
+- `src/styles/prototype.css`: scoped hero, card and compact-expertise styles using existing colour tokens.
 - `src/scripts/portfolio.ts`: single-open accordion, reading-position preservation, user-scroll interruption, short reveals, scrollspy and optional image preview.
 - `public/cv/Narjiss_Berrazi_CV.pdf`: the only public CV asset, byte-for-byte identical to the supplied final `NarjissBerrazi_CV.pdf` for V8. Navigation and hero download the same PDF.
 - `QA-REPORT.md`: observed checks and deployment limits.
 
 ## Interaction and layout
 
-All cases start collapsed; opening one closes the previous case. The activated control retains focus and its viewport position while the layout changes. Wheel/touch/scroll-key input settles the remaining reflow and lets the user continue scrolling. Reduced motion is immediate. Hidden/closing regions are excluded from keyboard and assistive access.
+Each card's complete overview is one native button, without nested controls. Clicking the title, composition or circular arrow expands the original details below it on the same page. Enter and Space work natively; aria-expanded/controls, labelled regions and visible focus remain. Opening another card closes the previous one. No project route, new tab or case modal is created.
 
-Evidence sits in a readable band beneath each summary, with consistent 16px labels. Main/project copy remains 16px, with 13px borderless focus metadata/sector labels. Long banking methodology remains in the expanded contribution, with a short combined-estimate qualification alongside the collapsed metric. Core Expertise keeps its warm neutral background. The dark navy contact band has one LinkedIn CTA; the bottom footer contains only copyright and the factual confidentiality line.
+The activated card retains focus and its reading position during the existing 240ms reflow. Direct scrolling interrupts it; reduced motion is immediate, with no hover movement. Main body copy stays 16px. Oversized 31, 40 and 2-year figures come directly from approved evidence. The bank's ~€11M remains explicitly estimated/annualised and qualified alongside the metric, with its methodology in expanded detail.
 
-The section order is hero/expertise strip, Core Expertise, Selected Work, Broader Data & Analytics Experience, Education, Skills & Credentials, then the contact footer. Broader entries remain static. Technical Skills use borderless domain groups with accurate scope descriptions. Leadership & Firm Contributions stays inside credentials. No project example assets are published. There is no disclaimer beneath Selected Work and no claim that example assets exist.
+The order is hero/expertise keywords, Selected Work, compact Core Expertise, Broader Data & Analytics Experience, Education, Skills & Credentials, contact/footer. Mobile cards place the typographic composition between the project heading and its unchanged description. The header, broader experience, credentials, leadership and footer are unchanged. The current neutral/blue/navy palette is retained; there are no gradients, new project images, dashboard mockups or simulated deliverables. The compositions are abstract typography and geometry, not project artifacts.
 
 ## Privacy and confidentiality
 
 Use approved generic organisation labels only. KPMG is the employer. CSRD assurance is described accurately as external limited assurance; the application is credited as co-built with the client's local IT team. The bank impact is an annualised simulation for the 40 prioritised issues. Do not publish client identities, internal documents, original dashboards, individual stakeholders or procurement details.
 
-Noindex meta, disallow-all robots.txt and Vercel X-Robots-Tag reduce indexing; they do not make the URL private. No analytics, advertising trackers, fingerprinting, session replay or live AI model is installed. Internal source documents and older CV assets are not included in the V9 build. The review screenshots are captures of this website, stored outside public build assets.
+Noindex meta, disallow-all robots.txt and Vercel X-Robots-Tag reduce indexing; they do not make the URL private. No analytics, advertising trackers, fingerprinting, session replay or live AI model is installed. Internal source documents and older CV assets are not included in the build. The review screenshots are captures of this website, stored outside public build assets.
 
 ## CV source clarification
 
