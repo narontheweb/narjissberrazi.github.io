@@ -15,17 +15,17 @@ const experience = (await getCollection('experience')).sort((a,b) => a.data.orde
       <p class="eyebrow"><span class="small-rule" aria-hidden="true"></span>{profile.title}</p>
       <h1 id="hero-heading">{profile.headline}</h1>
       <p class="hero-description">{profile.hero}</p>
-      <div class="hero-actions"><a class="button button-primary" href="#work">View selected work <span class="cta-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" focusable="false"><path d="M4 12 12 4M4 4h8v8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></span></a><CvLink class="button button-secondary" /></div>
+      <div class="hero-actions"><a class="button button-primary" href="#work">View selected work</a><CvLink class="button button-secondary" /></div>
     </div>
     <figure class="portrait">
       <picture><source srcset={`${profile.portrait}.avif`} type="image/avif" /><source srcset={`${profile.portrait}.webp`} type="image/webp" /><img src={`${profile.portrait}.jpeg`} alt="Narjiss Berrazi wearing a blue top in a professional portrait." width="720" height="900" fetchpriority="high" /></picture>
     </figure>
   </section>
-  <section class="proof container" aria-label="Professional profile">
+  <section class="proof container" aria-label="Areas of expertise">
     {profile.proof.map(item => <div><strong>{item.value}</strong><p>{item.label}</p></div>)}
   </section>
   <section class="expertise-section" aria-labelledby="expertise-heading"><div class="section container expertise">
-    <div class="section-heading"><p class="eyebrow">01 / Core expertise</p><h2 id="expertise-heading">{profile.expertiseHeadline}</h2></div>
+    <div class="section-heading"><p class="eyebrow">01 / Core expertise</p><h2 id="expertise-heading">{profile.expertiseHeadline}</h2><p class="section-intro">{profile.expertiseIntro}</p></div>
     <div class="expertise-grid">{profile.expertise.map((item,i) => <article><span class="item-number">0{i+1}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
   </div></section>
   <section class="work-section" id="work" aria-labelledby="work-heading">
@@ -39,7 +39,6 @@ const experience = (await getCollection('experience')).sort((a,b) => a.data.orde
           <CaseExpansion entry={item} />
         </article>)}
       </div>
-      <p class="confidentiality-note">{profile.disclaimer}</p>
     </div>
   </section>
   <section class="foundation-section" id="broader-experience" aria-labelledby="breadth-heading"><div class="section container breadth">
@@ -50,13 +49,13 @@ const experience = (await getCollection('experience')).sort((a,b) => a.data.orde
     <div class="section-heading"><p class="eyebrow">04 / Credentials</p><h2 id="credentials-heading">Education, Skills & Credentials</h2></div>
     <div class="credentials-grid">
       <div><h3>Education</h3>{profile.education.map(education => <div class="education-entry"><p class="education-institution">{education.institution}</p><strong>{education.degree}</strong>{education.major && <p>{education.major}</p>}{education.distinction && <p>{education.distinction}</p>}</div>)}</div>
-      <div class="technical-skills"><h3>Technical Skills</h3><dl class="technical-groups">{profile.technicalSkills.map(group=><div><dt>{group.level}</dt><dd>{group.items.join(' · ')}</dd></div>)}</dl></div>
+      <div class="technical-skills"><h3>Technical Skills</h3><dl class="technical-groups">{profile.technicalSkills.map(group=><div><dt>{group.domain}</dt><dd>{group.items.join(' · ')}{group.scope && <span class="technical-scope">{group.scope}</span>}</dd></div>)}</dl></div>
       <div><h3>Certifications</h3><ul class="certification-list">{profile.certifications.map(certification => <li>{certification}</li>)}</ul></div>
       <div><h3>Languages</h3><p class="language-copy">{profile.languages.fluent.join(' · ')} — Fluent</p><p class="language-copy">{profile.languages.basic.join(' · ')} — Basic understanding</p></div>
       <div class="leadership-contributions"><h3>Leadership & Firm Contributions</h3><p><strong>{profile.firmContributions.organisation}</strong><br />{profile.firmContributions.role}</p><p>{profile.firmContributions.description}</p><p>{profile.firmContributions.coaching}</p></div>
     </div>
   </div></section>
-  <section class="contact-section" aria-labelledby="contact-heading"><div class="container contact-inner"><div><p class="eyebrow">Continue the conversation</p><h2 id="contact-heading">{profile.cta}</h2><p>{profile.ctaText}</p></div><div class="contact-actions"><a class="button button-light" href={profile.linkedin} target="_blank" rel="noopener noreferrer">Connect on LinkedIn <span class="cta-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" focusable="false"><path d="M4 12 12 4M4 4h8v8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="sr-only"> (opens in a new tab)</span></a><a class="email-link" href={`mailto:${profile.email}`}>{profile.email} <span class="cta-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" focusable="false"><path d="M4 12 12 4M4 4h8v8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></span></a></div></div></section>
+  <section class="contact-section" aria-labelledby="contact-heading"><div class="container contact-inner"><h2 id="contact-heading">{profile.cta}</h2><a class="button button-light" href={profile.linkedin} target="_blank" rel="noopener noreferrer">Connect on LinkedIn <span class="cta-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" focusable="false"><path d="M4 12 12 4M4 4h8v8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="sr-only"> (opens in a new tab)</span></a></div></section>
   <VisualPreview />
 </BaseLayout>
 

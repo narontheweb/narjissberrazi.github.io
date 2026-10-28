@@ -3,27 +3,27 @@
   "title": "Data & AI Transformation Specialist",
   "descriptor": "Data & AI Strategy | Governance | Change & Adoption",
   "headline": "Turning Data & AI ambition into governed, adopted and scalable transformation.",
-  "hero": "I’m Narjiss Berrazi, a Data & AI Transformation Specialist with three years of Big Four consulting experience. I structure complex Data & AI transformations from strategy and operating models through governance, implementation and adoption — bridging business and technology throughout.",
+  "hero": "I'm a Data & AI Transformation Specialist at KPMG Belgium, with three years of Big Four consulting experience across banking, the public sector and international organisations. I combine strategy, governance, business and technology expertise to translate complex challenges into operating models, practical delivery and organisational adoption.",
   "email": "narjiss.berrazi@hotmail.com",
   "linkedin": "https://www.linkedin.com/in/narjiss-berrazi-332657196/",
   "cv": "/cv/Narjiss_Berrazi_CV.pdf",
   "portrait": "/images/narjiss-berrazi-headshot",
   "proof": [
     {
-      "value": "3 years",
-      "label": "Big Four consulting at KPMG"
+      "value": "Data & AI Transformation",
+      "label": "Strategy, operating models & delivery"
     },
     {
-      "value": "Data & AI transformation",
-      "label": "Maturity assessments, Target Operating Model design & implementation"
+      "value": "Governance & Strategy",
+      "label": "Decision-making, ownership & roadmaps"
     },
     {
-      "value": "Change & communication",
-      "label": "Stakeholder alignment, communication & training through adoption"
+      "value": "Change & Adoption",
+      "label": "Stakeholder engagement, communication & training"
     },
     {
-      "value": "Executive exposure",
-      "label": "Management and C-level stakeholders"
+      "value": "Business & Technology",
+      "label": "Requirements, alignment & implementation"
     }
   ],
   "expertise": [
@@ -54,8 +54,7 @@
   ],
   "experienceIntro": "My transformation work is supported by hands-on experience across data platforms, data modelling, analytics, reporting and user enablement — giving me the practical understanding to translate between business needs and technical delivery.",
   "cta": "Let’s talk about Data & AI transformation.",
-  "ctaText": "Connect with me to discuss opportunities across Data & AI transformation, governance and organisational adoption.",
-  "disclaimer": "Selected work has been anonymised and recreated using synthetic data to protect client confidentiality.",
+  "disclaimer": "Client identities and confidential project information have been anonymised.",
   "education": [
     {
       "institution": "KU Leuven",
@@ -100,14 +99,15 @@
       "German"
     ]
   },
-  "expertiseHeadline": "What I do across Data & AI transformation",
+  "expertiseHeadline": "From strategy to implementation and adoption.",
+  "expertiseIntro": "Six complementary capabilities I bring to complex Data & AI transformations.",
   "workHeadline": "Data & AI transformation in practice",
   "workIntro": "A selection of projects showing how I work across Data & AI, governance, implementation, business analysis, communication, change and adoption.",
   "experienceHeadline": "Broader Data & Analytics Experience",
   "description": "Data & AI strategy, transformation, Target Operating Model design, governance and change & adoption. Explore Narjiss Berrazi’s consulting experience at KPMG.",
   "technicalSkills": [
     {
-      "level": "Proficient",
+      "domain": "Data & reporting",
       "items": [
         "SQL",
         "Data Modelling",
@@ -115,23 +115,20 @@
       ]
     },
     {
-      "level": "Working knowledge",
+      "domain": "Analytical programming",
       "items": [
-        "R"
-      ]
-    },
-    {
-      "level": "Foundational",
-      "items": [
+        "R",
         "Python"
-      ]
+      ],
+      "scope": "Working knowledge of R; foundational Python."
     },
     {
-      "level": "Solution-level",
+      "domain": "Cloud & platform exposure",
       "items": [
         "Microsoft Azure",
         "Microsoft Fabric"
-      ]
+      ],
+      "scope": "Solution-level understanding."
     }
   ]
 }

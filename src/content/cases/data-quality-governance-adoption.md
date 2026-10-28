@@ -26,13 +26,13 @@ contribution:
 - lead: Reported Data Quality KPIs monthly
   detail: ' to the Data Board and Audit Committee, translating remediation progress into senior-management reporting.'
 evidence:
-- label: 40 of ~300 issues prioritised
+- label: 40 of ~300 DQ issues prioritised
   priority: true
 - label: ~€11M estimated annualised impact
-  note: Estimated combined annualised impact across the 40 prioritised issues, simulated from employee time savings and avoided regulatory fines.
+  note: Combined estimate for the 40 prioritised issues.
   priority: true
 - label: 8 data domains
-- label: 90 governance-role users trained
+- label: 90 Data Owners, Stewards & Custodians trained
 deliverables:
 - title: 80/20 Prioritisation & Impact Model
 - title: Governance Councils & Accountability

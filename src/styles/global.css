@@ -66,3 +66,18 @@
 .leadership-contributions p+p{margin-top:12px}
 @media(max-width:700px){.credentials-grid{gap:32px}.experience-entry{padding-block:22px}}
 @media print{.experience-entry{opacity:1!important;transform:none!important;break-inside:avoid}.experience-description{font-size:10pt}.case-row .case-main>p.focus-areas{font-size:8pt!important}.technical-skills .technical-groups{display:block}}
+
+/* V9: quiet CV access, comparable evidence and a concise footer. */
+.site-header nav{flex-wrap:wrap}
+.site-header .nav-cv{border:0;padding:0;white-space:nowrap}
+.site-header .header-social{white-space:nowrap}
+.case-evidence .evidence-list{align-items:start}
+.case-evidence .evidence-list strong,.case-evidence .evidence-primary strong{font-size:16px;line-height:1.6;font-weight:650}
+.evidence-list .evidence-value,.evidence-list .evidence-primary .evidence-value{font-size:inherit;font-weight:inherit}
+.case-evidence .evidence-note{margin-top:5px}
+.technical-scope{display:block;margin-top:4px}
+.contact-inner>.button{flex-shrink:0}
+.site-footer .footer-bottom{border:0;margin:0;padding:0}
+@media(max-width:700px){.contact-inner>.button{margin-top:24px}}
+@media(max-width:540px){.site-header nav{display:grid;grid-template-columns:repeat(3,max-content);justify-content:space-between;gap:0 12px}.site-header nav a{justify-content:flex-start;justify-self:start}}
+@media print{.case-evidence .evidence-list strong,.case-evidence .evidence-primary strong{font-size:10pt}}
