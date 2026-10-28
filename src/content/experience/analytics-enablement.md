@@ -3,7 +3,7 @@ title: Analytics Navigation & User Enablement
 clientLabel: Belgian Higher-Education Institution
 sector: Higher Education & Research
 order: 2
-description: Designed a role-based analytics landing experience to help users find the right reports more easily, while using data-storytelling principles to challenge KPI definitions, report logic and visual design. Worked with report builders to redesign reporting for clearer interpretation, stronger usability and higher adoption.
+description: Designed a role-based analytics navigation experience and worked with report builders to improve KPI definitions, report logic and visual design — making reporting easier to find, interpret and adopt.
 tags:
 - Data Storytelling
 - KPI Design

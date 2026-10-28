@@ -38,3 +38,28 @@
 @media print{.hero-description,.section-intro,.expertise-grid p,.case-main>p,.case-narrative p,.case-narrative li,.experience-detail,.about-intro,.language-copy,.technical-groups dd{font-size:10pt!important}.case-evidence .evidence-list{grid-template-columns:repeat(2,minmax(0,1fr))}.case-evidence .evidence-list strong,.case-evidence .evidence-note{font-size:10pt}.about-grid>div:only-child{display:block}.about-grid>div:only-child .about-intro{margin-top:20px}.case-evidence .evidence-primary strong{font-size:11pt}.tags li,.case-client,.sector-tag{font-size:8pt!important}.expertise-section,.about-section{background:white}}
 
 .cta-arrow svg{display:block}.nav-cv{gap:6px}[data-toggle-icon]{margin-left:6px}
+
+/* V7: lighter metadata, static supporting experience and consolidated credentials. */
+.site-header nav .header-social{display:inline-flex;font-size:inherit}
+.site-header nav .nav-home{display:inline-flex}
+.case-row .case-main>p.focus-areas{font-size:13px;line-height:1.6;color:var(--muted);margin-top:18px;max-width:80ch;border:0;background:none;padding:0}
+.focus-areas span{font-weight:600}
+.experience-entry{padding-block:24px;border-top:1px solid var(--line)}
+.experience-entry h3{font-size:16px;line-height:1.5;letter-spacing:-.015em;font-weight:600}
+.experience-client{font-size:13px;line-height:1.6;margin-top:6px}
+.experience-entry .sector-tag{margin-top:5px}
+.experience-description{font-size:16px;line-height:1.6;margin-top:12px;max-width:65ch}
+.secondary-experience h3{font-weight:500}
+.credentials-grid{column-gap:64px;row-gap:40px}
+.education-entry{margin-bottom:24px}
+.education-entry:last-child{margin-bottom:0}
+.education-entry .education-institution{margin-top:0;margin-bottom:4px}
+.technical-skills .technical-groups{display:block}
+.technical-skills .technical-groups>div{border:0;padding:0;margin:0 0 18px}
+.technical-skills .technical-groups>div:last-child{margin-bottom:0}
+.technical-skills dt{color:var(--muted)}
+.technical-skills dd{margin-top:4px}
+.certification-list li,.certification-list li:last-child{border:0;padding-block:3px}
+.language-copy+.language-copy{margin-top:12px}
+@media(max-width:700px){.credentials-grid{gap:32px}.experience-entry{padding-block:22px}}
+@media print{.experience-entry{opacity:1!important;transform:none!important;break-inside:avoid}.experience-description{font-size:10pt}.case-row .case-main>p.focus-areas{font-size:8pt!important}.technical-skills .technical-groups{display:block}}

@@ -6,7 +6,7 @@ const miniature = z.object({label:text,description:text,image:z.string().startsW
 const cases = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/cases' }),
   schema: z.object({
-    title: text, clientLabel: text, sector, order: z.number().int().positive(), tags: z.array(text).min(1), summary: text,
+    title: text, clientLabel: text, sector, order: z.number().int().positive(), tags: z.array(text).min(1).max(5), summary: text,
     context: text, challenge: text, contribution: z.array(z.object({lead:text,detail:z.string()})).min(1).max(7),
     evidence: z.array(z.object({label:text,note:text.optional(),priority:z.boolean().default(false)})).min(1),
     deliverables: z.array(z.object({title:text,items:z.array(text).min(1).optional()})).min(1), visualPlaceholders: z.array(miniature).min(2).max(3),

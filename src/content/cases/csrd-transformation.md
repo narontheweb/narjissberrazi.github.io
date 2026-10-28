@@ -7,7 +7,6 @@ tags:
 - Programme Leadership
 - CSRD
 - ESG Data
-- Data & Reporting
 - Governance
 - Audit
 summary: Led the sustainability-reporting workstream across 31 reporting entities in multiple countries, coordinating Environmental, Social and Governance data, regulatory interpretation, reporting governance, audit evidence and delivery of a ~200-page sustainability report.

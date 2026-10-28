@@ -107,7 +107,7 @@ function toggleCase(clicked: HTMLButtonElement) {
 caseButtons.forEach(button => button.addEventListener('click', () => toggleCase(button)));
 window.addEventListener('resize', () => settleAccordion?.());
 
-const revealTargets = [...document.querySelectorAll<HTMLElement>('.section-heading, .case-row, .experience-list details, .credentials')];
+const revealTargets = [...document.querySelectorAll<HTMLElement>('.section-heading, .case-row, .experience-entry, .credentials')];
 let revealObserver: IntersectionObserver | undefined;
 if (!motionPreference.matches && 'IntersectionObserver' in window) {
   revealObserver = new IntersectionObserver(entries => {
@@ -130,7 +130,7 @@ motionPreference.addEventListener('change', event => {
 
 const header = document.querySelector<HTMLElement>('.site-header')!;
 const work = document.querySelector<HTMLElement>('#work')!;
-const about = document.querySelector<HTMLElement>('#about')!;
+const credentials = document.querySelector<HTMLElement>('#credentials')!;
 const navigation = [...document.querySelectorAll<HTMLAnchorElement>('[data-section-link]')];
 let scheduled = false;
 function updateNavigation() {
@@ -141,7 +141,7 @@ function updateNavigation() {
     document.documentElement.style.setProperty('--header-height', heightValue);
   }
   const boundary = headerHeight + 36;
-  const active = about.getBoundingClientRect().top <= boundary ? 'about' : work.getBoundingClientRect().top <= boundary ? 'work' : 'home';
+  const active = credentials.getBoundingClientRect().top <= boundary ? 'credentials' : work.getBoundingClientRect().top <= boundary ? 'work' : 'home';
   for (const link of navigation) {
     if (link.dataset.sectionLink === active) link.setAttribute('aria-current', 'location');
     else link.removeAttribute('aria-current');

@@ -3,7 +3,7 @@
   "title": "Data & AI Transformation Specialist",
   "descriptor": "Data & AI Strategy | Governance | Change & Adoption",
   "headline": "Turning Data & AI ambition into governed, adopted and scalable transformation.",
-  "hero": "I’m Narjiss Berrazi, a Data & AI Transformation Specialist with three years of Big Four consulting experience at KPMG. I leverage my foundation in data analysis, reporting and insights to shape and deliver Data & AI transformation — helping organisations assess opportunities, design the right operating model and governance, and move from roadmap into implementation, communication and adoption.",
+  "hero": "I’m Narjiss Berrazi, a Data & AI Transformation Specialist with three years of Big Four consulting experience. I structure complex Data & AI transformations from strategy and operating models through governance, implementation and adoption — bridging business and technology throughout.",
   "email": "narjiss.berrazi@hotmail.com",
   "linkedin": "https://www.linkedin.com/in/narjiss-berrazi-332657196/",
   "cv": "/cv/Narjiss_Berrazi_CV.pdf",
@@ -53,14 +53,23 @@
     }
   ],
   "experienceIntro": "My transformation work is supported by hands-on experience across data platforms, data modelling, analytics, reporting and user enablement — giving me the practical understanding to translate between business needs and technical delivery.",
-  "aboutHeadline": "I work where Data, AI, transformation and people meet.",
-  "about": "I bring structure to ambiguous problems, align people around decisions and turn those decisions into action. I naturally take ownership, enjoy bringing teams together and communicate complex topics in a way that makes them easier to act on.",
   "cta": "Let’s talk about Data & AI transformation.",
   "ctaText": "Connect with me to discuss opportunities across Data & AI transformation, governance and organisational adoption.",
   "disclaimer": "Selected work has been anonymised and recreated using synthetic data to protect client confidentiality.",
   "education": [
-    "Master of Science in Business Administration — Data & Information Management · KU Leuven",
-    "Bachelor in Accounting and Finance · Artevelde University of Applied Sciences"
+    {
+      "institution": "KU Leuven",
+      "degree": "Master of Science in Business Administration",
+      "major": "Major: Data & Information Management"
+    },
+    {
+      "institution": "KU Leuven",
+      "degree": "Bridging Programme in Business Engineering"
+    },
+    {
+      "institution": "Artevelde University of Applied Sciences",
+      "degree": "Bachelor in Accounting & Finance"
+    }
   ],
   "certifications": [
     "Microsoft AB-731 — AI Transformation Leader",
@@ -89,13 +98,12 @@
   "workIntro": "A selection of projects showing how I work across Data & AI, governance, implementation, business analysis, communication, change and adoption.",
   "experienceHeadline": "Broader Data & Analytics Experience",
   "description": "Data & AI strategy, transformation, Target Operating Model design, governance and change & adoption. Explore Narjiss Berrazi’s consulting experience at KPMG.",
-  "aboutLabel": "How I work",
-  "technicalFluency": [
+  "technicalSkills": [
     {
       "level": "Proficient",
       "items": [
         "SQL",
-        "Data modelling",
+        "Data Modelling",
         "Power BI & DAX"
       ]
     },
@@ -112,7 +120,7 @@
       ]
     },
     {
-      "level": "Solution-level understanding",
+      "level": "Solution-level",
       "items": [
         "Microsoft Azure",
         "Microsoft Fabric"

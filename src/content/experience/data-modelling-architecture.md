@@ -3,7 +3,7 @@ title: Data Modelling & Architecture
 clientLabel: Flemish Social Services Agency
 sector: Public Sector
 order: 1
-description: Supported a Databricks-enabled data-platform transition from the business side, combining requirements gathering, target data-model thinking, architecture discussions, migration coordination and Power BI enablement to improve reporting and align the future data solution with business needs.
+description: Supported a Databricks-enabled platform transition from the business side, defining requirements and target data-model needs, coordinating migration activities and enabling Power BI reporting.
 tags:
 - Requirements
 - Target Data Model

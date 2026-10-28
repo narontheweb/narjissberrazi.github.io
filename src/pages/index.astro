@@ -3,13 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CvLink from '../components/CvLink.astro';
 import CaseExpansion from '../components/CaseExpansion.astro';
 import EvidenceList from '../components/EvidenceList.astro';
-import Focus from '../components/Focus.astro';
 import VisualPreview from '../components/VisualPreview.astro';
 import profile from '../data/profile.json';
 import { getCollection } from 'astro:content';
 const cases = (await getCollection('cases')).sort((a,b) => a.data.order-b.data.order);
 const experience = (await getCollection('experience')).sort((a,b) => a.data.order-b.data.order);
-const focus = (await getCollection('focus')).filter(entry=>entry.data.status!=='hidden');
 ---
 <BaseLayout>
   <section class="hero container" id="home" aria-labelledby="hero-heading">
@@ -36,7 +34,7 @@ const focus = (await getCollection('focus')).filter(entry=>entry.data.status!=='
       <div class="work-list">
         {cases.map((item,i) => <article class="case-row">
           <span class="case-number">0{i+1}</span>
-          <div class="case-main"><p class="case-client">{item.data.clientLabel}</p><p class="sector-tag">{item.data.sector}</p><h3>{item.data.title}</h3><p>{item.data.summary}</p><ul class="tags" aria-label="Project expertise">{item.data.tags.map(tag => <li>{tag}</li>)}</ul></div>
+          <div class="case-main"><p class="case-client">{item.data.clientLabel}</p><p class="sector-tag">{item.data.sector}</p><h3>{item.data.title}</h3><p>{item.data.summary}</p><p class="focus-areas"><span>Focus areas — </span>{item.data.tags.join(' · ')}</p></div>
           <aside class="case-evidence" aria-label="Selected project evidence"><span class="eyebrow">Selected evidence</span><EvidenceList evidence={item.data.evidence} /></aside>
           <CaseExpansion entry={item} />
         </article>)}
@@ -46,12 +44,17 @@ const focus = (await getCollection('focus')).filter(entry=>entry.data.status!=='
   </section>
   <section class="foundation-section" id="broader-experience" aria-labelledby="breadth-heading"><div class="section container breadth">
     <div class="section-heading"><p class="eyebrow">03 / Broader experience</p><h2 id="breadth-heading">{profile.experienceHeadline}</h2><p class="section-intro">{profile.experienceIntro}</p></div>
-    <div class="experience-list">{experience.map(entry => <details class:list={{'secondary-experience':entry.data.secondary}}><summary><span>{entry.data.title}<small>{entry.data.clientLabel}</small>{entry.data.sector && <span class="sector-tag">{entry.data.sector}</span>}</span><span class="details-icon" aria-hidden="true">+</span></summary><div class="experience-detail"><p>{entry.data.description}</p><p class="experience-tags">{entry.data.tags.join(' / ')}</p></div></details>)}</div>
+    <div class="experience-list">{experience.map(entry => <article class:list={['experience-entry', {'secondary-experience':entry.data.secondary}]}><h3>{entry.data.title}</h3><p class="experience-client">{entry.data.clientLabel}</p>{entry.data.sector && <p class="sector-tag">{entry.data.sector}</p>}<p class="experience-description">{entry.data.description}</p></article>)}</div>
   </div></section>
-  <section class="about-section" id="about" aria-labelledby="about-heading"><div class="container section">
-    <div class="about-grid"><div><p class="eyebrow">04 / {profile.aboutLabel}</p><h2 id="about-heading">{profile.aboutHeadline}</h2><p class="about-intro">{profile.about}</p></div>{focus.map(entry=><Focus entry={entry} />)}</div>
+  <section class="credentials-section" id="credentials" aria-labelledby="credentials-heading"><div class="credentials container section">
+    <div class="section-heading"><p class="eyebrow">04 / Credentials</p><h2 id="credentials-heading">Education, Skills & Credentials</h2></div>
+    <div class="credentials-grid">
+      <div><h3>Education</h3>{profile.education.map(education => <div class="education-entry"><p class="education-institution">{education.institution}</p><strong>{education.degree}</strong>{education.major && <p>{education.major}</p>}</div>)}</div>
+      <div class="technical-skills"><h3>Technical Skills</h3><dl class="technical-groups">{profile.technicalSkills.map(group=><div><dt>{group.level}</dt><dd>{group.items.join(' · ')}</dd></div>)}</dl></div>
+      <div><h3>Certifications</h3><ul class="certification-list">{profile.certifications.map(certification => <li>{certification}</li>)}</ul></div>
+      <div><h3>Languages</h3><p class="language-copy">{profile.languages.fluent.join(' · ')} — Fluent</p><p class="language-copy">{profile.languages.basic.join(' · ')} — Basic understanding</p></div>
+    </div>
   </div></section>
-  <section class="credentials-section" id="credentials" aria-labelledby="credentials-heading"><div class="credentials container section"><div class="section-heading"><p class="eyebrow">05 / Credentials</p><h2 id="credentials-heading">A foundation for transformation.</h2></div><div class="credentials-grid"><div><h3>Education</h3>{profile.education.map(education => { const [degree,institution] = education.split(' · '); return <div class="education-entry"><strong>{degree}</strong><p>{institution}</p></div>; })}<h3 class="languages-heading">Languages</h3><p class="language-copy">{profile.languages.fluent.join(', ')} — Fluent</p><p class="language-copy">{profile.languages.basic.join(' & ')} — Basic understanding</p></div><div><h3>Certifications</h3><ul class="certification-list">{profile.certifications.map(certification => <li>{certification}</li>)}</ul></div><div class="technical-fluency"><h3>Technical fluency</h3><dl class="technical-groups">{profile.technicalFluency.map(group=><div><dt>{group.level}</dt><dd>{group.items.join(' | ')}</dd></div>)}</dl></div></div></div></section>
   <section class="contact-section" aria-labelledby="contact-heading"><div class="container contact-inner"><div><p class="eyebrow">Continue the conversation</p><h2 id="contact-heading">{profile.cta}</h2><p>{profile.ctaText}</p></div><div class="contact-actions"><a class="button button-light" href={profile.linkedin} target="_blank" rel="noopener noreferrer">Connect on LinkedIn <span class="cta-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" focusable="false"><path d="M4 12 12 4M4 4h8v8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="sr-only"> (opens in a new tab)</span></a><a class="email-link" href={`mailto:${profile.email}`}>{profile.email} <span class="cta-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" focusable="false"><path d="M4 12 12 4M4 4h8v8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></span></a></div></div></section>
   <VisualPreview />
 </BaseLayout>
