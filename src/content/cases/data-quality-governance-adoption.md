@@ -1,6 +1,6 @@
 ---
-title: Data Quality, Governance & Change Adoption
-clientLabel: Belgian Financial Institution
+title: Data Quality, Governance & Regulatory Transformation
+clientLabel: Belgian Bank
 sector: Banking & Financial Services
 order: 2
 tags:
@@ -9,43 +9,37 @@ tags:
 - Regulatory Transformation
 - Change & Adoption
 - Executive Reporting
-summary: Led key parts of a bank-wide regulatory Data Governance and Data Quality transformation — redesigning governance, issue-management and reporting practices while driving change and adoption across business and technical teams.
-context: A bank-wide data transformation programme was accelerated by European supervisory expectations around risk data aggregation and reporting, with BCBS 239 / RDARR as core reference points. Existing Data Governance and Data Quality capabilities needed to evolve to provide stronger ownership, traceability, issue management and management oversight across multiple domains in the bank.
-challenge: 'Regulatory expectations had to be converted into practical ways of working across multiple domains in the bank: clearer Data Owner and Data Steward responsibilities, operational governance councils, consistent Data Quality issue management, prioritised remediation and reliable C-level reporting.'
+summary: Prioritised 40 of ~300 Data Quality issues using an 80/20 approach and quantitative impact sizing in an ECB/NBB-supervised bank, combining governance and adoption with monthly Data Board and Audit Committee reporting.
+context: An ECB/NBB-supervised bank needed to operationalise BCBS 239 / RDARR expectations. A core team of 7 worked across 8 data domains over approximately 8 months, with the engagement ongoing.
+challenge: Focus remediation on the most material issues, quantify potential annualised impact and translate supervisory requirements into accountable governance, usable workflows and senior-management reporting.
 contribution:
-- lead: Led key parts of the Data Quality and Data Governance transformation
-  detail: ', translating regulatory expectations into practical governance, change and management-reporting mechanisms.'
-- lead: Set up and refined governance councils and accountability
-  detail: ', clarifying Data Owner, Data Steward, business and technical responsibilities across multiple domains.'
-- lead: Designed the Jira-based Data Quality issue-management approach
-  detail: ', including required business information, escalation logic and biweekly remediation follow-up.'
-- lead: Supported prioritisation and remediation oversight
-  detail: ', maintaining management visibility on backlog progress, budget and resource implications.'
+- lead: Prioritised 40 of ~300 Data Quality issues
+  detail: ' using an 80/20 approach to focus remediation effort; approximately half of the prioritised issues have been resolved.'
+- lead: Sized ~€11M estimated combined annualised impact
+  detail: ' across the 40 prioritised issues, simulated from employee time savings and avoided regulatory fines.'
+- lead: Designed governance councils, accountability and a Jira-based issue process
+  detail: ' to translate BCBS 239 / RDARR expectations into practical roles and workflows.'
+- lead: Led change, adoption and roles-and-responsibilities training
+  detail: ' for 90 Data Owners, Data Stewards and Data Custodians within the core team’s work across 8 data domains.'
 - lead: Operationalised Collibra governance workflows
-  detail: ', including business-term ownership, claiming and maintenance processes, and supported user adoption.'
-- lead: Defined Data Quality KPIs and C-level progress reporting
-  detail: ', translating technical status into decision-relevant management information.'
-- lead: Bridged technical delivery and senior management
-  detail: ', translating business needs into data-platform/reporting requirements and management expectations into actionable delivery priorities.'
+  detail: ' to embed ownership and governance processes in day-to-day use.'
+- lead: Reported Data Quality KPIs monthly
+  detail: ' to the Data Board and Audit Committee, translating remediation progress into senior-management reporting.'
 evidence:
-- label: ~300 Data Quality issues identified across multiple domains
-- label: 40 prioritised
+- label: 40 of ~300 issues prioritised
   priority: true
-- label: ~€11M estimated combined impact across the 40 prioritised issues
-  note: Estimated impact relates to the 40 prioritised issues only.
+- label: ~€11M estimated annualised impact
+  note: Estimated combined annualised impact across the 40 prioritised issues, simulated from employee time savings and avoided regulatory fines.
   priority: true
-- label: C-level KPI & progress reporting
+- label: 8 data domains
+- label: 90 governance-role users trained
 deliverables:
-- title: Governance Councils
-- title: Roles & Responsibilities
-- title: Jira DQ Issue-Management Framework
-- title: Escalation & Biweekly Remediation Follow-up
+- title: 80/20 Prioritisation & Impact Model
+- title: Governance Councils & Accountability
+- title: Jira Issue-Management Process
 - title: Collibra Governance Workflows
-- title: DQ KPI Framework
-- title: C-level Management Reporting
-- title: Budget / Progress Oversight
-- title: Data-Platform Requirements
-- title: Training & Adoption
+- title: Data Board & Audit Committee KPI Reporting
+- title: Governance-Role Training
 visualPlaceholders:
 - label: Executive DQ Dashboard / KPI View
   description: Visual coming in next content iteration

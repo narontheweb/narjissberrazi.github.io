@@ -61,5 +61,8 @@
 .technical-skills dd{margin-top:4px}
 .certification-list li,.certification-list li:last-child{border:0;padding-block:3px}
 .language-copy+.language-copy{margin-top:12px}
+.leadership-contributions{grid-column:1/-1}
+.leadership-contributions p{font-size:16px;line-height:1.6;max-width:85ch}
+.leadership-contributions p+p{margin-top:12px}
 @media(max-width:700px){.credentials-grid{gap:32px}.experience-entry{padding-block:22px}}
 @media print{.experience-entry{opacity:1!important;transform:none!important;break-inside:avoid}.experience-description{font-size:10pt}.case-row .case-main>p.focus-areas{font-size:8pt!important}.technical-skills .technical-groups{display:block}}

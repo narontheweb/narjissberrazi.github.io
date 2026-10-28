@@ -60,7 +60,8 @@
     {
       "institution": "KU Leuven",
       "degree": "Master of Science in Business Administration",
-      "major": "Major: Data & Information Management"
+      "major": "Major: Data & Information Management",
+      "distinction": "Graduated with distinction"
     },
     {
       "institution": "KU Leuven",
@@ -69,19 +70,25 @@
     {
       "institution": "Artevelde University of Applied Sciences",
       "degree": "Bachelor in Accounting & Finance"
+    },
+    {
+      "institution": "University of Cape Town",
+      "degree": "Summer School — Entrepreneurship & Innovation in Emerging Markets, 2020",
+      "distinction": "Most Influential Speaker of the Bootcamp"
     }
   ],
   "certifications": [
     "Microsoft AB-731 — AI Transformation Leader",
-    "Microsoft AI-900 — Azure AI Fundamentals",
-    "Microsoft DP-203 — Data Engineering on Microsoft Azure",
-    "Microsoft PL-300 — Power BI Data Analyst Associate",
-    "Microsoft DP-900 — Azure Data Fundamentals",
-    "Microsoft PL-100 — Power Platform",
-    "Collibra Data Steward Certification",
-    "PRINCE2 Foundation",
+    "Microsoft PL-300",
+    "Collibra Data Steward",
     "PRINCE2 Practitioner"
   ],
+  "firmContributions": {
+    "organisation": "KPMG Belgium — AI Driven Advancement (AIDA)",
+    "role": "Change & Adoption Specialist",
+    "description": "Drive change and communication for KPMG Advisory’s firm-wide AI adoption programme across ~400 colleagues, connecting AI Ambassadors, AIDA delegates and the Head of Advisory across governance, communities and capability building.",
+    "coaching": "Coach two junior consultants per year."
+  },
   "languages": {
     "fluent": [
       "Dutch",
